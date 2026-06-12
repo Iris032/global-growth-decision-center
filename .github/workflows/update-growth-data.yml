@@ -1,0 +1,30 @@
+name: Update growth decision data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "20 0 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Refresh public data
+        run: node "2026-05-28_跨境电商平台地区优先级/scripts/update-growth-data.js"
+
+      - name: Commit refreshed data
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update growth decision data"
+          file_pattern: "2026-05-28_跨境电商平台地区优先级/data/growth-data.json 2026-05-28_跨境电商平台地区优先级/data/growth-data.js"

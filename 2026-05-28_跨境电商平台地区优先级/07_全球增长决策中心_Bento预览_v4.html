@@ -1,0 +1,2722 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Growth Decision Center Bento Preview v4</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --hue-pri: 185;
+      --hue-warn: 5;
+
+      --primary: hsl(var(--hue-pri), 35%, 80%);
+      --primary-text: hsl(var(--hue-pri), 60%, 25%);
+      --primary-alpha: hsla(var(--hue-pri), 35%, 80%, 0.3);
+
+      --warn: hsl(var(--hue-warn), 50%, 80%);
+      --warn-text: hsl(var(--hue-warn), 60%, 35%);
+      --warn-alpha: hsla(var(--hue-warn), 50%, 80%, 0.2);
+
+      --green: hsl(145, 38%, 82%);
+      --green-text: hsl(145, 44%, 30%);
+      --blue: hsl(216, 42%, 84%);
+      --blue-text: hsl(216, 52%, 34%);
+      --violet: hsl(260, 34%, 84%);
+      --violet-text: hsl(260, 42%, 38%);
+      --orange: hsl(34, 54%, 82%);
+      --orange-text: hsl(34, 60%, 34%);
+
+      --bg-color: hsl(var(--hue-pri), 10%, 96%);
+      --panel-bg: hsla(var(--hue-pri), 10%, 100%, 0.75);
+      --text-main: hsl(var(--hue-pri), 20%, 20%);
+      --text-sub: hsl(var(--hue-pri), 10%, 50%);
+
+      --border: hsla(var(--hue-pri), 20%, 80%, 0.4);
+      --glass-inset: inset 0 1px 1px hsla(0, 0%, 100%, 0.8);
+      --shadow: 0 8px 24px hsla(var(--hue-pri), 30%, 15%, 0.04);
+      --hover-bg: hsla(0, 0%, 100%, 0.8);
+
+      --radius-panel: 24px;
+      --radius-btn: 16px;
+      --glass-blur: blur(24px);
+      --font-family: "Nunito", "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    body.dark-theme {
+      --primary: hsl(var(--hue-pri), 30%, 30%);
+      --primary-text: hsl(var(--hue-pri), 40%, 75%);
+      --primary-alpha: hsla(var(--hue-pri), 30%, 30%, 0.4);
+
+      --warn: hsl(var(--hue-warn), 60%, 45%);
+      --warn-text: hsl(var(--hue-warn), 80%, 75%);
+      --warn-alpha: hsla(var(--hue-warn), 60%, 45%, 0.25);
+
+      --green: hsl(145, 24%, 30%);
+      --green-text: hsl(145, 40%, 72%);
+      --blue: hsl(216, 24%, 30%);
+      --blue-text: hsl(216, 44%, 74%);
+      --violet: hsl(260, 22%, 30%);
+      --violet-text: hsl(260, 42%, 76%);
+      --orange: hsl(34, 28%, 32%);
+      --orange-text: hsl(34, 52%, 74%);
+
+      --bg-color: hsl(var(--hue-pri), 12%, 12%);
+      --panel-bg: hsla(var(--hue-pri), 10%, 18%, 0.65);
+      --text-main: hsl(var(--hue-pri), 10%, 90%);
+      --text-sub: hsl(var(--hue-pri), 10%, 60%);
+
+      --border: hsla(var(--hue-pri), 20%, 40%, 0.15);
+      --glass-inset: inset 0 1px 1px hsla(0, 0%, 100%, 0.05);
+      --shadow: 0 10px 30px hsla(0, 0%, 0%, 0.3);
+      --hover-bg: hsla(var(--hue-pri), 10%, 30%, 0.2);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    button { font: inherit; cursor: pointer; }
+
+    input[type="search"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 12px;
+      background: var(--hover-bg);
+      color: var(--text-main);
+      outline: none;
+      font: inherit;
+      font-size: 13px;
+    }
+
+    .glass-panel {
+      background: var(--panel-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .sidebar {
+      width: 290px;
+      min-width: 290px;
+      display: flex;
+      flex-direction: column;
+      z-index: 10;
+      border-radius: 0;
+      border-top: none;
+      border-bottom: none;
+      border-left: none;
+      border-right: 1px solid var(--border);
+    }
+
+    .logo-area {
+      width: 100%;
+      padding: 28px 24px;
+      display: block;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-main);
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+      transition: var(--transition);
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .logo-area:hover {
+      background: var(--hover-bg);
+    }
+
+    .logo-title {
+      font-size: 22px;
+      font-weight: 900;
+      margin-bottom: 4px;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+
+    .logo-subtitle {
+      font-size: 13px;
+      color: var(--text-sub);
+      font-weight: 600;
+    }
+
+    .nav-scroll {
+      padding: 18px 16px 24px;
+      overflow-y: auto;
+    }
+
+    .nav-section-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text-sub);
+      margin: 20px 12px 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-item,
+    .tool-trigger,
+    .sub-item {
+      width: 100%;
+      border: none;
+      background: transparent;
+      color: var(--text-main);
+      transition: var(--transition);
+      text-align: left;
+    }
+
+    .nav-item {
+      padding: 12px 16px;
+      margin-bottom: 6px;
+      border-radius: var(--radius-btn);
+      font-size: 15px;
+      font-weight: 800;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-item:hover:not(.active) {
+      background-color: var(--hover-bg);
+      transform: translateX(5px);
+    }
+
+    .nav-item.active,
+    .sub-item.active {
+      background-color: var(--text-main);
+      color: var(--bg-color);
+      font-weight: 900;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    body.dark-theme .nav-item.active,
+    body.dark-theme .sub-item.active {
+      background-color: var(--primary);
+      color: #fff;
+    }
+
+    .tool-block {
+      margin-bottom: 10px;
+    }
+
+    .tool-trigger {
+      padding: 13px 14px;
+      border-radius: var(--radius-btn);
+      font-size: 14px;
+      font-weight: 900;
+      line-height: 1.35;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .tool-trigger:hover {
+      background-color: var(--hover-bg);
+      transform: translateX(5px);
+    }
+
+    .tool-trigger.active {
+      background: var(--hover-bg);
+      color: var(--text-main);
+    }
+
+    .chevron {
+      font-size: 14px;
+      color: var(--text-sub);
+      transform: rotate(-90deg);
+      transition: var(--transition);
+      flex: 0 0 auto;
+    }
+
+    .tool-block.open .chevron {
+      transform: rotate(0deg);
+    }
+
+    .sub-nav {
+      display: grid;
+      gap: 4px;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.28s ease, opacity 0.24s ease, padding 0.24s ease;
+      padding: 0 0 0 10px;
+    }
+
+    .tool-block.open .sub-nav {
+      max-height: 360px;
+      opacity: 1;
+      padding: 6px 0 8px 10px;
+    }
+
+    .sub-item {
+      position: relative;
+      border-radius: 14px;
+      padding: 9px 12px 9px 28px;
+      color: var(--text-sub);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .sub-item::before {
+      content: "";
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      transform: translateY(-50%);
+      background: currentColor;
+      opacity: 0.45;
+    }
+
+    .sub-item:hover:not(.active) {
+      background-color: var(--hover-bg);
+      color: var(--text-main);
+      transform: translateX(4px);
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      position: relative;
+      z-index: 5;
+    }
+
+    .top-bar {
+      height: 80px;
+      border-bottom: 1px solid var(--border);
+      border-radius: 0;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+    }
+
+    .header-title-box h1 {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    .header-title-box .highlight {
+      color: var(--warn-text);
+    }
+
+    .page-kicker {
+      display: none;
+      color: var(--text-sub);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .status-tag {
+      font-size: 13px;
+      padding: 6px 14px;
+      border-radius: 16px;
+      background: var(--primary-alpha);
+      color: var(--primary-text);
+      font-weight: 800;
+      border: 1px solid var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--primary-text);
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .theme-toggle-btn {
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      color: var(--text-sub);
+      box-shadow: var(--shadow);
+      font-size: 18px;
+    }
+
+    .theme-toggle-btn:hover {
+      color: var(--primary-text);
+      border-color: var(--primary-text);
+      transform: translateY(-2px);
+      background: var(--hover-bg);
+    }
+
+    .btn-outline,
+    .btn-primary {
+      border: 1px solid var(--border);
+      background: var(--panel-bg);
+      color: var(--text-main);
+      padding: 10px 20px;
+      border-radius: var(--radius-btn);
+      font-size: 14px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary-text);
+      color: var(--primary-text);
+      transform: translateY(-2px);
+      background: var(--hover-bg);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--primary-text);
+      border-color: var(--primary);
+      box-shadow: var(--shadow), var(--glass-inset);
+    }
+
+    body.dark-theme .btn-primary {
+      color: #fff;
+    }
+
+    .workspace {
+      flex: 1;
+      padding: 32px;
+      overflow-y: auto;
+    }
+
+    .view {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .view.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .bento-card {
+      border-radius: var(--radius-panel);
+      padding: 24px;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      min-height: 170px;
+      overflow: hidden;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px var(--primary-alpha);
+      background: var(--hover-bg);
+    }
+
+    .span-1 { grid-column: span 1; }
+    .span-2 { grid-column: span 2; }
+    .span-4 { grid-column: span 4; }
+    .tall { min-height: 360px; }
+    .medium { min-height: 240px; }
+
+    .hero {
+      min-height: 330px;
+      justify-content: space-between;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      width: fit-content;
+      border: 1px solid var(--primary);
+      color: var(--primary-text);
+      background: var(--primary-alpha);
+      border-radius: 999px;
+      padding: 7px 13px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .hero-title {
+      margin-top: 20px;
+      font-size: 44px;
+      font-weight: 900;
+      letter-spacing: -1.2px;
+      line-height: 1.07;
+    }
+
+    .hero-sub {
+      max-width: 650px;
+      margin-top: 14px;
+      color: var(--text-sub);
+      font-size: 15px;
+      line-height: 1.65;
+      font-weight: 700;
+    }
+
+    .kpi-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 12px;
+    }
+
+    .kpi-title {
+      background: var(--bg-color);
+      padding: 4px 14px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text-sub);
+      border: 1px solid var(--border);
+    }
+
+    .kpi-value {
+      font-size: 54px;
+      font-weight: 900;
+      color: var(--text-main);
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+
+    .kpi-value.pri {
+      background: linear-gradient(135deg, var(--primary-text), #5db5b5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .kpi-value.warn {
+      background: linear-gradient(135deg, var(--warn-text), #d96868);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hover-expand {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 7px;
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: var(--transition);
+    }
+
+    .bento-card:hover .hover-expand {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hover-expand .mini-tag {
+      border: 1px solid var(--primary);
+      color: var(--primary-text);
+      background: var(--primary-alpha);
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .hover-expand .mini-tag.warn {
+      border-color: var(--warn);
+      color: var(--warn-text);
+      background: var(--warn-alpha);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      gap: 12px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .card-hint {
+      font-size: 13px;
+      color: var(--text-sub);
+      font-weight: 600;
+    }
+
+    .tag-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tag,
+    .chip {
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: var(--transition);
+      background: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary-text);
+      box-shadow: var(--glass-inset);
+    }
+
+    .tag:hover,
+    .chip:hover {
+      transform: scale(1.05);
+      background: var(--primary-alpha);
+    }
+
+    .tag.active,
+    .chip.selected {
+      background-color: var(--text-main);
+      color: var(--bg-color);
+      border-color: var(--text-main);
+    }
+
+    body.dark-theme .tag.active,
+    body.dark-theme .chip.selected {
+      background-color: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .tag-warn {
+      background-color: var(--warn-alpha) !important;
+      border: 2px solid var(--warn) !important;
+      color: var(--warn-text) !important;
+      font-weight: 900;
+      box-shadow: var(--glass-inset), 0 0 0 4px var(--warn-alpha), 0 4px 12px var(--warn-alpha);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th {
+      text-align: left;
+      padding: 10px 12px;
+      font-size: 13px;
+      color: var(--text-sub);
+      font-weight: 800;
+      border-bottom: 1px solid var(--border);
+      text-transform: uppercase;
+    }
+
+    td {
+      padding: 14px 12px;
+      font-size: 15px;
+      font-weight: 600;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background-color: var(--hover-bg); }
+
+    .text-pri { color: var(--primary-text); font-weight: 900; }
+    .text-warn { color: var(--warn-text); font-weight: 900; }
+
+    .priority-tag {
+      background: var(--bg-color);
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border: 1px solid var(--border);
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .flow-card {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: hsla(0, 0%, 100%, 0.22);
+      padding: 16px;
+      min-height: 108px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    body.dark-theme .flow-card {
+      background: hsla(var(--hue-pri), 10%, 28%, 0.12);
+    }
+
+    .flow-card strong {
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .flow-card span {
+      margin-top: 6px;
+      color: var(--text-sub);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .flow-arrow {
+      color: var(--text-sub);
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .builder {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .builder-field {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: hsla(0, 0%, 100%, 0.18);
+      padding: 14px;
+      min-height: 104px;
+    }
+
+    body.dark-theme .builder-field {
+      background: hsla(var(--hue-pri), 10%, 28%, 0.12);
+    }
+
+    .field-label {
+      color: var(--text-sub);
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .builder-footer {
+      margin-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-sub);
+      font-size: 12px;
+      font-weight: 800;
+      gap: 12px;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .weekday {
+      color: var(--text-sub);
+      text-align: center;
+      font-size: 12px;
+      font-weight: 900;
+      padding-bottom: 4px;
+    }
+
+    .day {
+      min-height: 92px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: hsla(0, 0%, 100%, 0.18);
+      padding: 10px;
+      transition: var(--transition);
+    }
+
+    body.dark-theme .day {
+      background: hsla(var(--hue-pri), 10%, 28%, 0.12);
+    }
+
+    .day:hover {
+      background: var(--hover-bg);
+      transform: translateY(-2px);
+    }
+
+    .day-head {
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-sub);
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 7px;
+    }
+
+    .event {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      padding: 5px 7px;
+      margin-top: 5px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 900;
+      line-height: 1.35;
+      transition: var(--transition);
+    }
+
+    .region-code {
+      flex: 0 0 auto;
+      min-width: 28px;
+      border-radius: 7px;
+      padding: 1px 5px;
+      background: hsla(0, 0%, 100%, 0.45);
+      border: 1px solid currentColor;
+      text-align: center;
+      font-size: 9px;
+      line-height: 1.45;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    body.dark-theme .region-code {
+      background: hsla(var(--hue-pri), 14%, 16%, 0.42);
+    }
+
+    .event-title {
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .event:hover { transform: translateY(-1px); }
+    .event.shop { background: var(--warn-alpha); color: var(--warn-text); border-color: var(--warn); }
+    .event.sports { background: hsla(216, 42%, 84%, .35); color: var(--blue-text); border-color: var(--blue); }
+    .event.summit { background: hsla(260, 34%, 84%, .4); color: var(--violet-text); border-color: var(--violet); }
+    .event.festival { background: hsla(145, 38%, 82%, .38); color: var(--green-text); border-color: var(--green); }
+    .event.social { background: hsla(34, 54%, 82%, .42); color: var(--orange-text); border-color: var(--orange); }
+    .event.platform { background: var(--primary-alpha); color: var(--primary-text); border-color: var(--primary); }
+
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: hsla(var(--hue-pri), 20%, 10%, 0.4);
+      backdrop-filter: blur(5px);
+      z-index: 99;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .drawer-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 400px;
+      height: 100vh;
+      z-index: 100;
+      transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      border-radius: 0;
+      border-top: none;
+      border-bottom: none;
+      border-right: none;
+      border-left: 1px solid var(--border);
+    }
+
+    .drawer.open { right: 0; }
+
+    .drawer-header {
+      padding: 32px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .drawer-title {
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    .drawer-close {
+      background: transparent;
+      border: none;
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--text-sub);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .drawer-close:hover {
+      color: var(--text-main);
+      transform: rotate(90deg);
+    }
+
+    .drawer-content {
+      padding: 24px;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .detail-item { margin-bottom: 24px; }
+
+    .detail-label {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text-sub);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .detail-value {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    .drawer-footer {
+      padding: 20px 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 12px;
+    }
+
+    @media (max-width: 1180px) {
+      .bento-grid { grid-template-columns: repeat(2, 1fr); }
+      .span-4 { grid-column: span 2; }
+      .sidebar { width: 250px; min-width: 250px; }
+      .builder { grid-template-columns: 1fr; }
+      .flow { grid-template-columns: 1fr; }
+      .flow-arrow { transform: rotate(90deg); text-align: center; }
+    }
+
+    @media (max-width: 760px) {
+      body { display: block; height: auto; overflow: auto; }
+      .sidebar { width: 100%; min-width: 0; height: auto; border-right: none; }
+      .main-content { height: auto; }
+      .top-bar { height: auto; padding: 18px; flex-direction: column; align-items: flex-start; gap: 14px; }
+      .workspace { overflow: visible; padding: 18px; }
+      .bento-grid { grid-template-columns: 1fr; }
+      .span-1, .span-2, .span-4 { grid-column: span 1; }
+      .calendar-grid { grid-template-columns: 1fr; }
+      .weekday { display: none; }
+    }
+  </style>
+</head>
+<body class="dark-theme">
+  <aside class="sidebar glass-panel">
+    <button class="logo-area" type="button" data-home-link>
+      <div class="logo-title">Decision Center.</div>
+      <div class="logo-subtitle">Global Growth Ops</div>
+    </button>
+
+    <div class="nav-scroll">
+      <div class="nav-section-title">Tools</div>
+      <div class="tool-block" data-tool="market">
+        <button class="tool-trigger" data-toggle-tool="market">
+          <span>全球市场与平台优先级看板</span>
+          <span class="chevron">▾</span>
+        </button>
+        <div class="sub-nav">
+          <button class="sub-item" data-view="market-overview">总览</button>
+          <button class="sub-item" data-view="market-platform">市场平台</button>
+          <button class="sub-item" data-view="profit">客单利润</button>
+          <button class="sub-item" data-view="seller-type">卖家类型</button>
+          <button class="sub-item" data-view="market-brief">市场简评</button>
+          <button class="sub-item" data-view="market-source">数据口径</button>
+        </div>
+      </div>
+
+      <div class="tool-block" data-tool="content">
+        <button class="tool-trigger" data-toggle-tool="content">
+          <span>全球内容选题决策工具</span>
+          <span class="chevron">▾</span>
+        </button>
+        <div class="sub-nav">
+          <button class="sub-item" data-view="content-overview">总览</button>
+          <button class="sub-item" data-view="content-market">市场平台</button>
+          <button class="sub-item" data-view="content-seller">卖家类型</button>
+          <button class="sub-item" data-view="timeline">时间节点</button>
+          <button class="sub-item" data-view="trend">选品趋势</button>
+          <button class="sub-item" data-view="topic">选题库</button>
+        </div>
+      </div>
+
+      <div class="tool-block" data-tool="calendar">
+        <button class="tool-trigger" data-toggle-tool="calendar">
+          <span>营销日历生成器</span>
+          <span class="chevron">▾</span>
+        </button>
+        <div class="sub-nav">
+          <button class="sub-item" data-view="calendar">生成器</button>
+        </div>
+      </div>
+
+      <div class="nav-section-title">System</div>
+      <button class="nav-item" data-view="sources">
+        <span>数据来源</span>
+      </button>
+      <button class="nav-item" data-view="update-status">
+        <span>更新状态</span>
+      </button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="top-bar glass-panel">
+      <div class="header-title-box">
+        <div class="page-kicker" id="page-kicker">Decision Center</div>
+        <h1 id="page-title">Global Growth <span class="highlight">Workspace</span></h1>
+      </div>
+
+      <div class="top-actions">
+        <div class="status-tag">
+          <div class="status-dot"></div>
+          LIVE DATA
+        </div>
+        <button class="theme-toggle-btn" id="theme-toggle" title="切换深浅色">◐</button>
+        <button class="btn-outline" data-drawer="导出报告">导出报告</button>
+      </div>
+    </header>
+
+    <section class="workspace">
+      <div class="view active" id="home">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel hero span-4">
+            <div>
+              <span class="hero-label">Decision Center</span>
+              <div class="hero-title">Global growth planning, from market signal to calendar execution.</div>
+              <p class="hero-sub">一个中心承载三个工具：先判断国家/地区、平台和利润优先级，再沉淀内容选题，最后生成可执行的营销日历。</p>
+            </div>
+            <div class="flow">
+              <div class="flow-card">
+                <strong>Market & Platform</strong>
+                <span>国家/地区、平台、客单价、风险。</span>
+              </div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-card">
+                <strong>Content Planning</strong>
+                <span>节点、趋势、选题、形式。</span>
+              </div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-card">
+                <strong>Calendar Builder</strong>
+                <span>独立生成月历、周计划和发布清单。</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="bento-card glass-panel span-2 medium">
+            <div class="card-header">
+              <div class="card-title">今日工作流</div>
+              <span class="card-hint">首页只做导航和状态。</span>
+            </div>
+            <table>
+              <tbody>
+                <tr data-jump="market-overview"><td><strong>01</strong></td><td>判断国家/地区与平台优先级</td><td class="text-pri">进入</td></tr>
+                <tr data-jump="content-overview"><td><strong>02</strong></td><td>筛选内容主题和目标受众</td><td class="text-pri">进入</td></tr>
+                <tr data-jump="calendar"><td><strong>03</strong></td><td>生成营销月历和发布计划</td><td class="text-pri">进入</td></tr>
+              </tbody>
+            </table>
+          </article>
+
+          <article class="bento-card glass-panel span-2 medium">
+            <div class="card-header">
+              <div class="card-title">待处理队列</div>
+              <span class="card-hint">示例状态，不代表全量数据。</span>
+            </div>
+            <div class="tag-row" style="margin-top:18px;">
+              <button class="tag tag-warn" data-drawer="待复核节点">9 个节点待复核</button>
+              <button class="tag" data-jump="topic">18 个选题待排期</button>
+              <button class="tag" data-jump="sources">4 类数据待更新</button>
+              <button class="tag" data-jump="calendar">3 个日历模板</button>
+            </div>
+          </article>
+
+          <article class="bento-card glass-panel span-2 medium">
+            <div class="card-header">
+              <div class="card-title">最近生成</div>
+              <span class="card-hint">用于回到上次工作。</span>
+            </div>
+            <table>
+              <tbody>
+                <tr data-jump="calendar"><td><strong>GLOBAL</strong></td><td>6 月全球营销节点预览</td><td>月历</td></tr>
+                <tr data-jump="topic"><td><strong>AMZ</strong></td><td>Prime Day 内容选题包</td><td>选题</td></tr>
+                <tr data-jump="calendar"><td><strong>RU</strong></td><td>俄罗斯 6 月社媒月历示例</td><td>模板</td></tr>
+              </tbody>
+            </table>
+          </article>
+
+          <article class="bento-card glass-panel span-2 medium">
+            <div class="card-header">
+              <div class="card-title">数据健康</div>
+              <span class="card-hint">决定能否进入正式排期。</span>
+            </div>
+            <div class="tag-row" style="margin-top:18px;">
+              <button class="tag active">市场数据 OK</button>
+              <button class="tag active">平台活动 OK</button>
+              <button class="tag tag-warn">赛事需复核</button>
+              <button class="tag tag-warn">高风险市场需确认</button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="market-overview">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel kpi-box span-1" data-drawer="第一梯队市场">
+            <div class="kpi-title">第一梯队市场</div>
+            <div class="kpi-value pri">5</div>
+            <div class="hover-expand">
+              <span class="mini-tag">美国</span><span class="mini-tag">东南亚</span><span class="mini-tag">印度</span><span class="mini-tag">日本</span><span class="mini-tag">巴西</span>
+            </div>
+          </article>
+          <article class="bento-card glass-panel kpi-box span-1" data-drawer="高利润市场">
+            <div class="kpi-title">高利润潜力市场</div>
+            <div class="kpi-value">7</div>
+            <div class="hover-expand">
+              <span class="mini-tag">美国</span><span class="mini-tag">德国</span><span class="mini-tag">GCC</span><span class="mini-tag">澳大利亚</span>
+            </div>
+          </article>
+          <article class="bento-card glass-panel kpi-box span-1" data-drawer="待复核节点">
+            <div class="kpi-title">需人工复核</div>
+            <div class="kpi-value warn">2</div>
+            <div class="hover-expand">
+              <span class="mini-tag warn">土耳其</span><span class="mini-tag warn">中东政策</span>
+            </div>
+          </article>
+          <article class="bento-card glass-panel kpi-box span-1" data-drawer="高风险市场">
+            <div class="kpi-title">高风险市场</div>
+            <div class="kpi-value warn">1</div>
+            <div class="hover-expand">
+              <span class="mini-tag warn">俄罗斯</span>
+            </div>
+          </article>
+
+          <article class="bento-card glass-panel span-2 tall">
+            <div class="card-header">
+              <div class="card-title">市场 & 平台层级</div>
+              <span class="card-hint">依据市场价值、转化率综合评估</span>
+            </div>
+            <div class="tag-row">
+              <button class="tag" data-tier="first">第一梯队</button>
+              <button class="tag" data-tier="second">第二梯队</button>
+              <button class="tag" data-tier="third">第三梯队</button>
+              <button class="tag tag-warn" data-tier="special">特殊市场</button>
+            </div>
+            <table style="margin-top:22px;">
+              <thead><tr><th>市场</th><th>首选</th><th>状态</th></tr></thead>
+              <tbody id="tier-table-body">
+                <tr data-drawer="美国"><td><strong>美国</strong></td><td>Amazon</td><td class="text-pri">高价值</td></tr>
+                <tr data-drawer="东南亚"><td><strong>东南亚</strong></td><td>Shopee</td><td class="text-pri">增长</td></tr>
+                <tr data-drawer="日本"><td><strong>日本</strong></td><td>Amazon / Rakuten</td><td>高客单</td></tr>
+                <tr data-drawer="俄罗斯"><td><strong>俄罗斯</strong></td><td>Ozon</td><td class="text-warn">谨慎</td></tr>
+              </tbody>
+            </table>
+          </article>
+
+          <article class="bento-card glass-panel span-2 tall">
+            <div class="card-header">
+              <div class="card-title">重点平台看板</div>
+              <button class="btn-outline" style="padding:6px 12px;font-size:12px;border-radius:12px;" data-jump="market-platform">查看详情</button>
+            </div>
+            <table>
+              <thead><tr><th>平台</th><th>趋势</th><th>主要市场</th></tr></thead>
+              <tbody>
+                <tr data-drawer="Amazon"><td><strong>Amazon</strong></td><td class="text-pri">稳健 ↗</td><td>北美 / 欧洲 / 日本</td></tr>
+                <tr data-drawer="Shopee"><td><strong>Shopee</strong></td><td class="text-pri">增长 ↗</td><td>东南亚 / 拉美</td></tr>
+                <tr data-drawer="TikTok Shop"><td><strong>TikTok Shop</strong></td><td class="text-pri">爆发 ↗</td><td>美国 / 东南亚</td></tr>
+                <tr data-drawer="Mercado Libre"><td><strong>Mercado Libre</strong></td><td class="text-pri">增长 ↗</td><td>拉美</td></tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="market-platform">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel span-4">
+            <div class="card-header">
+              <div class="card-title">Market & Platform Table</div>
+              <div class="tag-row">
+                <button class="tag active" data-market-filter="all">全部</button>
+                <button class="tag" data-market-filter="第一梯队">第一梯队</button>
+                <button class="tag" data-market-filter="高">高利润</button>
+                <button class="tag tag-warn" data-market-filter="risk">需复核</button>
+              </div>
+            </div>
+            <div style="margin-top:16px;">
+              <input type="search" id="market-search" placeholder="搜索国家/地区、平台、区域、受众或风险">
+            </div>
+            <table>
+              <thead><tr><th>优先级</th><th>国家/地区</th><th>市场分层</th><th>首选平台</th><th>第二/第三</th><th>状态</th></tr></thead>
+              <tbody id="market-platform-table-body">
+                <tr><td>加载中</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td></tr>
+              </tbody>
+            </table>
+          </article>
+          <article class="bento-card glass-panel span-4">
+            <div class="card-header">
+              <div>
+                <div class="card-title">公开宏观信号</div>
+                <div class="card-hint">第一版来自 World Bank：人口、GDP、互联网使用率。</div>
+              </div>
+            </div>
+            <table style="margin-top:18px;">
+              <thead><tr><th>国家/地区</th><th>人口</th><th>GDP</th><th>互联网使用率</th><th>年份</th></tr></thead>
+              <tbody id="macro-signal-table-body">
+                <tr><td>加载中</td><td>--</td><td>--</td><td>--</td><td>--</td></tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="profit">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel kpi-box span-1" data-drawer="高利润市场">
+            <div class="kpi-title">高利润潜力</div>
+            <div class="kpi-value pri">7</div>
+            <div class="hover-expand">
+              <span class="mini-tag">美国</span><span class="mini-tag">德国</span><span class="mini-tag">日本</span><span class="mini-tag">GCC</span>
+            </div>
+          </article>
+          <article class="bento-card glass-panel kpi-box span-1" data-drawer="低客单走量">
+            <div class="kpi-title">低客单走量</div>
+            <div class="kpi-value">3</div>
+            <div class="hover-expand">
+              <span class="mini-tag">东南亚</span><span class="mini-tag">印度</span><span class="mini-tag">土耳其</span>
+            </div>
+          </article>
+          <article class="bento-card glass-panel kpi-box span-1" data-drawer="高成本市场">
+            <div class="kpi-title">高成本</div>
+            <div class="kpi-value warn">5</div>
+            <div class="hover-expand">
+              <span class="mini-tag warn">美国</span><span class="mini-tag warn">德国</span><span class="mini-tag warn">英国</span>
+            </div>
+          </article>
+          <article class="bento-card glass-panel kpi-box span-1" data-drawer="高风险市场">
+            <div class="kpi-title">高风险</div>
+            <div class="kpi-value warn">1</div>
+            <div class="hover-expand">
+              <span class="mini-tag warn">俄罗斯</span>
+            </div>
+          </article>
+          <article class="bento-card glass-panel span-4 tall">
+            <div class="card-header">
+              <div>
+                <div class="card-title">AOV & Profit Table</div>
+                <div class="card-hint">区分市场规模、客单价、利润潜力和主要成本风险。</div>
+              </div>
+            </div>
+            <table style="margin-top:18px;">
+              <thead><tr><th>国家/地区</th><th>估算客单价</th><th>人民币</th><th>利润潜力</th><th>主要成本/风险</th><th>打法</th></tr></thead>
+              <tbody id="profit-table-body">
+                <tr><td>加载中</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td></tr>
+              </tbody>
+            </table>
+          </article>
+          <article class="bento-card glass-panel span-4 medium">
+            <div class="card-title">成本与风险分类</div>
+            <div class="tag-row" id="cost-risk-tags" style="margin-top:18px;"></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="seller-type">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel hero span-4">
+            <div>
+              <span class="hero-label">Seller Type</span>
+              <div class="hero-title">Seller profile maps to platform priority.</div>
+              <p class="hero-sub">泛品、品牌、高客单、内容电商、多平台铺货，本质上需要完全不同的市场和内容打法。</p>
+            </div>
+            <div class="tag-row">
+              <button class="tag active">泛品</button>
+              <button class="tag">品牌货</button>
+              <button class="tag">Amazon</button>
+              <button class="tag">内容电商</button>
+              <button class="tag">海外仓</button>
+            </div>
+            <table style="margin-top:22px;">
+              <thead><tr><th>受众类型</th><th>关注平台</th><th>关注地区</th><th>适合形式</th></tr></thead>
+              <tbody id="audience-profile-table-body">
+                <tr><td>加载中</td><td>--</td><td>--</td><td>--</td></tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="market-brief">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel span-4">
+            <div class="card-title">Market Brief</div>
+            <div style="margin-top:16px;">
+              <input type="search" id="market-brief-search" placeholder="搜索国家/地区、平台、受众、品类或风险">
+            </div>
+            <div class="tag-row" style="margin-top:22px;">
+              <button class="tag active" data-brief-filter="all">全部</button>
+              <button class="tag" data-brief-filter="第一梯队">第一梯队</button>
+              <button class="tag" data-brief-filter="欧洲">欧洲</button>
+              <button class="tag" data-brief-filter="亚洲">亚洲</button>
+              <button class="tag tag-warn" data-brief-filter="风险">风险</button>
+            </div>
+            <table style="margin-top:18px;">
+              <thead><tr><th>市场</th><th>核心平台</th><th>一句话判断</th><th>适合受众</th><th>操作</th></tr></thead>
+              <tbody id="market-brief-table-body">
+                <tr><td>加载中</td><td>--</td><td>--</td><td>--</td><td>--</td></tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="market-source">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel span-2 medium">
+            <div class="card-title">Data Method</div>
+            <div class="tag-row" style="margin-top:22px;">
+              <button class="tag">MAU</button><button class="tag">访问份额</button><button class="tag">活跃买家</button><button class="tag">AOV</button>
+            </div>
+            <table style="margin-top:18px;">
+              <tbody id="methodology-table-body">
+                <tr><td>加载中</td></tr>
+              </tbody>
+            </table>
+          </article>
+          <article class="bento-card glass-panel span-2 medium">
+            <div class="card-title">Sources</div>
+            <div class="tag-row" style="margin-top:22px;">
+              <button class="tag">财报</button><button class="tag">Similarweb</button><button class="tag">行业报告</button><button class="tag tag-warn">人工复核</button>
+            </div>
+            <table style="margin-top:18px;">
+              <tbody id="source-direction-table-body">
+                <tr><td>加载中</td></tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="content-overview">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel kpi-box span-1" data-drawer="内容节点">
+            <div class="kpi-title">本月节点</div>
+            <div class="kpi-value pri">28</div>
+            <div class="hover-expand">
+              <span class="mini-tag">节日</span><span class="mini-tag">赛事</span><span class="mini-tag">峰会</span><span class="mini-tag">大促</span>
+            </div>
+          </article>
+          <article class="bento-card glass-panel kpi-box span-1" data-drawer="推荐选题">
+            <div class="kpi-title">推荐选题</div>
+            <div class="kpi-value">42</div>
+            <div class="hover-expand">
+              <span class="mini-tag">国家/地区</span><span class="mini-tag">平台</span><span class="mini-tag">趋势</span>
+            </div>
+          </article>
+          <article class="bento-card glass-panel kpi-box span-1" data-drawer="可排期选题">
+            <div class="kpi-title">可排期</div>
+            <div class="kpi-value pri">18</div>
+            <div class="hover-expand">
+              <span class="mini-tag">朋友圈</span><span class="mini-tag">LinkedIn</span><span class="mini-tag">海报</span>
+            </div>
+          </article>
+          <article class="bento-card glass-panel kpi-box span-1" data-drawer="待复核节点">
+            <div class="kpi-title">待复核</div>
+            <div class="kpi-value warn">9</div>
+            <div class="hover-expand">
+              <span class="mini-tag warn">赛事</span><span class="mini-tag warn">峰会</span><span class="mini-tag warn">平台活动</span>
+            </div>
+          </article>
+          <article class="bento-card glass-panel span-2 medium">
+            <div class="card-title">Content Opportunity</div>
+            <table style="margin-top:18px;">
+              <thead><tr><th>方向</th><th>依据</th><th>状态</th></tr></thead>
+              <tbody id="content-opportunity-table-body">
+                <tr><td>加载中</td><td>--</td><td>--</td></tr>
+              </tbody>
+            </table>
+          </article>
+          <article class="bento-card glass-panel span-2 medium">
+            <div class="card-title">营销日历已独立</div>
+            <p class="card-hint" style="margin-top:10px;line-height:1.7;">内容工具只负责沉淀选题、节点、受众和内容形式；排期、模板、导出交给独立的营销日历生成器。</p>
+            <div style="margin-top:auto;">
+              <button class="btn-primary" data-jump="calendar">进入生成器</button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="content-market">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel span-4">
+            <div class="card-title">Content Market View</div>
+            <table style="margin-top:18px;">
+              <thead><tr><th>国家/地区</th><th>缩写</th><th>优先级</th><th>核心平台</th><th>主要受众</th><th>内容角度</th><th>进日历</th></tr></thead>
+              <tbody id="content-market-table-body">
+                <tr><td>加载中</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td></tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="content-seller">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel span-4">
+            <div class="card-title">Audience Profile</div>
+            <div class="tag-row" style="margin-top:22px;">
+              <button class="tag active">Amazon 卖家</button><button class="tag">Shopee 卖家</button><button class="tag">多平台卖家</button><button class="tag">品牌出海</button>
+            </div>
+            <table style="margin-top:18px;">
+              <thead><tr><th>受众类型</th><th>痛点</th><th>适合主题</th><th>内容形式</th><th>进日历</th></tr></thead>
+              <tbody id="content-audience-table-body">
+                <tr><td>加载中</td><td>--</td><td>--</td><td>--</td><td>--</td></tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="timeline">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel span-4">
+            <div class="card-header">
+              <div class="card-title">Timeline Nodes</div>
+              <span class="card-hint">这里只做节点库，不放生成栏。</span>
+            </div>
+            <table>
+              <thead><tr><th>月份</th><th>国家/地区</th><th>节点</th><th>类型</th><th>影响品类</th><th>建议形式</th><th>状态</th></tr></thead>
+              <tbody id="timeline-table-body">
+                <tr><td>6 月</td><td>俄罗斯</td><td>儿童节</td><td>节日</td><td class="text-warn">需确认热度</td></tr>
+                <tr><td>6 月</td><td>全球</td><td>世界环境日</td><td>社媒热点</td><td>可用</td></tr>
+                <tr><td>6 月</td><td>跨境</td><td>平台大促预热</td><td>购物节点</td><td class="text-warn">需复核</td></tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="trend">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel span-2 medium">
+            <div class="card-title">Product Trends</div>
+            <div class="tag-row" style="margin-top:22px;">
+              <button class="tag">户外</button><button class="tag">返校季</button><button class="tag">宠物</button><button class="tag">家居</button>
+            </div>
+            <table style="margin-top:18px;">
+              <thead><tr><th>地区</th><th>平台</th><th>趋势</th><th>可信度</th></tr></thead>
+              <tbody id="product-trend-table-body">
+                <tr><td>加载中</td><td>--</td><td>--</td><td>--</td></tr>
+              </tbody>
+            </table>
+          </article>
+          <article class="bento-card glass-panel span-2 medium">
+            <div class="card-title">Fashion Trends</div>
+            <div class="tag-row" style="margin-top:22px;">
+              <button class="tag">泳装</button><button class="tag">度假风</button><button class="tag">大码</button><button class="tag">通勤</button>
+            </div>
+            <table style="margin-top:18px;">
+              <thead><tr><th>地区</th><th>平台</th><th>风格</th><th>可信度</th></tr></thead>
+              <tbody id="fashion-trend-table-body">
+                <tr><td>加载中</td><td>--</td><td>--</td><td>--</td></tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="topic">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel span-4">
+            <div class="card-header">
+              <div class="card-title">Content Topic Decision</div>
+              <div class="tag-row">
+                <button class="tag active">全部</button><button class="tag">高优先级</button><button class="tag tag-warn">待复核</button><button class="tag">已排期</button>
+              </div>
+            </div>
+            <table>
+              <thead><tr><th>Topic</th><th>国家/地区</th><th>平台</th><th>受众</th><th>Format</th><th>Priority</th><th>状态</th></tr></thead>
+              <tbody id="topic-table-body">
+                <tr data-drawer="俄罗斯 6 月社媒月历"><td>俄罗斯 6 月社媒月历</td><td>俄罗斯</td><td>月历</td><td><span class="priority-tag">High</span></td></tr>
+                <tr><td>Prime Day 客服准备清单</td><td>美国</td><td>清单</td><td><span class="priority-tag">High</span></td></tr>
+                <tr><td>东南亚内容电商排期</td><td>东南亚</td><td>短视频</td><td><span class="priority-tag">Mid</span></td></tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="calendar">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel span-2 tall">
+            <div class="card-header">
+              <div>
+                <div class="card-title">营销日历生成器</div>
+                <div class="card-hint">独立工具，接收市场优先级和选题库结果。</div>
+              </div>
+            </div>
+            <div class="builder">
+              <div class="builder-field">
+                <div class="field-label">目标受众</div>
+                <div class="tag-row" id="calendar-audience-options"></div>
+              </div>
+              <div class="builder-field">
+                <div class="field-label">国家/地区</div>
+                <div class="tag-row" id="calendar-region-options"></div>
+              </div>
+              <div class="builder-field">
+                <div class="field-label">目标月份</div>
+                <div class="tag-row" id="calendar-month-options"></div>
+              </div>
+              <div class="builder-field">
+                <div class="field-label">内容渠道</div>
+                <div class="tag-row" id="calendar-channel-options"></div>
+              </div>
+              <div class="builder-field">
+                <div class="field-label">事件类型</div>
+                <div class="tag-row" id="calendar-event-type-options"></div>
+              </div>
+              <div class="builder-field">
+                <div class="field-label">内容目标</div>
+                <div class="tag-row" id="calendar-goal-options"></div>
+              </div>
+              <div class="builder-field">
+                <div class="field-label">输出形式</div>
+                <div class="tag-row" id="calendar-output-options"></div>
+              </div>
+            </div>
+            <div class="builder-footer">
+              <span id="calendar-generate-summary">Template: multi-market calendar preview</span>
+              <button class="btn-primary" id="generate-calendar">生成</button>
+            </div>
+          </article>
+          <article class="bento-card glass-panel span-2 tall">
+            <div class="card-header">
+              <div class="card-title">生成结果概览</div>
+              <span class="card-hint">俄罗斯只是示范模板之一。</span>
+            </div>
+            <table style="margin-top:18px;">
+              <thead><tr><th>模板</th><th>范围</th><th>状态</th></tr></thead>
+              <tbody id="calendar-result-table-body">
+                <tr data-drawer="俄罗斯 6 月社媒月历"><td>俄罗斯 6 月社媒月历</td><td><span class="priority-tag">RU</span></td><td class="text-warn">示范</td></tr>
+                <tr><td>欧洲夏季节点月历</td><td><span class="priority-tag">EU</span></td><td class="text-pri">可生成</td></tr>
+                <tr><td>Prime Day 内容月历</td><td><span class="priority-tag">AMZ</span></td><td class="text-pri">可生成</td></tr>
+                <tr><td>全球社媒热点月历</td><td><span class="priority-tag">GLOBAL</span></td><td>预览</td></tr>
+              </tbody>
+            </table>
+            <div class="tag-row" style="margin-top:18px;">
+              <button class="tag">月历</button>
+              <button class="tag">周计划</button>
+              <button class="tag">朋友圈发布表</button>
+              <button class="tag">海报主题清单</button>
+            </div>
+          </article>
+          <article class="bento-card glass-panel span-4 medium">
+            <div class="card-header">
+              <div>
+                <div class="card-title">数据预览</div>
+                <div class="card-hint" id="calendar-preview-hint">当前配置会使用哪些节点、选题和来源。</div>
+              </div>
+              <div class="tag-row">
+                <button class="tag active" data-preview-kind="events">节点</button>
+                <button class="tag" data-preview-kind="topics">选题</button>
+                <button class="tag" data-preview-kind="sources">来源</button>
+              </div>
+            </div>
+            <table style="margin-top:18px;">
+              <thead id="calendar-preview-head"><tr><th>日期</th><th>范围</th><th>名称</th><th>状态</th></tr></thead>
+              <tbody id="calendar-preview-table-body">
+                <tr><td>加载中</td><td>--</td><td>--</td><td>--</td></tr>
+              </tbody>
+            </table>
+          </article>
+          <article class="bento-card glass-panel span-4">
+            <div class="card-header">
+              <div>
+                <div class="card-title" id="calendar-title">June 2026 Calendar</div>
+                <div class="card-hint" id="calendar-hint">国家/地区用缩写徽标，事件类型用颜色。</div>
+              </div>
+              <div class="tag-row">
+                <button class="tag active">月历</button><button class="tag">周计划</button><button class="tag">导出</button>
+              </div>
+            </div>
+            <div class="calendar-grid" id="calendar-grid"></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="sources">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel span-2 medium">
+            <div class="card-title">Data Sources</div>
+            <div class="tag-row" style="margin-top:22px;">
+              <button class="tag">市场数据</button><button class="tag">节日节点</button><button class="tag">体育赛事</button><button class="tag">行业峰会</button>
+            </div>
+          </article>
+          <article class="bento-card glass-panel span-2 medium">
+            <div class="card-title">Review Rules</div>
+            <div class="tag-row" style="margin-top:22px;">
+              <button class="tag">月度</button><button class="tag">季度</button><button class="tag tag-warn">人工复核</button>
+            </div>
+          </article>
+          <article class="bento-card glass-panel span-4 tall">
+            <div class="card-header">
+              <div>
+                <div class="card-title">来源台账</div>
+                <div class="card-hint">第一版只接公开来源和种子节点，付费/API 授权后续再接。</div>
+              </div>
+            </div>
+            <table style="margin-top:18px;">
+              <thead><tr><th>数据源</th><th>类型</th><th>更新</th><th>状态</th></tr></thead>
+              <tbody id="source-table-body">
+                <tr><td>Public source registry</td><td>加载中</td><td>加载中</td><td>加载中</td></tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="update-status">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel kpi-box span-1">
+            <div class="kpi-title">最近更新</div><div class="kpi-value pri" id="kpi-last-updated" style="font-size:38px;">--.--</div>
+          </article>
+          <article class="bento-card glass-panel kpi-box span-1">
+            <div class="kpi-title">待复核</div><div class="kpi-value warn" id="kpi-review-count">--</div>
+          </article>
+          <article class="bento-card glass-panel kpi-box span-1">
+            <div class="kpi-title">抓取失败</div><div class="kpi-value" id="kpi-failure-count">--</div>
+          </article>
+          <article class="bento-card glass-panel kpi-box span-1">
+            <div class="kpi-title">数据模式</div><div class="kpi-value pri" id="kpi-data-mode" style="font-size:28px;">JSON</div>
+          </article>
+          <article class="bento-card glass-panel span-4 medium">
+            <div class="card-header">
+              <div>
+                <div class="card-title">更新状态</div>
+                <div class="card-hint" id="update-next-run">等待数据加载。</div>
+              </div>
+            </div>
+            <table style="margin-top:18px;">
+              <thead><tr><th>项目</th><th>目标</th><th>状态</th></tr></thead>
+              <tbody id="update-status-table-body">
+                <tr><td>数据文件</td><td>growth-data.json</td><td>加载中</td></tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+  <aside class="drawer glass-panel" id="drawer">
+    <div class="drawer-header">
+      <div class="drawer-title" id="drawer-title">Detail</div>
+      <button class="drawer-close" id="drawer-close">×</button>
+    </div>
+    <div class="drawer-content">
+      <div class="detail-item">
+        <div class="detail-label">说明</div>
+        <div class="detail-value" id="drawer-desc">这是预览交互，后续可接真实数据。</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">展开内容</div>
+        <div class="detail-value" id="drawer-list">点击卡片或表格后，这里显示完整列表和解释。</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">状态</div>
+        <div class="tag-row" id="drawer-status">
+          <span class="tag">预览数据</span>
+        </div>
+      </div>
+    </div>
+    <div class="drawer-footer">
+      <button class="btn-outline">暂不处理</button>
+      <button class="btn-primary">加入选题库</button>
+    </div>
+  </aside>
+
+  <script src="data/growth-data.js"></script>
+  <script>
+    const pageMeta = {
+      home: "Global Growth <span class=\"highlight\">Workspace</span>",
+      "market-overview": "Market & Platform <span class=\"highlight\">Overview</span>",
+      "market-platform": "Market & Platform <span class=\"highlight\">Table</span>",
+      profit: "AOV & Profit <span class=\"highlight\">Map</span>",
+      "seller-type": "Seller Type <span class=\"highlight\">Map</span>",
+      "market-brief": "Market Brief <span class=\"highlight\">Cards</span>",
+      "market-source": "Data Method <span class=\"highlight\">& Sources</span>",
+      "content-overview": "Content Planning <span class=\"highlight\">Overview</span>",
+      "content-market": "Content Market <span class=\"highlight\">View</span>",
+      "content-seller": "Audience Profile <span class=\"highlight\">View</span>",
+      timeline: "Timeline Nodes <span class=\"highlight\">Library</span>",
+      trend: "Product Trends <span class=\"highlight\">Board</span>",
+      topic: "Content Topic <span class=\"highlight\">Decision</span>",
+      calendar: "Marketing Calendar <span class=\"highlight\">Generator</span>",
+      sources: "Data Sources <span class=\"highlight\">Center</span>",
+      "update-status": "Update Status <span class=\"highlight\">Monitor</span>"
+    };
+
+    const toolMap = {
+      "market-overview": "market",
+      "market-platform": "market",
+      profit: "market",
+      "seller-type": "market",
+      "market-brief": "market",
+      "market-source": "market",
+      "content-overview": "content",
+      "content-market": "content",
+      "content-seller": "content",
+      timeline: "content",
+      trend: "content",
+      topic: "content",
+      calendar: "calendar"
+    };
+
+    let growthData = null;
+
+    const fallbackCalendarEvents = [
+      { date: "2026-06-01", day: 1, cls: "festival", code: "RU", title: "儿童节", drawer: "日历：儿童节", reviewRequired: true, sourceIds: ["preview"] },
+      { date: "2026-06-05", day: 5, cls: "social", code: "GLOBAL", title: "世界环境日", drawer: "日历：世界环境日", reviewRequired: false, sourceIds: ["preview"] },
+      { date: "2026-06-08", day: 8, cls: "shop", code: "AMZ", title: "Prime Day 预热", drawer: "日历：Prime Day 预热", reviewRequired: false, sourceIds: ["preview"] },
+      { date: "2026-06-10", day: 10, cls: "summit", code: "EU", title: "行业峰会", drawer: "日历：欧洲行业峰会", reviewRequired: true, sourceIds: ["preview"] },
+      { date: "2026-06-12", day: 12, cls: "festival", code: "RU", title: "俄罗斯日", drawer: "日历：俄罗斯日", reviewRequired: true, sourceIds: ["preview"] },
+      { date: "2026-06-12", day: 12, cls: "shop", code: "GLOBAL", title: "大促预热", drawer: "日历：全球大促预热", reviewRequired: false, sourceIds: ["preview"] },
+      { date: "2026-06-14", day: 14, cls: "sports", code: "GLOBAL", title: "体育节点", drawer: "日历：体育节点", reviewRequired: true, sourceIds: ["preview"] },
+      { date: "2026-06-18", day: 18, cls: "platform", code: "PLAT", title: "平台内容周", drawer: "日历：平台内容周", reviewRequired: false, sourceIds: ["preview"] },
+      { date: "2026-06-21", day: 21, cls: "social", code: "SEA", title: "夏季选品", drawer: "日历：东南亚夏季选品", reviewRequired: false, sourceIds: ["preview"] },
+      { date: "2026-06-24", day: 24, cls: "summit", code: "XBD", title: "线上论坛", drawer: "日历：跨境线上论坛", reviewRequired: true, sourceIds: ["preview"] },
+      { date: "2026-06-28", day: 28, cls: "shop", code: "DE", title: "月末促销", drawer: "日历：德国月末促销", reviewRequired: false, sourceIds: ["preview"] }
+    ];
+
+    const tierRows = {
+      first: [
+        ["美国", "Amazon", "高价值", "text-pri"],
+        ["东南亚", "Shopee", "增长", "text-pri"],
+        ["印度", "Flipkart", "高增长", ""],
+        ["日本", "Amazon / Rakuten", "高客单", ""],
+        ["巴西", "Mercado Livre", "拉美核心", ""]
+      ],
+      second: [
+        ["墨西哥", "Amazon / Mercado Libre", "增长", "text-pri"],
+        ["英国", "Amazon / eBay", "成熟", ""],
+        ["德国", "Amazon / eBay", "高客单", ""],
+        ["法国", "Amazon / Cdiscount", "成熟", ""],
+        ["韩国", "Coupang", "本地强势", ""]
+      ],
+      third: [
+        ["加拿大", "Amazon / Walmart", "稳健", ""],
+        ["澳大利亚", "Amazon / eBay", "高客单", ""],
+        ["土耳其", "Trendyol", "需复核", "text-warn"],
+        ["波兰", "Allegro", "区域强", ""],
+        ["中东/GCC", "Amazon / Noon", "高客单", ""]
+      ],
+      special: [
+        ["俄罗斯", "Ozon", "谨慎", "text-warn"],
+        ["俄罗斯", "Wildberries", "谨慎", "text-warn"],
+        ["俄罗斯", "Yandex Market", "补充", "text-warn"]
+      ]
+    };
+
+    const drawerCopy = {
+      "覆盖市场": ["覆盖市场", "当前预览覆盖 16 个全球重点国家/地区。", "美国、东南亚、印度、日本、巴西、墨西哥、英国、德国、法国、韩国、加拿大、澳大利亚、土耳其、波兰、中东/GCC、俄罗斯。"],
+      "高利润市场": ["高利润潜力市场", "这些市场通常购买力或客单价较高，但仍要看广告、退货、合规和履约成本。", "美国、德国、日本、加拿大、澳大利亚、英国、中东/GCC。"],
+      "待复核节点": ["待复核节点", "赛事、峰会、平台活动和部分高风险市场不适合自动写死。", "体育赛事、行业峰会、平台大促、俄罗斯相关营销表达。"],
+      "高风险市场": ["高风险市场", "高风险不是没有机会，而是需要额外核验支付、合规、物流和资金回流。", "俄罗斯。"],
+      "第一梯队市场": ["第一梯队市场", "优先做内容和平台研究的国家/地区。", "美国、东南亚、印度、日本、巴西。"],
+      "第二梯队市场": ["第二梯队市场", "有规模和购买力，但进入方式差异较大。", "墨西哥、英国、德国、法国、韩国。"],
+      "第三梯队市场": ["第三梯队市场", "适合在已有资源基础上扩展。", "加拿大、澳大利亚、土耳其、波兰、中东/GCC。"],
+      "特殊市场": ["特殊市场", "有流量，但合规和支付风险较高。", "俄罗斯。"],
+      "美国": ["美国", "成熟市场，Amazon 权重高，广告和退货成本也高。", "适合 Prime Day、黑五网一、客服、退货高峰和广告投放内容。"],
+      "东南亚": ["东南亚", "Shopee 和 TikTok Shop 是内容机会核心，客单价偏低但增长快。", "适合双数大促、直播短视频、低价走量选题。"],
+      "日本": ["日本", "Amazon Japan 和 Rakuten 都重要，品质、本地化和评价管理是核心。", "适合本地化、评价管理、品质型选品内容。"],
+      "俄罗斯": ["俄罗斯", "Ozon、Wildberries、Yandex Market 有流量，但支付、合规和物流风险高。", "节点可以保留，表达建议人工复核。"],
+      "Amazon": ["Amazon", "成熟市场核心平台。", "美国、日本、英国、德国、加拿大、澳大利亚。"],
+      "Shopee": ["Shopee", "东南亚基础盘平台。", "双数大促、低价走量、内容电商。"],
+      "TikTok Shop": ["TikTok Shop", "增长快但规则变化也快。", "短视频、直播、达人、内容转化。"],
+      "Mercado Libre": ["Mercado Libre", "拉美核心平台。", "本地仓、清关、物流、回款。"],
+      "Coupang": ["Coupang", "韩国本地强平台。", "履约、本地化、客服和评价管理。"],
+      "内容节点": ["本月内容节点", "本月可用于内容规划的节点类型。", "节日、购物节点、体育赛事、行业峰会、季节消费、社媒热点。"],
+      "推荐选题": ["推荐选题", "由市场、平台、节点、趋势组合生成。", "国家/地区型、平台型、节日大促型、商品趋势型、受众痛点型。"],
+      "可排期选题": ["可排期选题", "已经具备日期或可落到周计划的内容。", "朋友圈、LinkedIn、公众号、海报、短视频脚本。"],
+      "俄罗斯 6 月节点": ["俄罗斯 6 月节点", "这是预览里的单一国家模板示例，不代表营销日历只支持俄罗斯。", "同一套结构也可以换成 US、EU、DE、SEA、LATAM、GCC、GLOBAL 等国家/地区缩写。"],
+      "俄罗斯 6 月社媒月历": ["俄罗斯 6 月社媒月历", "示范模板：用 RU 缩写标记俄罗斯节点，用事件颜色区分节日、大促、赛事和峰会。", "正式版本会同时支持全球、区域和单一国家模板。"],
+      "低客单走量": ["低客单走量", "适合靠供应链、轻小件和内容电商做规模。", "东南亚、印度、土耳其。"],
+      "高成本市场": ["高成本市场", "广告、VAT、退货、履约和合规会显著影响利润。", "美国、德国、英国、日本、澳大利亚。"],
+      "日历：儿童节": ["RU 儿童节", "俄罗斯市场示范节点，适合亲子、礼品、儿童用品和家庭消费相关内容。", "建议内容：俄罗斯儿童用品消费节点、亲子礼品选品、社媒海报、朋友圈短内容。", ["预览数据", "需复核"]],
+      "日历：世界环境日": ["GLOBAL 世界环境日", "全球型社媒热点，不属于某个单一国家，适合做品牌价值、可持续包装、环保选品和供应链责任相关内容。", "建议内容：环保包装趋势、可持续选品清单、绿色物流话题、LinkedIn 品牌观点帖。", ["预览数据", "可排期"]],
+      "日历：Prime Day 预热": ["AMZ Prime Day 预热", "平台型节点，国家/地区不固定，重点面向 Amazon 卖家和服务商。", "建议内容：Prime Day 前客服准备、广告预算检查、库存和退货预案、促销页面优化清单。", ["预览数据", "可排期"]],
+      "日历：欧洲行业峰会": ["EU 行业峰会", "区域型节点，覆盖欧洲市场相关峰会或展会机会，具体活动名称和日期需要后续接真实数据。", "建议内容：欧洲市场趋势观察、展会前客户沟通、B2B 销售话术、会后线索跟进模板。", ["预览数据", "需复核"]],
+      "日历：俄罗斯日": ["RU 俄罗斯日", "单一国家节日示范节点，适合展示本地化运营和节日借势，但表达需要注意合规和品牌语气。", "建议内容：俄罗斯节日消费观察、本地化商品表达、社媒海报、节日选题备忘。", ["预览数据", "需复核"]],
+      "日历：全球大促预热": ["GLOBAL 大促预热", "全球型促销准备节点，可连接多个平台活动，不限定单一国家。", "建议内容：月中大促预热、库存检查、广告素材准备、社媒发布节奏。", ["预览数据", "可排期"]],
+      "日历：体育节点": ["GLOBAL 体育节点", "体育赛事节点经常涉及日期、版权、地区热度和表达边界，适合保留但需要人工确认。", "建议内容：赛事期间消费场景、运动户外选品、社媒热点跟进，但正式发布前需复核赛事信息。", ["预览数据", "需复核"]],
+      "日历：平台内容周": ["PLAT 平台内容周", "平台型内容档期，用于安排平台规则、运营技巧和服务能力输出。", "建议内容：平台规则解读、店铺运营 checklist、卖家案例、直播或短视频脚本。", ["预览数据", "可排期"]],
+      "日历：东南亚夏季选品": ["SEA 夏季选品", "区域型消费趋势节点，重点关注东南亚低客单、内容电商和季节性商品。", "建议内容：夏季轻小件选品、Shopee/TikTok Shop 内容角度、短视频卖点脚本。", ["预览数据", "可排期"]],
+      "日历：跨境线上论坛": ["XBD 线上论坛", "跨境泛话题节点，适合承载行业观察、客户教育和销售线索培育。", "建议内容：线上论坛预热、嘉宾观点拆条、会后公众号复盘、销售跟进素材。", ["预览数据", "需复核"]],
+      "日历：德国月末促销": ["DE 月末促销", "德国单一国家节点示范，适合连接高客单、高合规和欧洲本地化主题。", "建议内容：德国市场促销提醒、VAT/EPR 合规清单、高客单商品内容角度。", ["预览数据", "可排期"]]
+    };
+    drawerCopy["导出报告"] = ["导出报告", "第一版先提供网页内预览和数据表，正式导出会在下一步接 CSV / Markdown / Notion 表格。", "当前可导出的数据包括市场库、选题库、日历节点和数据来源台账。", ["待接导出"]];
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function getSourcesById() {
+      const map = new Map();
+      (growthData?.sources || []).forEach(source => map.set(source.id, source));
+      return map;
+    }
+
+    function getSourceNames(sourceIds = []) {
+      const sourcesById = getSourcesById();
+      return sourceIds.map(id => sourcesById.get(id)?.name || id).filter(Boolean);
+    }
+
+    function formatShortDate(value) {
+      if (!value) return "--.--";
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return "--.--";
+      return `${String(date.getMonth() + 1).padStart(2, "0")}.${String(date.getDate()).padStart(2, "0")}`;
+    }
+
+    function formatCompactNumber(value, type = "number") {
+      const num = Number(value);
+      if (!Number.isFinite(num)) return "--";
+      if (type === "percent") return `${num.toFixed(1)}%`;
+      if (type === "gdp") return `$${(num / 1e12).toFixed(2)}T`;
+      if (num >= 1e8) return `${(num / 1e8).toFixed(2)}亿`;
+      if (num >= 1e4) return `${(num / 1e4).toFixed(1)}万`;
+      return num.toLocaleString("zh-CN");
+    }
+
+    function groupMarketSignals() {
+      const grouped = new Map();
+      (growthData?.marketSignals || []).forEach(signal => {
+        if (!grouped.has(signal.country)) {
+          grouped.set(signal.country, { country: signal.country, code: signal.code, year: signal.year });
+        }
+        const row = grouped.get(signal.country);
+        row.year = Math.max(Number(row.year || 0), Number(signal.year || 0));
+        if (signal.indicator === "人口") row.population = signal.value;
+        if (signal.indicator === "GDP current US$") row.gdp = signal.value;
+        if (signal.indicator === "互联网使用率") row.internet = signal.value;
+      });
+      return Array.from(grouped.values()).sort((a, b) => (b.gdp || 0) - (a.gdp || 0));
+    }
+
+    let activeMarketFilter = "all";
+    let activeBriefFilter = "all";
+
+    function getMarketRows(filter = activeMarketFilter, search = "") {
+      const q = search.trim().toLowerCase();
+      return (growthData?.marketLibrary || []).filter(item => {
+        const text = [
+          item.country, item.code, item.tier, item.regionType, item.first, item.second, item.third,
+          item.status, item.profit, item.risk, ...(item.audienceTags || []), ...(item.contentAngles || [])
+        ].join(" ").toLowerCase();
+        const matchesSearch = !q || text.includes(q);
+        const matchesFilter =
+          filter === "all" ||
+          item.tier === filter ||
+          item.profit === filter ||
+          (filter === "risk" && (item.status.includes("风险") || item.risk.includes("风险") || item.tier.includes("特殊")));
+        return matchesSearch && matchesFilter;
+      });
+    }
+
+    function renderMarketOverview() {
+      const rows = growthData?.marketLibrary || [];
+      const platforms = new Map();
+      rows.forEach(item => [item.first, item.second, item.third].filter(Boolean).forEach(platform => {
+        const entry = platforms.get(platform) || { platform, markets: [], count: 0 };
+        entry.markets.push(item.country);
+        entry.count += 1;
+        platforms.set(platform, entry);
+      }));
+      const platformBody = document.querySelector("#market-overview table tbody:not(#tier-table-body)");
+      if (platformBody) {
+        platformBody.innerHTML = Array.from(platforms.values()).slice(0, 8).map(item => `
+          <tr data-drawer="${escapeHtml(item.platform)}">
+            <td><strong>${escapeHtml(item.platform)}</strong></td>
+            <td class="text-pri">${item.count >= 2 ? "多市场覆盖" : "重点观察"}</td>
+            <td>${escapeHtml(item.markets.slice(0, 4).join(" / "))}</td>
+          </tr>
+        `).join("");
+        bindDrawerTriggers(platformBody);
+      }
+      const first = rows.filter(item => item.tier === "第一梯队").map(item => item.country).join("、");
+      const highProfit = rows.filter(item => item.profit === "高").map(item => item.country).join("、");
+      drawerCopy["第一梯队市场"] = ["第一梯队市场", "优先做内容和平台研究的国家/地区。", first || "暂无数据。", ["市场看板"]];
+      drawerCopy["高利润市场"] = ["高利润潜力市场", "购买力或客单价较高，但仍需看广告、退货、合规和履约成本。", highProfit || "暂无数据。", ["AOV", "利润"]];
+    }
+
+    function renderMacroSignals() {
+      const body = document.getElementById("macro-signal-table-body");
+      if (!body) return;
+      const rows = groupMarketSignals().slice(0, 12);
+      if (!rows.length) {
+        body.innerHTML = "<tr><td>暂无公开宏观数据</td><td>--</td><td>--</td><td>--</td><td>--</td></tr>";
+        return;
+      }
+      body.innerHTML = rows.map(row => {
+        const drawerName = `宏观信号：${row.country}`;
+        drawerCopy[drawerName] = [
+          `${row.country}公开宏观信号`,
+          "第一版通过 World Bank 公开接口自动更新，用来辅助判断市场基本盘，不代表平台份额。",
+          `人口：${formatCompactNumber(row.population)}；GDP：${formatCompactNumber(row.gdp, "gdp")}；互联网使用率：${formatCompactNumber(row.internet, "percent")}。`,
+          ["公开 API", "自动更新"]
+        ];
+        return `<tr data-drawer="${escapeHtml(drawerName)}">
+          <td><strong>${escapeHtml(row.country)}</strong><br><span class="muted tiny">${escapeHtml(row.code)}</span></td>
+          <td>${escapeHtml(formatCompactNumber(row.population))}</td>
+          <td>${escapeHtml(formatCompactNumber(row.gdp, "gdp"))}</td>
+          <td>${escapeHtml(formatCompactNumber(row.internet, "percent"))}</td>
+          <td>${escapeHtml(row.year || "--")}</td>
+        </tr>`;
+      }).join("");
+      bindDrawerTriggers(body);
+    }
+
+    function renderMarketLibrary() {
+      const body = document.getElementById("market-platform-table-body");
+      if (!body) return;
+      const rows = getMarketRows(activeMarketFilter, document.getElementById("market-search")?.value || "");
+      if (!rows.length) {
+        body.innerHTML = '<tr><td>无匹配</td><td>--</td><td>--</td><td>--</td><td>--</td><td class="text-warn">调整筛选</td></tr>';
+        return;
+      }
+      body.innerHTML = rows.map(item => {
+        drawerCopy[item.country] = [
+          item.country,
+          `${item.tier} / ${item.status}。核心平台：${item.first}、${item.second}、${item.third}。`,
+          `AOV：${item.aovUsd}；利润潜力：${item.profit}。适合受众：${(item.audienceTags || []).join(" / ")}。内容角度：${(item.contentAngles || []).join(" / ")}。主要风险：${item.risk}。`,
+          [item.status.includes("风险") ? "需复核" : "可进入日历", item.tier]
+        ];
+        return `<tr data-drawer="${escapeHtml(item.country)}">
+          <td>${escapeHtml(item.priority)}</td>
+          <td>${escapeHtml(item.country)}</td>
+          <td>${escapeHtml(item.tier)}</td>
+          <td>${escapeHtml(item.first)}</td>
+          <td>${escapeHtml(item.second)} / ${escapeHtml(item.third)}</td>
+          <td><span class="priority-tag${item.status.includes("风险") ? " text-warn" : ""}">${escapeHtml(item.status)}</span></td>
+        </tr>`;
+      }).join("");
+      bindDrawerTriggers(body);
+    }
+
+    function renderProfitTable() {
+      const body = document.getElementById("profit-table-body");
+      if (!body) return;
+      const rows = growthData?.marketLibrary || [];
+      body.innerHTML = rows.map(item => `
+        <tr data-drawer="${escapeHtml(item.country)}">
+          <td>${escapeHtml(item.country)}</td>
+          <td>${escapeHtml(item.aovUsd)}</td>
+          <td>${escapeHtml(item.rmb)}</td>
+          <td class="${item.profit.includes("高") ? "text-pri" : item.profit.includes("风险") ? "text-warn" : ""}">${escapeHtml(item.profit)}</td>
+          <td>${escapeHtml(item.risk)}</td>
+          <td>${escapeHtml((item.contentAngles || []).slice(0, 2).join(" / "))}</td>
+        </tr>
+      `).join("");
+      bindDrawerTriggers(body);
+
+      const riskTags = document.getElementById("cost-risk-tags");
+      if (riskTags) {
+        const tags = ["广告成本", "退货成本", "VAT / EPR / 包装法", "清关和税费", "支付和资金回流", "物流时效", "本地化要求"];
+        riskTags.innerHTML = tags.map(tag => `<button class="tag" data-drawer="风险：${escapeHtml(tag)}">${escapeHtml(tag)}</button>`).join("");
+        tags.forEach(tag => {
+          drawerCopy[`风险：${tag}`] = [tag, "成本与风险分类", "用于判断市场重要性之外的真实利润空间。具体影响需要按国家、平台、品类和履约方式拆分。", ["成本风险"]];
+        });
+        bindDrawerTriggers(riskTags);
+      }
+    }
+
+    function renderMarketBrief() {
+      const body = document.getElementById("market-brief-table-body");
+      if (!body) return;
+      const q = document.getElementById("market-brief-search")?.value || "";
+      const rows = (growthData?.marketLibrary || []).filter(item => {
+        const text = [item.country, item.tier, item.regionType, item.first, item.second, item.third, item.status, item.risk, ...(item.audienceTags || []), ...(item.contentAngles || [])].join(" ").toLowerCase();
+        const matchesSearch = !q.trim() || text.includes(q.trim().toLowerCase());
+        const matchesFilter = activeBriefFilter === "all" || text.includes(activeBriefFilter.toLowerCase());
+        return matchesSearch && matchesFilter;
+      });
+      body.innerHTML = rows.map(item => `
+        <tr data-drawer="${escapeHtml(item.country)}">
+          <td><strong>${escapeHtml(item.country)}</strong><br><span class="muted tiny">${escapeHtml(item.tier)} / ${escapeHtml(item.regionType)}</span></td>
+          <td>${escapeHtml(item.first)} / ${escapeHtml(item.second)}</td>
+          <td>${escapeHtml(item.status)}：${escapeHtml((item.contentAngles || []).slice(0, 2).join("、"))}</td>
+          <td>${escapeHtml((item.audienceTags || []).slice(0, 2).join(" / "))}</td>
+          <td><button class="tag" data-send-region="${escapeHtml(item.code)}">进日历</button></td>
+        </tr>
+      `).join("") || '<tr><td>无匹配</td><td>--</td><td>--</td><td>--</td><td class="text-warn">调整筛选</td></tr>';
+      bindDrawerTriggers(body);
+      bindSendRegionButtons(body);
+    }
+
+    function renderMethodology() {
+      const methodBody = document.getElementById("methodology-table-body");
+      const sourceBody = document.getElementById("source-direction-table-body");
+      const methodology = [
+        "占比主要用于平台优先级判断，不是财报级精确市场份额。",
+        "MAU、访问份额、活跃买家和 GMV 口径不可直接相加。",
+        "AOV 按跨境卖家常见零售实物商品区间估算，需按品类复核。",
+        "高风险市场默认不直接进入正式营销日历。"
+      ];
+      if (methodBody) {
+        methodBody.innerHTML = methodology.map(item => `<tr><td>${escapeHtml(item)}</td></tr>`).join("");
+      }
+      if (sourceBody) {
+        const sources = growthData?.sources || [];
+        sourceBody.innerHTML = sources.map(source => `<tr data-drawer="${escapeHtml(source.name)}"><td><strong>${escapeHtml(source.category)}</strong><br><span class="muted tiny">${escapeHtml(source.name)} / ${escapeHtml(source.method)}</span></td></tr>`).join("");
+        bindDrawerTriggers(sourceBody);
+      }
+    }
+
+    function renderContentMarket() {
+      const body = document.getElementById("content-market-table-body");
+      if (!body) return;
+      const rows = (growthData?.marketLibrary || []).slice(0, 8);
+      body.innerHTML = rows.map(item => `<tr data-drawer="${escapeHtml(item.country)}">
+        <td>${escapeHtml(item.country)}</td>
+        <td>${escapeHtml(item.code)}</td>
+        <td>${escapeHtml(item.tier)}</td>
+        <td>${escapeHtml(item.first)}</td>
+        <td>${escapeHtml((item.audienceTags || []).slice(0, 2).join(" / "))}</td>
+        <td>${escapeHtml((item.contentAngles || []).slice(0, 2).join(" / "))}</td>
+        <td class="${item.status.includes("风险") ? "text-warn" : "text-pri"}">${item.status.includes("风险") ? "复核后" : "允许"}</td>
+      </tr>`).join("");
+      bindDrawerTriggers(body);
+    }
+
+    function renderContentOverview() {
+      const body = document.getElementById("content-opportunity-table-body");
+      if (!body) return;
+      const rows = [
+        ["国家/地区型选题", "高价值国家/地区 + 核心平台", "可排期"],
+        ["平台型选题", "Amazon / Shopee / TikTok Shop / Mercado Libre", "可排期"],
+        ["节日 / 大促型选题", "公开节假日 + 平台种子节点", "部分复核"],
+        ["商品选品趋势型选题", "商品趋势库", "部分复核"],
+        ["服装趋势型选题", "服装趋势库", "需复核"],
+        ["受众痛点型选题", "受众画像库", "可排期"]
+      ];
+      body.innerHTML = rows.map(row => `<tr data-drawer="${escapeHtml(row[0])}"><td>${escapeHtml(row[0])}</td><td>${escapeHtml(row[1])}</td><td class="${row[2].includes("复核") ? "text-warn" : "text-pri"}">${escapeHtml(row[2])}</td></tr>`).join("");
+      rows.forEach(row => {
+        drawerCopy[row[0]] = [row[0], "内容选题方向", `依据：${row[1]}。状态：${row[2]}。`, [row[2]]];
+      });
+      bindDrawerTriggers(body);
+    }
+
+    function renderAudienceProfiles() {
+      const body = document.getElementById("audience-profile-table-body");
+      const contentBody = document.getElementById("content-audience-table-body");
+      const rows = growthData?.audienceProfiles || [];
+      const marketHtml = rows.map(item => {
+        const drawerName = `受众：${item.audience}`;
+        drawerCopy[drawerName] = [
+          item.audience,
+          `关注平台：${item.platforms}；关注地区：${item.regions}。`,
+          `常见痛点：${item.painPoints}。适合主题：${item.themes}。不适合把它当成统一话术，需要按平台和市场拆。`,
+          [item.calendarReady ? "可进日历" : "待复核"]
+        ];
+        return `<tr data-drawer="${escapeHtml(drawerName)}">
+          <td>${escapeHtml(item.audience)}</td>
+          <td>${escapeHtml(item.platforms)}</td>
+          <td>${escapeHtml(item.regions)}</td>
+          <td>${escapeHtml(item.formats)}</td>
+        </tr>`;
+      }).join("");
+      if (body) {
+        body.innerHTML = marketHtml;
+        bindDrawerTriggers(body);
+      }
+      if (contentBody) {
+        contentBody.innerHTML = rows.map(item => {
+          const drawerName = `受众：${item.audience}`;
+          return `<tr data-drawer="${escapeHtml(drawerName)}">
+            <td>${escapeHtml(item.audience)}</td>
+            <td>${escapeHtml(item.painPoints)}</td>
+            <td>${escapeHtml(item.themes)}</td>
+            <td>${escapeHtml(item.formats)}</td>
+            <td class="${item.calendarReady ? "text-pri" : "text-warn"}">${item.calendarReady ? "是" : "否"}</td>
+          </tr>`;
+        }).join("");
+        bindDrawerTriggers(contentBody);
+      }
+    }
+
+    function renderTrends() {
+      const productBody = document.getElementById("product-trend-table-body");
+      const fashionBody = document.getElementById("fashion-trend-table-body");
+      if (productBody) {
+        productBody.innerHTML = (growthData?.productTrends || []).map(item => {
+          const drawerName = `趋势：${item.type}`;
+          drawerCopy[drawerName] = [
+            item.type,
+            `${item.region} / ${item.platform}`,
+            `需求原因：${item.reason}。内容角度：${item.angle}。适合受众：${item.audience}。`,
+            [item.reviewRequired ? "需复核" : "可排期", `可信度：${item.confidence}`]
+          ];
+          return `<tr data-drawer="${escapeHtml(drawerName)}"><td>${escapeHtml(item.region)}</td><td>${escapeHtml(item.platform)}</td><td>${escapeHtml(item.type)}</td><td>${escapeHtml(item.confidence)}</td></tr>`;
+        }).join("");
+        bindDrawerTriggers(productBody);
+      }
+      if (fashionBody) {
+        fashionBody.innerHTML = (growthData?.fashionTrends || []).map(item => {
+          const drawerName = `服装趋势：${item.style}`;
+          drawerCopy[drawerName] = [
+            item.style,
+            `${item.region} / ${item.platform}`,
+            `季节因素：${item.season}。流行元素：${item.elements}。内容角度：${item.angle}。`,
+            [item.reviewRequired ? "需复核" : "可排期", `可信度：${item.confidence}`]
+          ];
+          return `<tr data-drawer="${escapeHtml(drawerName)}"><td>${escapeHtml(item.region)}</td><td>${escapeHtml(item.platform)}</td><td>${escapeHtml(item.style)}</td><td>${escapeHtml(item.confidence)}</td></tr>`;
+        }).join("");
+        bindDrawerTriggers(fashionBody);
+      }
+    }
+
+    function renderTimeline() {
+      const body = document.getElementById("timeline-table-body");
+      if (!body) return;
+      const events = (growthData?.calendar?.events?.length ? growthData.calendar.events : fallbackCalendarEvents).slice(0, 12);
+      body.innerHTML = events.map(event => {
+        const status = event.reviewRequired ? '<td class="text-warn">需复核</td>' : '<td class="text-pri">可用</td>';
+        return `<tr data-calendar-event-id="${escapeHtml(event.id)}">
+          <td>${escapeHtml((event.date || "").slice(5, 7) || "--")} 月</td>
+          <td>${escapeHtml(event.region || event.code)}</td>
+          <td>${escapeHtml(event.title)}</td>
+          <td>${escapeHtml(event.type || "节点")}</td>
+          <td>${escapeHtml((event.impactCategories || []).slice(0, 2).join(" / "))}</td>
+          <td>${escapeHtml((event.recommendedFormats || []).slice(0, 2).join(" / "))}</td>
+          ${status}
+        </tr>`;
+      }).join("");
+      body.querySelectorAll("[data-calendar-event-id]").forEach(row => {
+        const event = events.find(item => item.id === row.dataset.calendarEventId);
+        row.addEventListener("click", () => openCalendarEvent(event));
+      });
+    }
+
+    function bindSendRegionButtons(scope = document) {
+      scope.querySelectorAll("[data-send-region]").forEach(btn => {
+        if (btn.dataset.sendBound === "true") return;
+        btn.dataset.sendBound = "true";
+        btn.addEventListener("click", event => {
+          event.stopPropagation();
+          const code = btn.dataset.sendRegion;
+          document.querySelectorAll("[data-calendar-region]").forEach(chip => {
+            chip.classList.toggle("selected", chip.dataset.calendarRegion === code || chip.dataset.calendarRegion === "GLOBAL");
+          });
+          switchView("calendar");
+          buildCalendar(true);
+        });
+      });
+    }
+
+    function renderTopics() {
+      const body = document.getElementById("topic-table-body");
+      if (!body) return;
+      const topics = growthData?.topics?.length ? growthData.topics : [
+        { title: "Prime Day 客服准备清单", region: "AMZ", format: "Checklist", priority: "High", reviewRequired: true },
+        { title: "东南亚内容电商排期", region: "SEA", format: "Short video", priority: "Medium", reviewRequired: false }
+      ];
+      body.innerHTML = topics.map(topic => {
+        const drawerName = `选题：${topic.title}`;
+        drawerCopy[drawerName] = [
+          topic.title,
+          `面向 ${topic.region || "GLOBAL"} 的内容候选。`,
+          `内容形式：${topic.format || "Content"}；优先级：${topic.priority || "Medium"}。`,
+          [topic.reviewRequired ? "需复核" : "可排期"]
+        ];
+        return `<tr data-drawer="${escapeHtml(drawerName)}">
+          <td>${escapeHtml(topic.title)}</td>
+          <td>${escapeHtml(topic.region || "GLOBAL")}</td>
+          <td>${escapeHtml(topic.platform || "--")}</td>
+          <td>${escapeHtml(topic.audience || "--")}</td>
+          <td>${escapeHtml(topic.format || "Content")}</td>
+          <td><span class="priority-tag">${escapeHtml(topic.priority || "Medium")}</span></td>
+          <td class="${topic.sentToCalendar ? "text-pri" : "text-warn"}">${topic.sentToCalendar ? "已进日历" : "待发送"}</td>
+        </tr>`;
+      }).join("");
+      bindDrawerTriggers(body);
+    }
+
+    function bindChipToggles(scope = document) {
+      scope.querySelectorAll(".chip").forEach(chip => {
+        if (chip.dataset.chipBound === "true") return;
+        chip.dataset.chipBound = "true";
+        chip.addEventListener("click", () => {
+          chip.classList.toggle("selected");
+          renderCalendarPreview(getCalendarEvents(true), currentPreviewKind);
+        });
+      });
+    }
+
+    function renderOptionChips(containerId, items, dataKey, defaults = []) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      container.innerHTML = items.map(item => {
+        const value = item.id || item.code;
+        const selected = defaults.includes(value) ? " selected" : "";
+        return `<button class="chip${selected}" data-${dataKey}="${escapeHtml(value)}">${escapeHtml(item.label)}</button>`;
+      }).join("");
+      bindChipToggles(container);
+    }
+
+    function renderCalendarControls() {
+      const options = growthData?.configOptions || {};
+      renderOptionChips("calendar-audience-options", options.audiences || [], "calendar-audience", ["growth-team", "amazon-sellers", "brand-global"]);
+      renderOptionChips("calendar-region-options", options.regions || [], "calendar-region", ["GLOBAL", "EU", "AMZ"]);
+      renderOptionChips("calendar-month-options", options.months || [], "calendar-month", ["current"]);
+      renderOptionChips("calendar-channel-options", options.channels || [], "calendar-channel", ["wechat-moments", "linkedin", "wechat-article"]);
+      renderOptionChips("calendar-event-type-options", options.eventTypes || [], "calendar-type", ["festival", "shop", "platform", "social"]);
+      renderOptionChips("calendar-goal-options", options.goals || [], "calendar-goal", ["brand-awareness", "campaign-warmup", "platform-education"]);
+      renderOptionChips("calendar-output-options", options.outputFormats || [], "calendar-output", ["monthly-calendar", "weekly-plan", "poster-brief"]);
+    }
+
+    function getSelectedValues(selector) {
+      const values = Array.from(document.querySelectorAll(`${selector}.selected`)).map(item => item.dataset.calendarRegion || item.dataset.calendarType).filter(Boolean);
+      return new Set(values);
+    }
+
+    function getSelectedDatasetValues(selector, datasetKey) {
+      return new Set(Array.from(document.querySelectorAll(`${selector}.selected`)).map(item => item.dataset[datasetKey]).filter(Boolean));
+    }
+
+    function calendarRegionMatches(event, selectedRegions) {
+      if (!selectedRegions.size) return true;
+      const code = event.code || "";
+      if (selectedRegions.has(code)) return true;
+      if (selectedRegions.has("GLOBAL") && ["GLOBAL", "AMZ", "PLAT", "XBD"].includes(code)) return true;
+      if (selectedRegions.has("EU") && ["EU", "DE", "GB", "FR", "PL"].includes(code)) return true;
+      return false;
+    }
+
+    function calendarTypeMatches(event, selectedTypes) {
+      if (!selectedTypes.size) return true;
+      if (selectedTypes.has("all")) return true;
+      const cls = event.cls || "";
+      if (selectedTypes.has(cls)) return true;
+      if (selectedTypes.has("festival") && ["festival", "social"].includes(cls)) return true;
+      if (selectedTypes.has("shop") && ["shop", "platform"].includes(cls)) return true;
+      return false;
+    }
+
+    function arrayIntersects(values = [], selected) {
+      if (!selected.size) return true;
+      return values.some(value => selected.has(value));
+    }
+
+    function getCalendarEvents(useFilters = false) {
+      const events = growthData?.calendar?.events?.length ? growthData.calendar.events : fallbackCalendarEvents;
+      if (!useFilters) return events;
+      const selectedRegions = getSelectedValues("[data-calendar-region]");
+      const selectedTypes = getSelectedValues("[data-calendar-type]");
+      const selectedChannels = getSelectedDatasetValues("[data-calendar-channel]", "calendarChannel");
+      const selectedGoals = getSelectedDatasetValues("[data-calendar-goal]", "calendarGoal");
+      return events.filter(event => {
+        return calendarRegionMatches(event, selectedRegions) &&
+          calendarTypeMatches(event, selectedTypes) &&
+          arrayIntersects(event.channels || [], selectedChannels) &&
+          arrayIntersects(event.contentGoals || [], selectedGoals);
+      });
+    }
+
+    function renderCalendarResults(events, generated = false) {
+      const body = document.getElementById("calendar-result-table-body");
+      const summary = document.getElementById("calendar-generate-summary");
+      if (summary) {
+        summary.textContent = generated ? `已生成 ${events.length} 个节点，可点击日历事件查看来源。` : `已加载 ${events.length} 个公开节点。`;
+      }
+      if (!body) return;
+      const rows = events.slice(0, 6);
+      if (!rows.length) {
+        body.innerHTML = '<tr><td>没有匹配节点</td><td><span class="priority-tag">--</span></td><td class="text-warn">调整筛选</td></tr>';
+        return;
+      }
+      body.innerHTML = rows.map(event => `
+        <tr data-calendar-event-id="${escapeHtml(event.id)}">
+          <td>${escapeHtml(event.title)}</td>
+          <td><span class="priority-tag">${escapeHtml(event.code || "GLOBAL")}</span></td>
+          <td class="${event.reviewRequired ? "text-warn" : "text-pri"}">${event.reviewRequired ? "需复核" : "可排期"}</td>
+        </tr>
+      `).join("");
+      body.querySelectorAll("[data-calendar-event-id]").forEach(row => {
+        const event = rows.find(item => item.id === row.dataset.calendarEventId);
+        row.addEventListener("click", () => openCalendarEvent(event));
+      });
+    }
+
+    let currentPreviewKind = "events";
+
+    function renderCalendarPreview(events, kind = "events") {
+      currentPreviewKind = kind;
+      document.querySelectorAll("[data-preview-kind]").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.previewKind === kind);
+      });
+      const head = document.getElementById("calendar-preview-head");
+      const body = document.getElementById("calendar-preview-table-body");
+      const hint = document.getElementById("calendar-preview-hint");
+      if (!head || !body) return;
+      if (hint) hint.textContent = `当前筛选匹配 ${events.length} 个节点，可切换查看节点、选题和来源。`;
+
+      if (kind === "topics") {
+        const topics = (growthData?.topics || []).filter(topic => {
+          const selectedRegions = getSelectedValues("[data-calendar-region]");
+          return !selectedRegions.size || selectedRegions.has(topic.region) || selectedRegions.has("GLOBAL");
+        });
+        head.innerHTML = "<tr><th>选题</th><th>范围</th><th>形式</th><th>状态</th></tr>";
+        body.innerHTML = (topics.length ? topics : []).map(topic => `
+          <tr data-drawer="${escapeHtml(`选题：${topic.title}`)}">
+            <td>${escapeHtml(topic.title)}</td>
+            <td>${escapeHtml(topic.region || "GLOBAL")}</td>
+            <td>${escapeHtml(topic.format || "Content")}</td>
+            <td class="${topic.reviewRequired ? "text-warn" : "text-pri"}">${topic.reviewRequired ? "需复核" : "可排期"}</td>
+          </tr>
+        `).join("") || '<tr><td>暂无匹配选题</td><td>--</td><td>--</td><td class="text-warn">调整筛选</td></tr>';
+        bindDrawerTriggers(body);
+        return;
+      }
+
+      if (kind === "sources") {
+        const usedSourceIds = new Set(events.flatMap(event => event.sourceIds || []));
+        const sources = (growthData?.sources || []).filter(source => usedSourceIds.has(source.id));
+        head.innerHTML = "<tr><th>来源</th><th>类型</th><th>更新</th><th>状态</th></tr>";
+        body.innerHTML = sources.map(source => `
+          <tr data-drawer="${escapeHtml(source.name)}">
+            <td>${escapeHtml(source.name)}</td>
+            <td>${escapeHtml(source.category)}</td>
+            <td>${escapeHtml(source.updateFrequency)}</td>
+            <td class="${source.status === "ready" ? "text-pri" : "text-warn"}">${escapeHtml(source.status)}</td>
+          </tr>
+        `).join("") || '<tr><td>暂无匹配来源</td><td>--</td><td>--</td><td>--</td></tr>';
+        bindDrawerTriggers(body);
+        return;
+      }
+
+      head.innerHTML = "<tr><th>日期</th><th>范围</th><th>名称</th><th>状态</th></tr>";
+      body.innerHTML = events.slice(0, 10).map(event => `
+        <tr data-calendar-event-id="${escapeHtml(event.id)}">
+          <td>${escapeHtml(event.date)}</td>
+          <td>${escapeHtml(event.code)}</td>
+          <td>${escapeHtml(event.title)}</td>
+          <td class="${event.reviewRequired ? "text-warn" : "text-pri"}">${event.reviewRequired ? "需复核" : "可排期"}</td>
+        </tr>
+      `).join("") || '<tr><td>暂无匹配节点</td><td>--</td><td>--</td><td class="text-warn">调整筛选</td></tr>';
+      body.querySelectorAll("[data-calendar-event-id]").forEach(row => {
+        const event = events.find(item => item.id === row.dataset.calendarEventId);
+        row.addEventListener("click", () => openCalendarEvent(event));
+      });
+    }
+
+    function renderSources() {
+      const body = document.getElementById("source-table-body");
+      if (!body) return;
+      const sources = growthData?.sources || [];
+      if (!sources.length) {
+        body.innerHTML = "<tr><td>暂无来源</td><td>--</td><td>--</td><td>预览</td></tr>";
+        return;
+      }
+      body.innerHTML = sources.map(source => {
+        const statusClass = source.status === "review-needed" || source.status === "warning" ? "text-warn" : "text-pri";
+        const updateText = source.autoUpdate ? source.updateFrequency : "人工复核";
+        return `<tr data-drawer="${escapeHtml(source.name)}">
+          <td><strong>${escapeHtml(source.name)}</strong><br><span class="muted tiny">${escapeHtml(source.note || "")}</span></td>
+          <td>${escapeHtml(source.category)}</td>
+          <td>${escapeHtml(updateText)}</td>
+          <td class="${statusClass}">${escapeHtml(source.status)}</td>
+        </tr>`;
+      }).join("");
+
+      sources.forEach(source => {
+        drawerCopy[source.name] = [
+          source.name,
+          `${source.category} / ${source.method}`,
+          source.url ? `${source.note || ""} 来源：${source.url}` : source.note || "暂无 URL。",
+          [source.autoUpdate ? "自动更新" : "人工复核", source.requiresKey ? "需 Key" : "免 Key"]
+        ];
+      });
+      bindDrawerTriggers(body);
+    }
+
+    function renderUpdateStatus() {
+      const status = growthData?.updateStatus || {};
+      const counts = status.counts || {};
+      const mode = growthData?.dataMode || "preview";
+      const lastUpdated = document.getElementById("kpi-last-updated");
+      const reviewCount = document.getElementById("kpi-review-count");
+      const failureCount = document.getElementById("kpi-failure-count");
+      const dataMode = document.getElementById("kpi-data-mode");
+      const nextRun = document.getElementById("update-next-run");
+      if (lastUpdated) lastUpdated.textContent = formatShortDate(status.lastUpdatedAt || growthData?.generatedAt);
+      if (reviewCount) reviewCount.textContent = counts.reviewRequired ?? "--";
+      if (failureCount) failureCount.textContent = counts.failures ?? "--";
+      if (dataMode) dataMode.textContent = mode.includes("preview") ? "PREV" : "JSON";
+      if (nextRun) nextRun.textContent = status.nextUpdateHint || "GitHub Actions 定时更新公开数据。";
+
+      const body = document.getElementById("update-status-table-body");
+      if (!body) return;
+      const failures = status.failures || [];
+      if (!failures.length) {
+        body.innerHTML = `
+          <tr><td>数据文件</td><td>growth-data.json</td><td class="text-pri">已加载</td></tr>
+          <tr><td>日历事件</td><td>${escapeHtml(counts.events ?? "--")} 条</td><td class="text-pri">可用</td></tr>
+          <tr><td>待复核</td><td>${escapeHtml(counts.reviewRequired ?? "--")} 条</td><td class="text-warn">人工确认</td></tr>
+        `;
+        return;
+      }
+      body.innerHTML = failures.map(item => `
+        <tr>
+          <td>${escapeHtml(item.sourceId)}</td>
+          <td>${escapeHtml(item.target)}</td>
+          <td class="text-warn">${escapeHtml(item.message)}</td>
+        </tr>
+      `).join("");
+    }
+
+    function renderDataViews() {
+      const calendar = growthData?.calendar;
+      const title = document.getElementById("calendar-title");
+      const hint = document.getElementById("calendar-hint");
+      if (title && calendar?.label) title.textContent = calendar.label;
+      if (hint) {
+        const events = calendar?.events?.length || fallbackCalendarEvents.length;
+        hint.textContent = `国家/地区用缩写徽标，事件类型用颜色。本月已加载 ${events} 个节点。`;
+      }
+      renderSources();
+      renderUpdateStatus();
+      renderCalendarControls();
+      renderMarketOverview();
+      renderTierTable("first");
+      renderMacroSignals();
+      renderMarketLibrary();
+      renderProfitTable();
+      renderMarketBrief();
+      renderMethodology();
+      renderContentOverview();
+      renderContentMarket();
+      renderAudienceProfiles();
+      renderTrends();
+      renderTimeline();
+      renderTopics();
+      renderCalendarResults(getCalendarEvents(false), false);
+      renderCalendarPreview(getCalendarEvents(false), currentPreviewKind);
+      bindPassiveTags();
+    }
+
+    async function loadGrowthData() {
+      if (window.GROWTH_DECISION_DATA) {
+        growthData = window.GROWTH_DECISION_DATA;
+        renderDataViews();
+        buildCalendar();
+        return;
+      }
+      try {
+        const response = await fetch(`data/growth-data.json?ts=${Date.now()}`, { cache: "no-store" });
+        if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+        growthData = await response.json();
+      } catch (error) {
+        growthData = {
+          dataMode: "preview-fallback",
+          generatedAt: new Date().toISOString(),
+          calendar: { year: 2026, month: 6, label: "June 2026 Calendar", events: fallbackCalendarEvents },
+          sources: [{ id: "preview", name: "内置预览数据", category: "预览", method: "static", autoUpdate: false, requiresKey: false, updateFrequency: "none", status: "preview", note: "未能读取 data/growth-data.json 时使用。" }],
+          updateStatus: { lastUpdatedAt: new Date().toISOString(), nextUpdateHint: "当前使用预览 fallback。部署到 GitHub Pages 后会读取 JSON。", counts: { sources: 1, events: fallbackCalendarEvents.length, reviewRequired: fallbackCalendarEvents.filter(item => item.reviewRequired).length, failures: 0 }, failures: [] }
+        };
+      }
+      renderDataViews();
+      buildCalendar();
+    }
+
+    function setOpenTool(toolName) {
+      document.querySelectorAll(".tool-block").forEach(block => {
+        block.classList.toggle("open", block.dataset.tool === toolName);
+      });
+    }
+
+    function switchView(viewId) {
+      document.querySelectorAll(".view").forEach(view => view.classList.remove("active"));
+      const target = document.getElementById(viewId);
+      if (!target) return;
+      target.classList.add("active");
+
+      document.querySelectorAll("[data-view]").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.view === viewId);
+      });
+
+      const tool = toolMap[viewId];
+      if (tool) setOpenTool(tool);
+
+      if (!tool) {
+        document.querySelectorAll(".tool-block").forEach(block => block.classList.remove("open"));
+      }
+
+      document.getElementById("page-title").innerHTML = pageMeta[viewId] || pageMeta.home;
+    }
+
+    function bindDrawerTriggers(scope = document) {
+      scope.querySelectorAll("[data-drawer]").forEach(el => {
+        if (el.dataset.drawerBound === "true") return;
+        el.dataset.drawerBound = "true";
+        el.addEventListener("click", () => openDrawer(el.dataset.drawer));
+      });
+    }
+
+    function bindPassiveTags(scope = document) {
+      scope.querySelectorAll(".tag").forEach(tag => {
+        if (
+          tag.dataset.passiveBound === "true" ||
+          tag.dataset.drawer ||
+          tag.dataset.jump ||
+          tag.dataset.tier ||
+          tag.dataset.previewKind ||
+          tag.dataset.marketFilter ||
+          tag.dataset.briefFilter ||
+          tag.dataset.sendRegion
+        ) return;
+        tag.dataset.passiveBound = "true";
+        tag.addEventListener("click", () => tag.classList.toggle("active"));
+      });
+    }
+
+    function renderTierTable(tier) {
+      const body = document.getElementById("tier-table-body");
+      if (!body) return;
+      const tierName = { first: "第一梯队", second: "第二梯队", third: "第三梯队", special: "特殊市场" }[tier];
+      if (growthData?.marketLibrary && tierName) {
+        const rows = growthData.marketLibrary.filter(item => item.tier === tierName);
+        body.innerHTML = rows.map(item => {
+          const cls = item.status.includes("风险") ? ' class="text-warn"' : item.tier === "第一梯队" ? ' class="text-pri"' : "";
+          return `<tr data-drawer="${escapeHtml(item.country)}"><td><strong>${escapeHtml(item.country)}</strong></td><td>${escapeHtml(item.first)}</td><td${cls}>${escapeHtml(item.status)}</td></tr>`;
+        }).join("") || '<tr><td>暂无</td><td>--</td><td>--</td></tr>';
+        bindDrawerTriggers(body);
+        return;
+      }
+      if (!tierRows[tier]) return;
+      body.innerHTML = tierRows[tier].map(row => {
+        const cls = row[3] ? ` class="${row[3]}"` : "";
+        return `<tr data-drawer="${row[0]}"><td><strong>${row[0]}</strong></td><td>${row[1]}</td><td${cls}>${row[2]}</td></tr>`;
+      }).join("");
+      bindDrawerTriggers(body);
+    }
+
+    document.querySelectorAll("[data-view]").forEach(btn => {
+      btn.addEventListener("click", () => switchView(btn.dataset.view));
+    });
+
+    document.querySelector("[data-home-link]").addEventListener("click", () => switchView("home"));
+
+    document.querySelectorAll("[data-toggle-tool]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const tool = btn.dataset.toggleTool;
+        const block = document.querySelector(`.tool-block[data-tool="${tool}"]`);
+        const willOpen = !block.classList.contains("open");
+        document.querySelectorAll(".tool-block").forEach(item => item.classList.remove("open"));
+        if (willOpen) block.classList.add("open");
+      });
+    });
+
+    document.querySelectorAll("[data-jump]").forEach(btn => {
+      btn.addEventListener("click", () => switchView(btn.dataset.jump));
+    });
+
+    document.querySelectorAll("[data-preview-kind]").forEach(btn => {
+      btn.addEventListener("click", () => renderCalendarPreview(getCalendarEvents(true), btn.dataset.previewKind));
+    });
+
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+      document.body.classList.toggle("dark-theme");
+    });
+
+    const drawer = document.getElementById("drawer");
+    const overlay = document.getElementById("drawer-overlay");
+
+    function openDrawer(name) {
+      const copy = drawerCopy[name] || [name, "这是预览交互，后续可接真实数据。", "这里显示完整列表和解释。"];
+      document.getElementById("drawer-title").textContent = copy[0];
+      document.getElementById("drawer-desc").textContent = copy[1];
+      document.getElementById("drawer-list").textContent = copy[2];
+      const status = document.getElementById("drawer-status");
+      const tags = copy[3] || ["预览数据"];
+      status.innerHTML = tags.map(tag => `<span class="tag${tag.includes("复核") ? " tag-warn" : ""}">${tag}</span>`).join("");
+      drawer.classList.add("open");
+      overlay.classList.add("active");
+    }
+
+    function openCalendarEvent(event) {
+      if (event.drawer) {
+        openDrawer(event.drawer);
+        return;
+      }
+      const sourceNames = getSourceNames(event.sourceIds);
+      document.getElementById("drawer-title").textContent = `${event.code || ""} ${event.title || "Calendar Event"}`.trim();
+      document.getElementById("drawer-desc").textContent = event.description || `${event.region || ""} ${event.type || "日历节点"}`.trim();
+      document.getElementById("drawer-list").textContent = [
+        event.suggestion || "",
+        sourceNames.length ? `数据来源：${sourceNames.join(" / ")}` : ""
+      ].filter(Boolean).join(" ");
+      const status = document.getElementById("drawer-status");
+      const tags = [event.type || "日历节点", event.reviewRequired ? "需复核" : "可排期"];
+      status.innerHTML = tags.map(tag => `<span class="tag${tag.includes("复核") ? " tag-warn" : ""}">${escapeHtml(tag)}</span>`).join("");
+      drawer.classList.add("open");
+      overlay.classList.add("active");
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove("open");
+      overlay.classList.remove("active");
+    }
+
+    bindDrawerTriggers();
+    bindPassiveTags();
+
+    document.querySelectorAll("[data-tier]").forEach(btn => {
+      btn.addEventListener("click", () => renderTierTable(btn.dataset.tier));
+    });
+
+    document.querySelectorAll("[data-market-filter]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        activeMarketFilter = btn.dataset.marketFilter;
+        document.querySelectorAll("[data-market-filter]").forEach(item => item.classList.toggle("active", item === btn));
+        renderMarketLibrary();
+      });
+    });
+
+    document.getElementById("market-search")?.addEventListener("input", renderMarketLibrary);
+
+    document.querySelectorAll("[data-brief-filter]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        activeBriefFilter = btn.dataset.briefFilter;
+        document.querySelectorAll("[data-brief-filter]").forEach(item => item.classList.toggle("active", item === btn));
+        renderMarketBrief();
+      });
+    });
+
+    document.getElementById("market-brief-search")?.addEventListener("input", renderMarketBrief);
+
+    document.getElementById("drawer-close").addEventListener("click", closeDrawer);
+    overlay.addEventListener("click", closeDrawer);
+
+    document.querySelectorAll(".chip").forEach(chip => {
+      chip.addEventListener("click", () => chip.classList.toggle("selected"));
+    });
+
+    function buildCalendar(useFilters = false) {
+      const grid = document.getElementById("calendar-grid");
+      if (!grid) return;
+      const weekdays = ["一", "二", "三", "四", "五", "六", "日"];
+      const calendar = growthData?.calendar || {};
+      const year = Number(calendar.year || 2026);
+      const month = Number(calendar.month || 6);
+      const monthLabel = `${month}月`;
+      const totalDays = new Date(year, month, 0).getDate();
+      const eventList = getCalendarEvents(useFilters);
+      renderCalendarResults(eventList, useFilters);
+      renderCalendarPreview(eventList, currentPreviewKind);
+      const events = eventList.reduce((acc, event) => {
+        const day = Number(event.day || String(event.date || "").slice(8, 10));
+        if (!day) return acc;
+        if (!acc[day]) acc[day] = [];
+        acc[day].push(event);
+        return acc;
+      }, {});
+
+      grid.innerHTML = "";
+      weekdays.forEach(day => {
+        const el = document.createElement("div");
+        el.className = "weekday";
+        el.textContent = day;
+        grid.appendChild(el);
+      });
+
+      for (let i = 1; i <= totalDays; i++) {
+        const day = document.createElement("div");
+        day.className = "day";
+        day.innerHTML = `<div class="day-head"><span>${i}</span><span>${monthLabel}</span></div>`;
+        (events[i] || []).forEach(event => {
+          const pill = document.createElement("button");
+          pill.className = `event ${event.cls}`;
+          pill.type = "button";
+          pill.title = `${event.code} ${event.title}`;
+          pill.innerHTML = `<span class="region-code">${escapeHtml(event.code)}</span><span class="event-title">${escapeHtml(event.title)}</span>`;
+          pill.addEventListener("click", () => openCalendarEvent(event));
+          day.appendChild(pill);
+        });
+        grid.appendChild(day);
+      }
+    }
+
+    renderTierTable("first");
+    loadGrowthData();
+    document.getElementById("generate-calendar").addEventListener("click", () => buildCalendar(true));
+  </script>
+</body>
+</html>

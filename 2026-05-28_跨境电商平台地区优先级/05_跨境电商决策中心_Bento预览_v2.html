@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>跨境电商决策中心 Bento 预览 v2</title>
+  <style>
+    :root {
+      --hue-pri: 185;
+      --hue-warn: 5;
+
+      --primary: hsl(var(--hue-pri), 35%, 80%);
+      --primary-text: hsl(var(--hue-pri), 60%, 25%);
+      --primary-alpha: hsla(var(--hue-pri), 35%, 80%, 0.3);
+
+      --warn: hsl(var(--hue-warn), 50%, 80%);
+      --warn-text: hsl(var(--hue-warn), 60%, 35%);
+      --warn-alpha: hsla(var(--hue-warn), 50%, 80%, 0.22);
+
+      --green: hsl(145, 38%, 82%);
+      --green-text: hsl(145, 44%, 30%);
+      --blue: hsl(216, 42%, 84%);
+      --blue-text: hsl(216, 52%, 34%);
+      --violet: hsl(260, 34%, 84%);
+      --violet-text: hsl(260, 42%, 38%);
+      --orange: hsl(34, 54%, 82%);
+      --orange-text: hsl(34, 60%, 34%);
+
+      --bg-color: hsl(var(--hue-pri), 10%, 96%);
+      --panel-bg: hsla(var(--hue-pri), 10%, 100%, 0.75);
+      --panel-solid: hsl(0, 0%, 100%);
+      --text-main: hsl(var(--hue-pri), 20%, 20%);
+      --text-sub: hsl(var(--hue-pri), 10%, 50%);
+      --border: hsla(var(--hue-pri), 20%, 80%, 0.4);
+      --glass-inset: inset 0 1px 1px hsla(0, 0%, 100%, 0.8);
+      --shadow: 0 8px 24px hsla(var(--hue-pri), 30%, 15%, 0.04);
+      --hover-bg: hsla(0, 0%, 100%, 0.8);
+
+      --radius-panel: 24px;
+      --radius-card: 20px;
+      --radius-btn: 16px;
+      --glass-blur: blur(24px);
+      --font-family: "Nunito", "Inter", "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+      --transition: all 0.28s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    body.dark-theme {
+      --primary: hsl(var(--hue-pri), 26%, 28%);
+      --primary-text: hsl(var(--hue-pri), 34%, 72%);
+      --primary-alpha: hsla(var(--hue-pri), 24%, 30%, 0.32);
+
+      --warn: hsl(var(--hue-warn), 36%, 34%);
+      --warn-text: hsl(var(--hue-warn), 58%, 72%);
+      --warn-alpha: hsla(var(--hue-warn), 38%, 36%, 0.18);
+
+      --green: hsl(145, 24%, 30%);
+      --green-text: hsl(145, 38%, 72%);
+      --blue: hsl(216, 24%, 30%);
+      --blue-text: hsl(216, 42%, 74%);
+      --violet: hsl(260, 22%, 30%);
+      --violet-text: hsl(260, 40%, 76%);
+      --orange: hsl(34, 28%, 32%);
+      --orange-text: hsl(34, 50%, 74%);
+
+      --bg-color: hsl(var(--hue-pri), 12%, 12%);
+      --panel-bg: hsla(var(--hue-pri), 10%, 18%, 0.65);
+      --panel-solid: hsl(var(--hue-pri), 10%, 18%);
+      --text-main: hsl(var(--hue-pri), 10%, 90%);
+      --text-sub: hsl(var(--hue-pri), 10%, 60%);
+      --border: hsla(var(--hue-pri), 20%, 40%, 0.15);
+      --glass-inset: inset 0 1px 1px hsla(0, 0%, 100%, 0.05);
+      --shadow: 0 10px 30px hsla(0, 0%, 0%, 0.3);
+      --hover-bg: hsla(var(--hue-pri), 10%, 30%, 0.2);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-family);
+      background:
+        linear-gradient(135deg, hsla(var(--hue-pri), 18%, 95%, 0.92), hsla(var(--hue-pri), 10%, 96%, 0.86) 52%, hsla(var(--hue-warn), 28%, 96%, 0.5)),
+        var(--bg-color);
+      color: var(--text-main);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      transition: background-color 0.35s ease, color 0.35s ease;
+    }
+
+    body.dark-theme {
+      background:
+        linear-gradient(135deg, hsl(var(--hue-pri), 13%, 11%), hsl(var(--hue-pri), 11%, 13%) 58%, hsl(var(--hue-pri), 10%, 12%)),
+        var(--bg-color);
+    }
+
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+
+    .glass-panel {
+      background: var(--panel-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow), var(--glass-inset);
+      transition: var(--transition);
+    }
+
+    .sidebar {
+      width: 284px;
+      min-width: 284px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      border-radius: 0;
+      border-left: none;
+      border-top: none;
+      border-bottom: none;
+      z-index: 12;
+    }
+
+    .logo-area {
+      padding: 28px 24px 22px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo-title {
+      font-size: 27px;
+      line-height: 0.98;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    .logo-subtitle {
+      margin-top: 12px;
+      color: var(--text-sub);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .nav-wrap {
+      padding: 16px 14px 24px;
+      overflow-y: auto;
+    }
+
+    .nav-home {
+      width: 100%;
+      padding: 13px 14px;
+      border-radius: var(--radius-btn);
+      border: 0;
+      background: transparent;
+      color: var(--text-main);
+      font-size: 15px;
+      font-weight: 900;
+      text-align: left;
+      transition: var(--transition);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-home:hover { background: var(--hover-bg); transform: translateX(4px); }
+    .nav-home.active {
+      background: var(--text-main);
+      color: var(--bg-color);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    body.dark-theme .nav-home.active { background: var(--primary); color: #fff; }
+
+    .tool-group { margin-top: 20px; }
+
+    .tool-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 10px 9px;
+      color: var(--text-sub);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .tool-title::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--primary-text);
+      opacity: 0.65;
+    }
+
+    .tool-shell {
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 7px;
+      background: hsla(0, 0%, 100%, 0.2);
+    }
+    body.dark-theme .tool-shell { background: hsla(var(--hue-pri), 10%, 22%, 0.18); }
+
+    .tool-name {
+      padding: 10px 12px 9px;
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1.35;
+      color: var(--text-main);
+    }
+
+    .sub-nav {
+      display: grid;
+      gap: 4px;
+      padding: 2px;
+    }
+
+    .sub-nav button {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: var(--text-sub);
+      border-radius: 14px;
+      padding: 9px 11px 9px 24px;
+      text-align: left;
+      font-size: 13px;
+      font-weight: 850;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .sub-nav button::before {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      width: 5px;
+      height: 5px;
+      border-radius: 999px;
+      transform: translateY(-50%);
+      background: currentColor;
+      opacity: 0.45;
+    }
+
+    .sub-nav button:hover {
+      background: var(--hover-bg);
+      color: var(--text-main);
+      transform: translateX(3px);
+    }
+
+    .sub-nav button.active {
+      background: var(--text-main);
+      color: var(--bg-color);
+      font-weight: 900;
+    }
+    body.dark-theme .sub-nav button.active { background: var(--primary); color: #fff; }
+
+    .main {
+      min-width: 0;
+      flex: 1;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .top-bar {
+      height: 84px;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 34px;
+      z-index: 10;
+    }
+
+    .eyebrow {
+      color: var(--text-sub);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .page-title {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+    }
+
+    .highlight { color: var(--warn-text); }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .status-tag {
+      font-size: 12px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: var(--primary-alpha);
+      color: var(--primary-text);
+      font-weight: 900;
+      border: 1px solid var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary-text);
+    }
+
+    .btn {
+      border: 1px solid var(--border);
+      background: var(--panel-bg);
+      color: var(--text-main);
+      padding: 10px 17px;
+      border-radius: var(--radius-btn);
+      font-size: 13px;
+      font-weight: 900;
+      box-shadow: var(--glass-inset);
+      transition: var(--transition);
+    }
+
+    .btn:hover {
+      border-color: var(--primary-text);
+      color: var(--primary-text);
+      transform: translateY(-2px);
+      background: var(--hover-bg);
+    }
+
+    .btn.primary {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: var(--primary-text);
+    }
+    body.dark-theme .btn.primary { color: #fff; }
+
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      padding: 0;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      font-size: 18px;
+    }
+
+    .workspace {
+      flex: 1;
+      overflow-y: auto;
+      padding: 32px 34px 38px;
+    }
+
+    .view {
+      display: none;
+      animation: fadeIn 0.38s ease both;
+    }
+    .view.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .bento-card {
+      border-radius: var(--radius-panel);
+      padding: 26px;
+      min-height: 168px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .bento-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px var(--primary-alpha), var(--glass-inset);
+      background: var(--hover-bg);
+    }
+
+    .span-1 { grid-column: span 1; }
+    .span-2 { grid-column: span 2; }
+    .span-3 { grid-column: span 3; }
+    .span-4 { grid-column: span 4; }
+    .tall { min-height: 364px; }
+    .medium { min-height: 248px; }
+
+    .hero-card {
+      justify-content: space-between;
+      min-height: 360px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      width: fit-content;
+      border: 1px solid var(--primary);
+      color: var(--primary-text);
+      background: var(--primary-alpha);
+      border-radius: 999px;
+      padding: 7px 13px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .hero-title {
+      margin-top: 22px;
+      font-size: 44px;
+      line-height: 1.05;
+      letter-spacing: -0.055em;
+      font-weight: 900;
+    }
+
+    .hero-sub {
+      margin-top: 16px;
+      max-width: 560px;
+      color: var(--text-sub);
+      font-size: 15px;
+      line-height: 1.7;
+      font-weight: 700;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    .card-subtle {
+      color: var(--text-sub);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .kpi-card {
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 13px;
+      min-height: 172px;
+    }
+
+    .kpi-title {
+      background: var(--bg-color);
+      padding: 5px 14px;
+      border-radius: 13px;
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--text-sub);
+      border: 1px solid var(--border);
+    }
+
+    .kpi-value {
+      font-size: 56px;
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+    }
+
+    .kpi-value.pri { color: var(--primary-text); }
+    .kpi-value.warn { color: var(--warn-text); }
+
+    .hover-note {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 16px;
+      transform: translateY(12px);
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+      color: var(--text-sub);
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    .bento-card:hover .hover-note {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .tag, .chip {
+      border: 1px solid var(--primary);
+      color: var(--primary-text);
+      background: transparent;
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 13px;
+      font-weight: 900;
+      transition: var(--transition);
+    }
+
+    .tag:hover, .chip:hover {
+      transform: translateY(-2px);
+      background: var(--primary-alpha);
+    }
+
+    .tag.active, .chip.selected {
+      color: var(--bg-color);
+      background: var(--text-main);
+      border-color: var(--text-main);
+    }
+
+    body.dark-theme .tag.active,
+    body.dark-theme .chip.selected {
+      color: #fff;
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .tag.warn {
+      border-color: var(--warn);
+      color: var(--warn-text);
+      background: var(--warn-alpha);
+    }
+
+    .tool-card {
+      justify-content: space-between;
+      min-height: 250px;
+    }
+
+    .tool-card .tool-label {
+      color: var(--text-sub);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .tool-card h3 {
+      margin-top: 16px;
+      font-size: 28px;
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      font-weight: 900;
+    }
+
+    .tool-card p {
+      margin-top: 12px;
+      color: var(--text-sub);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.6;
+      max-width: 420px;
+    }
+
+    .arrow-mark {
+      position: absolute;
+      right: 24px;
+      top: 22px;
+      color: var(--border);
+      font-size: 31px;
+      font-weight: 900;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th {
+      text-align: left;
+      padding: 11px 12px;
+      color: var(--text-sub);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 14px 12px;
+      border-bottom: 1px solid var(--border);
+      font-weight: 750;
+      line-height: 1.45;
+    }
+
+    tr:last-child td { border-bottom: none; }
+    tbody tr { transition: var(--transition); }
+    tbody tr:hover { background: var(--hover-bg); }
+
+    .pill {
+      display: inline-flex;
+      border-radius: 11px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 900;
+      background: var(--primary-alpha);
+      color: var(--primary-text);
+      border: 1px solid var(--primary);
+    }
+
+    .pill.warn {
+      background: var(--warn-alpha);
+      color: var(--warn-text);
+      border-color: var(--warn);
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 14px;
+      align-items: center;
+      margin-top: 18px;
+    }
+
+    .flow-box {
+      min-height: 116px;
+      border: 1px solid var(--border);
+      background: hsla(0, 0%, 100%, 0.24);
+      border-radius: 18px;
+      padding: 17px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    body.dark-theme .flow-box {
+      background: hsla(var(--hue-pri), 10%, 22%, 0.2);
+    }
+
+    .flow-box strong {
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .flow-box span {
+      margin-top: 7px;
+      color: var(--text-sub);
+      font-size: 12px;
+      line-height: 1.5;
+      font-weight: 800;
+    }
+
+    .flow-arrow {
+      color: var(--text-sub);
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .bars {
+      display: grid;
+      gap: 15px;
+      margin-top: 4px;
+    }
+
+    .bar {
+      display: grid;
+      grid-template-columns: 84px 1fr 48px;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .bar-name {
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .bar-track {
+      height: 10px;
+      border-radius: 999px;
+      background: var(--bg-color);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-text));
+    }
+
+    .bar-value {
+      color: var(--text-sub);
+      text-align: right;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .builder {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .builder-field {
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: hsla(0, 0%, 100%, 0.22);
+      padding: 15px;
+      min-height: 106px;
+    }
+
+    body.dark-theme .builder-field {
+      background: hsla(var(--hue-pri), 10%, 22%, 0.2);
+    }
+
+    .field-label {
+      color: var(--text-sub);
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .builder-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+      color: var(--text-sub);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .weekday {
+      color: var(--text-sub);
+      text-align: center;
+      font-size: 12px;
+      font-weight: 900;
+      padding-bottom: 4px;
+    }
+
+    .day {
+      min-height: 90px;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: hsla(0, 0%, 100%, 0.2);
+      padding: 10px;
+      transition: var(--transition);
+    }
+
+    body.dark-theme .day {
+      background: hsla(var(--hue-pri), 10%, 22%, 0.18);
+    }
+
+    .day:hover { background: var(--hover-bg); transform: translateY(-2px); }
+
+    .day-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-sub);
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 7px;
+    }
+
+    .event {
+      display: block;
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      padding: 5px 7px;
+      margin-top: 5px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 900;
+      line-height: 1.35;
+      transition: var(--transition);
+    }
+
+    .event:hover { transform: translateY(-1px); }
+    .event.shop { background: var(--warn-alpha); color: var(--warn-text); border-color: var(--warn); }
+    .event.sports { background: hsla(216, 42%, 84%, 0.35); color: var(--blue-text); border-color: var(--blue); }
+    .event.summit { background: hsla(260, 34%, 84%, 0.4); color: var(--violet-text); border-color: var(--violet); }
+    .event.festival { background: hsla(145, 38%, 82%, 0.38); color: var(--green-text); border-color: var(--green); }
+    .event.social { background: hsla(34, 54%, 82%, 0.42); color: var(--orange-text); border-color: var(--orange); }
+    .event.platform { background: var(--primary-alpha); color: var(--primary-text); border-color: var(--primary); }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--text-sub);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .legend-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+    .legend-dot.shop { background: var(--warn); }
+    .legend-dot.sports { background: var(--blue); }
+    .legend-dot.summit { background: var(--violet); }
+    .legend-dot.festival { background: var(--green); }
+    .legend-dot.social { background: var(--orange); }
+
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: hsla(var(--hue-pri), 20%, 10%, 0.38);
+      backdrop-filter: blur(5px);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 40;
+      transition: var(--transition);
+    }
+
+    .drawer-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: -430px;
+      width: 410px;
+      max-width: 92vw;
+      height: 100vh;
+      border-radius: 0;
+      border-top: none;
+      border-right: none;
+      border-bottom: none;
+      display: flex;
+      flex-direction: column;
+      z-index: 50;
+      transition: right 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .drawer.open { right: 0; }
+
+    .drawer-header {
+      padding: 30px 24px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .drawer-title {
+      margin-top: 4px;
+      font-size: 24px;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      font-weight: 900;
+    }
+
+    .drawer-close {
+      border: 0;
+      background: transparent;
+      color: var(--text-sub);
+      font-size: 32px;
+      line-height: 1;
+      transition: var(--transition);
+    }
+
+    .drawer-close:hover {
+      color: var(--text-main);
+      transform: rotate(90deg);
+    }
+
+    .drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px;
+    }
+
+    .detail-item { margin-bottom: 24px; }
+
+    .detail-label {
+      color: var(--text-sub);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .detail-value {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    .drawer-footer {
+      padding: 18px 24px 22px;
+      display: flex;
+      gap: 10px;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 1180px) {
+      .sidebar { width: 246px; min-width: 246px; }
+      .bento-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .span-3, .span-4 { grid-column: span 2; }
+      .builder { grid-template-columns: 1fr; }
+      .flow { grid-template-columns: 1fr; }
+      .flow-arrow { text-align: center; transform: rotate(90deg); }
+    }
+
+    @media (max-width: 760px) {
+      body { display: block; height: auto; overflow: auto; }
+      .sidebar { width: 100%; min-width: 0; height: auto; border-right: none; }
+      .main { height: auto; }
+      .top-bar { height: auto; padding: 18px; flex-direction: column; align-items: flex-start; gap: 14px; }
+      .workspace { overflow: visible; padding: 18px; }
+      .bento-grid { grid-template-columns: 1fr; }
+      .span-1, .span-2, .span-3, .span-4 { grid-column: span 1; }
+      .calendar-grid { grid-template-columns: 1fr; }
+      .weekday { display: none; }
+      .hero-title { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar glass-panel">
+    <div class="logo-area">
+      <div class="logo-title">Decision<br>Center.</div>
+      <div class="logo-subtitle">Cross-border E-commerce</div>
+    </div>
+
+    <div class="nav-wrap">
+      <button class="nav-home active" data-view="home">
+        <span>首页</span>
+        <span>↗</span>
+      </button>
+
+      <div class="tool-group">
+        <div class="tool-title">Research Base</div>
+        <div class="tool-shell">
+          <div class="tool-name">跨境电商市场与平台优先级看板</div>
+          <div class="sub-nav">
+            <button data-view="market-overview">总览</button>
+            <button data-view="market-platform">市场平台</button>
+            <button data-view="profit">客单利润</button>
+            <button data-view="seller-type">卖家类型</button>
+            <button data-view="market-brief">市场简评</button>
+            <button data-view="market-source">数据口径</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-group">
+        <div class="tool-title">Content Layer</div>
+        <div class="tool-shell">
+          <div class="tool-name">跨境卖家内容营销选题决策工具</div>
+          <div class="sub-nav">
+            <button data-view="content-overview">总览</button>
+            <button data-view="content-market">市场平台</button>
+            <button data-view="content-seller">卖家类型</button>
+            <button data-view="timeline">时间节点</button>
+            <button data-view="trend">选品趋势</button>
+            <button data-view="topic">选题库</button>
+            <button data-view="calendar">营销日历</button>
+            <button data-view="content-source">数据来源</button>
+            <button data-view="update-status">更新状态</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="top-bar glass-panel">
+      <div>
+        <div class="eyebrow" id="page-eyebrow">Decision Center</div>
+        <h1 class="page-title" id="page-title">跨境电商 <span class="highlight">决策中心</span></h1>
+      </div>
+      <div class="top-actions">
+        <div class="status-tag"><span class="status-dot"></span>PREVIEW MODE</div>
+        <button class="btn icon-btn" id="theme-toggle" title="切换深浅色">◐</button>
+        <button class="btn">导出预览</button>
+      </div>
+    </header>
+
+    <section class="workspace">
+      <div class="view active" id="home">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel hero-card span-4">
+            <div>
+              <span class="hero-kicker">Decision Center</span>
+              <h2 class="hero-title">把市场平台研究，转化为内容选题与营销日历。</h2>
+              <p class="hero-sub">一个中心承载两个工具：先判断哪些市场、平台和卖家类型值得关注，再把这些判断转成可执行的内容排期。</p>
+            </div>
+            <div class="flow">
+              <div class="flow-box">
+                <strong>市场研究底座</strong>
+                <span>地区、平台、客单价、风险、卖家类型。</span>
+              </div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-box">
+                <strong>内容应用层</strong>
+                <span>节点、趋势、选题、内容形式。</span>
+              </div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-box">
+                <strong>营销日历</strong>
+                <span>选择配置后生成月历和社媒排期。</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="bento-card glass-panel tool-card span-2" data-jump="market-overview">
+            <span class="arrow-mark">↗</span>
+            <div>
+              <div class="tool-label">Research Base</div>
+              <h3>市场与平台优先级看板</h3>
+              <p>用于判断地区、平台、客单价、利润和进入风险。</p>
+            </div>
+            <button class="btn primary">进入看板</button>
+          </article>
+
+          <article class="bento-card glass-panel tool-card span-2" data-jump="content-overview">
+            <span class="arrow-mark">↗</span>
+            <div>
+              <div class="tool-label">Content Layer</div>
+              <h3>内容营销选题决策工具</h3>
+              <p>用于规划内容选题、时间节点、选品趋势和营销日历。</p>
+            </div>
+            <button class="btn primary">进入工具</button>
+          </article>
+
+          <article class="bento-card glass-panel kpi-card span-1">
+            <div class="kpi-title">覆盖市场</div>
+            <div class="kpi-value pri">16</div>
+            <div class="hover-note">包含美国、东南亚、印度、日本、巴西等重点跨境市场。</div>
+          </article>
+          <article class="bento-card glass-panel kpi-card span-1">
+            <div class="kpi-title">内容节点</div>
+            <div class="kpi-value">28</div>
+            <div class="hover-note">节日、平台大促、行业峰会、体育赛事和季节消费节点。</div>
+          </article>
+          <article class="bento-card glass-panel kpi-card span-1">
+            <div class="kpi-title">可排期选题</div>
+            <div class="kpi-value pri">42</div>
+            <div class="hover-note">可进入选题库，也可发送到营销日历生成月历。</div>
+          </article>
+          <article class="bento-card glass-panel kpi-card span-1">
+            <div class="kpi-title">待复核</div>
+            <div class="kpi-value warn">9</div>
+            <div class="hover-note">赛事、峰会、平台活动和高风险市场需要人工确认。</div>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="market-overview">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel kpi-card span-1">
+            <div class="kpi-title">第一梯队</div>
+            <div class="kpi-value pri">5</div>
+            <div class="hover-note">美国、东南亚、印度、日本、巴西。</div>
+          </article>
+          <article class="bento-card glass-panel kpi-card span-1">
+            <div class="kpi-title">高利润</div>
+            <div class="kpi-value">7</div>
+            <div class="hover-note">高客单不等于高利润，需要结合成本和退货率。</div>
+          </article>
+          <article class="bento-card glass-panel kpi-card span-1">
+            <div class="kpi-title">高风险</div>
+            <div class="kpi-value warn">1</div>
+            <div class="hover-note">俄罗斯需重点看支付、合规、物流和资金回流。</div>
+          </article>
+          <article class="bento-card glass-panel kpi-card span-1">
+            <div class="kpi-title">待更新</div>
+            <div class="kpi-value">3</div>
+            <div class="hover-note">AOV、平台份额和活动节点建议按季度复核。</div>
+          </article>
+
+          <article class="bento-card glass-panel span-2 tall">
+            <div class="card-header">
+              <div>
+                <div class="card-title">市场分层</div>
+                <div class="card-subtle">鼠标悬停或点击标签查看详情。</div>
+              </div>
+            </div>
+            <div class="tag-row">
+              <button class="tag active" data-drawer="第一梯队市场">第一梯队</button>
+              <button class="tag" data-drawer="第二梯队市场">第二梯队</button>
+              <button class="tag" data-drawer="第三梯队市场">第三梯队</button>
+              <button class="tag warn" data-drawer="特殊市场">特殊市场</button>
+            </div>
+            <table style="margin-top:20px;">
+              <thead><tr><th>市场</th><th>首选</th><th>状态</th></tr></thead>
+              <tbody>
+                <tr data-drawer="美国"><td>美国</td><td>Amazon</td><td><span class="pill">高价值</span></td></tr>
+                <tr data-drawer="东南亚"><td>东南亚</td><td>Shopee</td><td><span class="pill">增长</span></td></tr>
+                <tr data-drawer="日本"><td>日本</td><td>Amazon / Rakuten</td><td><span class="pill">高客单</span></td></tr>
+                <tr data-drawer="俄罗斯"><td>俄罗斯</td><td>Ozon</td><td><span class="pill warn">谨慎</span></td></tr>
+              </tbody>
+            </table>
+          </article>
+
+          <article class="bento-card glass-panel span-2 tall">
+            <div class="card-header">
+              <div>
+                <div class="card-title">重点平台</div>
+                <div class="card-subtle">默认只看核心字段，详情进抽屉。</div>
+              </div>
+              <button class="btn" data-jump="market-platform">详情</button>
+            </div>
+            <table>
+              <thead><tr><th>平台</th><th>主市场</th><th>趋势</th></tr></thead>
+              <tbody>
+                <tr data-drawer="Amazon"><td>Amazon</td><td>北美 / 欧洲</td><td>稳健</td></tr>
+                <tr data-drawer="Shopee"><td>Shopee</td><td>东南亚</td><td>增长</td></tr>
+                <tr data-drawer="TikTok Shop"><td>TikTok Shop</td><td>美国 / 东南亚</td><td>高波动</td></tr>
+                <tr data-drawer="Mercado Libre"><td>Mercado Libre</td><td>拉美</td><td>增长</td></tr>
+                <tr data-drawer="Coupang"><td>Coupang</td><td>韩国</td><td>本地强势</td></tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="market-platform">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel span-4">
+            <div class="card-header">
+              <div>
+                <div class="card-title">市场平台</div>
+                <div class="card-subtle">短表格承载扫描，抽屉承载解释。</div>
+              </div>
+              <div class="tag-row">
+                <button class="tag active">全部</button>
+                <button class="tag">第一梯队</button>
+                <button class="tag">高利润</button>
+                <button class="tag warn">需复核</button>
+              </div>
+            </div>
+            <table>
+              <thead><tr><th>地区</th><th>首选</th><th>第二</th><th>第三</th><th>状态</th></tr></thead>
+              <tbody>
+                <tr data-drawer="美国"><td>美国</td><td>Amazon</td><td>eBay</td><td>Walmart</td><td><span class="pill">高价值</span></td></tr>
+                <tr data-drawer="东南亚"><td>东南亚</td><td>Shopee</td><td>TikTok Shop</td><td>Lazada</td><td><span class="pill">增长</span></td></tr>
+                <tr data-drawer="韩国"><td>韩国</td><td>Coupang</td><td>Naver</td><td>Gmarket</td><td><span class="pill">本地化</span></td></tr>
+                <tr data-drawer="波兰"><td>波兰</td><td>Allegro</td><td>Temu</td><td>Amazon</td><td><span class="pill">区域强</span></td></tr>
+                <tr data-drawer="俄罗斯"><td>俄罗斯</td><td>Ozon</td><td>Wildberries</td><td>Yandex</td><td><span class="pill warn">谨慎</span></td></tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="profit">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel span-2 tall">
+            <div class="card-header">
+              <div>
+                <div class="card-title">AOV 排行</div>
+                <div class="card-subtle">预览区间，后续接真实来源。</div>
+              </div>
+            </div>
+            <div class="bars">
+              <div class="bar"><div class="bar-name">GCC</div><div class="bar-track"><div class="bar-fill" style="width:94%"></div></div><div class="bar-value">$170</div></div>
+              <div class="bar"><div class="bar-name">美国</div><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div><div class="bar-value">$160</div></div>
+              <div class="bar"><div class="bar-name">德国</div><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div><div class="bar-value">$150</div></div>
+              <div class="bar"><div class="bar-name">日本</div><div class="bar-track"><div class="bar-fill" style="width:61%"></div></div><div class="bar-value">$110</div></div>
+              <div class="bar"><div class="bar-name">东南亚</div><div class="bar-track"><div class="bar-fill" style="width:20%"></div></div><div class="bar-value">$35</div></div>
+            </div>
+          </article>
+          <article class="bento-card glass-panel span-2 tall">
+            <div class="card-header">
+              <div>
+                <div class="card-title">利润判断</div>
+                <div class="card-subtle">用短标签区分，不堆解释。</div>
+              </div>
+            </div>
+            <div class="tag-row">
+              <button class="tag active" data-drawer="高客单高成本">高客单 / 高成本</button>
+              <button class="tag" data-drawer="中客单可扩张">中客单 / 可扩张</button>
+              <button class="tag" data-drawer="低客单走量">低客单 / 走量</button>
+              <button class="tag warn" data-drawer="高风险利润">高风险 / 需谨慎</button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="seller-type">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel hero-card span-4">
+            <div>
+              <span class="hero-kicker">Seller Type</span>
+              <h2 class="hero-title">按卖家画像判断平台和内容优先级。</h2>
+              <p class="hero-sub">泛品、品牌、高客单、内容电商、多平台铺货，本质上需要完全不同的市场和内容打法。</p>
+            </div>
+            <div class="tag-row">
+              <button class="tag active">泛品</button>
+              <button class="tag">品牌货</button>
+              <button class="tag">Amazon 卖家</button>
+              <button class="tag">内容电商</button>
+              <button class="tag">海外仓</button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="market-brief">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel span-4">
+            <div class="card-header">
+              <div>
+                <div class="card-title">市场简评</div>
+                <div class="card-subtle">卡片默认只给一句判断。</div>
+              </div>
+            </div>
+            <div class="tag-row">
+              <button class="tag" data-drawer="美国">美国：成熟但成本高</button>
+              <button class="tag" data-drawer="东南亚">东南亚：低客单高增长</button>
+              <button class="tag" data-drawer="日本">日本：品质与本地化</button>
+              <button class="tag" data-drawer="巴西">巴西：拉美核心市场</button>
+              <button class="tag warn" data-drawer="俄罗斯">俄罗斯：高风险特殊市场</button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="market-source">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel span-2 medium">
+            <div class="card-title">口径说明</div>
+            <div class="tag-row" style="margin-top:22px;">
+              <button class="tag">MAU</button>
+              <button class="tag">访问份额</button>
+              <button class="tag">活跃买家</button>
+              <button class="tag">AOV 估算</button>
+            </div>
+          </article>
+          <article class="bento-card glass-panel span-2 medium">
+            <div class="card-title">来源类型</div>
+            <div class="tag-row" style="margin-top:22px;">
+              <button class="tag">平台财报</button>
+              <button class="tag">Similarweb</button>
+              <button class="tag">行业报告</button>
+              <button class="tag warn">人工复核</button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="content-overview">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel kpi-card span-1">
+            <div class="kpi-title">本月节点</div>
+            <div class="kpi-value pri">28</div>
+            <div class="hover-note">节日、购物节点、体育赛事、峰会与季节机会。</div>
+          </article>
+          <article class="bento-card glass-panel kpi-card span-1">
+            <div class="kpi-title">推荐选题</div>
+            <div class="kpi-value">42</div>
+            <div class="hover-note">按地区、平台、卖家类型和内容形式拆分。</div>
+          </article>
+          <article class="bento-card glass-panel kpi-card span-1">
+            <div class="kpi-title">可排期</div>
+            <div class="kpi-value pri">18</div>
+            <div class="hover-note">可发送到营销日历，生成每日发布计划。</div>
+          </article>
+          <article class="bento-card glass-panel kpi-card span-1">
+            <div class="kpi-title">待复核</div>
+            <div class="kpi-value warn">9</div>
+            <div class="hover-note">平台活动、赛事、峰会日期不建议自动写死。</div>
+          </article>
+
+          <article class="bento-card glass-panel span-2 medium">
+            <div class="card-header">
+              <div>
+                <div class="card-title">内容机会</div>
+                <div class="card-subtle">默认只展示方向。</div>
+              </div>
+            </div>
+            <div class="tag-row">
+              <button class="tag" data-drawer="俄罗斯 6 月节点">俄罗斯 6 月节点</button>
+              <button class="tag">Prime Day 预热</button>
+              <button class="tag">东南亚大促</button>
+              <button class="tag">日韩本地化</button>
+            </div>
+          </article>
+
+          <article class="bento-card glass-panel span-2 medium">
+            <div class="card-header">
+              <div>
+                <div class="card-title">营销日历</div>
+                <div class="card-subtle">选择配置，直接生成。</div>
+              </div>
+            </div>
+            <button class="btn primary" data-jump="calendar">进入生成器</button>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="content-market">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel span-4">
+            <div class="card-title">内容视角的市场平台</div>
+            <table style="margin-top:18px;">
+              <thead><tr><th>地区</th><th>平台</th><th>内容价值</th><th>形式</th></tr></thead>
+              <tbody>
+                <tr><td>美国</td><td>Amazon</td><td>高</td><td>指南 / 清单</td></tr>
+                <tr><td>东南亚</td><td>Shopee / TikTok Shop</td><td>高</td><td>短视频 / 社媒</td></tr>
+                <tr><td>韩国</td><td>Coupang</td><td>中高</td><td>本地化案例</td></tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="content-seller">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel span-4">
+            <div class="card-title">内容受众画像</div>
+            <div class="tag-row" style="margin-top:22px;">
+              <button class="tag active">Amazon 卖家</button>
+              <button class="tag">Shopee 卖家</button>
+              <button class="tag">多平台卖家</button>
+              <button class="tag">品牌出海团队</button>
+              <button class="tag">海外仓卖家</button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="timeline">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel span-4">
+            <div class="card-header">
+              <div>
+                <div class="card-title">时间节点</div>
+                <div class="card-subtle">这里只做节点库，不放生成栏。</div>
+              </div>
+            </div>
+            <table>
+              <thead><tr><th>月份</th><th>地区</th><th>节点</th><th>类型</th><th>复核</th></tr></thead>
+              <tbody>
+                <tr><td>6 月</td><td>俄罗斯</td><td>儿童节</td><td>节日</td><td><span class="pill warn">需确认热度</span></td></tr>
+                <tr><td>6 月</td><td>全球</td><td>世界环境日</td><td>社媒热点</td><td><span class="pill">可用</span></td></tr>
+                <tr><td>6 月</td><td>跨境</td><td>平台大促预热</td><td>购物节点</td><td><span class="pill warn">需复核</span></td></tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="trend">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel span-2 medium">
+            <div class="card-title">商品选品趋势</div>
+            <div class="tag-row" style="margin-top:22px;">
+              <button class="tag">户外</button>
+              <button class="tag">返校季</button>
+              <button class="tag">宠物</button>
+              <button class="tag">家居</button>
+            </div>
+          </article>
+          <article class="bento-card glass-panel span-2 medium">
+            <div class="card-title">服装选品趋势</div>
+            <div class="tag-row" style="margin-top:22px;">
+              <button class="tag">泳装</button>
+              <button class="tag">度假风</button>
+              <button class="tag">大码</button>
+              <button class="tag">通勤</button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="topic">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel span-4">
+            <div class="card-header">
+              <div>
+                <div class="card-title">选题库</div>
+                <div class="card-subtle">短标题 + 状态，点击看完整角度。</div>
+              </div>
+              <div class="tag-row">
+                <button class="tag active">全部</button>
+                <button class="tag">高优先级</button>
+                <button class="tag warn">待复核</button>
+                <button class="tag">已排期</button>
+              </div>
+            </div>
+            <table>
+              <thead><tr><th>选题</th><th>地区</th><th>形式</th><th>状态</th></tr></thead>
+              <tbody>
+                <tr data-drawer="俄罗斯 6 月社媒月历"><td>俄罗斯 6 月社媒月历</td><td>俄罗斯</td><td>月历</td><td><span class="pill">高</span></td></tr>
+                <tr><td>Prime Day 客服准备清单</td><td>美国</td><td>清单</td><td><span class="pill">高</span></td></tr>
+                <tr><td>东南亚内容电商排期</td><td>东南亚</td><td>短视频</td><td><span class="pill">中高</span></td></tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="calendar">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel span-2 tall">
+            <div class="card-header">
+              <div>
+                <div class="card-title">生成出海营销日历</div>
+                <div class="card-subtle">点选配置，不用输入长文本。</div>
+              </div>
+            </div>
+            <div class="builder">
+              <div class="builder-field">
+                <div class="field-label">受众</div>
+                <div class="tag-row">
+                  <button class="chip selected">全球跨境卖家</button>
+                  <button class="chip">Amazon</button>
+                  <button class="chip">区域平台</button>
+                </div>
+              </div>
+              <div class="builder-field">
+                <div class="field-label">地区</div>
+                <div class="tag-row">
+                  <button class="chip selected">俄罗斯</button>
+                  <button class="chip">欧洲</button>
+                  <button class="chip">全球</button>
+                </div>
+              </div>
+              <div class="builder-field">
+                <div class="field-label">平台</div>
+                <div class="tag-row">
+                  <button class="chip selected">企微朋友圈</button>
+                  <button class="chip selected">LinkedIn</button>
+                  <button class="chip">Facebook</button>
+                </div>
+              </div>
+              <div class="builder-field">
+                <div class="field-label">事件</div>
+                <div class="tag-row">
+                  <button class="chip selected">节日</button>
+                  <button class="chip selected">赛事</button>
+                  <button class="chip selected">峰会</button>
+                  <button class="chip selected">大促</button>
+                </div>
+              </div>
+            </div>
+            <div class="builder-footer">
+              <span>模板：俄罗斯跨境社媒月历</span>
+              <button class="btn primary" id="generate-calendar">生成</button>
+            </div>
+          </article>
+
+          <article class="bento-card glass-panel span-2 tall">
+            <div class="card-header">
+              <div>
+                <div class="card-title">机会摘要</div>
+                <div class="card-subtle">默认只看数量，悬停看解释。</div>
+              </div>
+            </div>
+            <div class="bento-grid" style="grid-template-columns:repeat(2,1fr);gap:14px;">
+              <div class="bento-card glass-panel kpi-card" style="min-height:128px;padding:16px;">
+                <div class="kpi-title">节点</div>
+                <div class="kpi-value pri" style="font-size:38px;">12</div>
+                <div class="hover-note">俄罗斯相关节点。</div>
+              </div>
+              <div class="bento-card glass-panel kpi-card" style="min-height:128px;padding:16px;">
+                <div class="kpi-title">可借势</div>
+                <div class="kpi-value" style="font-size:38px;">6</div>
+                <div class="hover-note">适合社媒内容。</div>
+              </div>
+              <div class="bento-card glass-panel kpi-card" style="min-height:128px;padding:16px;">
+                <div class="kpi-title">复核</div>
+                <div class="kpi-value warn" style="font-size:38px;">4</div>
+                <div class="hover-note">赛事和峰会需确认。</div>
+              </div>
+              <div class="bento-card glass-panel kpi-card" style="min-height:128px;padding:16px;">
+                <div class="kpi-title">海报</div>
+                <div class="kpi-value pri" style="font-size:38px;">9</div>
+                <div class="hover-note">可转成海报主题。</div>
+              </div>
+            </div>
+            <div class="legend">
+              <span class="legend-item"><i class="legend-dot shop"></i>购物</span>
+              <span class="legend-item"><i class="legend-dot sports"></i>体育</span>
+              <span class="legend-item"><i class="legend-dot summit"></i>峰会</span>
+              <span class="legend-item"><i class="legend-dot festival"></i>节日</span>
+              <span class="legend-item"><i class="legend-dot social"></i>社媒</span>
+            </div>
+          </article>
+
+          <article class="bento-card glass-panel span-4">
+            <div class="card-header">
+              <div>
+                <div class="card-title">2026 年 6 月</div>
+                <div class="card-subtle">地区用标签，事件类型用颜色。</div>
+              </div>
+              <div class="tag-row">
+                <button class="tag active">月历</button>
+                <button class="tag">周计划</button>
+                <button class="tag">导出</button>
+              </div>
+            </div>
+            <div class="calendar-grid" id="calendar-grid"></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="content-source">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel span-4">
+            <div class="card-title">数据来源</div>
+            <div class="tag-row" style="margin-top:22px;">
+              <button class="tag">市场数据</button>
+              <button class="tag">节日节点</button>
+              <button class="tag">体育赛事</button>
+              <button class="tag">行业峰会</button>
+              <button class="tag warn">人工复核</button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="view" id="update-status">
+        <div class="bento-grid">
+          <article class="bento-card glass-panel kpi-card span-1">
+            <div class="kpi-title">最近更新</div>
+            <div class="kpi-value pri" style="font-size:38px;">06.12</div>
+          </article>
+          <article class="bento-card glass-panel kpi-card span-1">
+            <div class="kpi-title">待复核</div>
+            <div class="kpi-value warn">9</div>
+          </article>
+          <article class="bento-card glass-panel kpi-card span-1">
+            <div class="kpi-title">抓取失败</div>
+            <div class="kpi-value">0</div>
+          </article>
+          <article class="bento-card glass-panel kpi-card span-1">
+            <div class="kpi-title">预览模式</div>
+            <div class="kpi-value pri" style="font-size:38px;">ON</div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+  <aside class="drawer glass-panel" id="drawer">
+    <div class="drawer-header">
+      <div>
+        <div class="eyebrow">Detail</div>
+        <div class="drawer-title" id="drawer-title">详情</div>
+      </div>
+      <button class="drawer-close" id="drawer-close">×</button>
+    </div>
+    <div class="drawer-body">
+      <div class="detail-item">
+        <div class="detail-label">说明</div>
+        <div class="detail-value" id="drawer-desc">这是预览交互，后续可接真实数据、来源链接和复核状态。</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">建议动作</div>
+        <div class="detail-value" id="drawer-action">加入关注列表，或发送到选题库继续拆解。</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">状态</div>
+        <div class="tag-row">
+          <span class="tag">预览数据</span>
+          <span class="tag warn">需复核</span>
+        </div>
+      </div>
+    </div>
+    <div class="drawer-footer">
+      <button class="btn">暂不处理</button>
+      <button class="btn primary">加入选题库</button>
+    </div>
+  </aside>
+
+  <script>
+    const pageMeta = {
+      home: ["Decision Center", "跨境电商 <span class=\"highlight\">决策中心</span>"],
+      "market-overview": ["Research Base / 总览", "市场与平台 <span class=\"highlight\">优先级看板</span>"],
+      "market-platform": ["Research Base / 市场平台", "地区平台 <span class=\"highlight\">排序</span>"],
+      profit: ["Research Base / 客单利润", "客单价与利润 <span class=\"highlight\">判断</span>"],
+      "seller-type": ["Research Base / 卖家类型", "卖家画像 <span class=\"highlight\">匹配</span>"],
+      "market-brief": ["Research Base / 市场简评", "重点市场 <span class=\"highlight\">简评</span>"],
+      "market-source": ["Research Base / 数据口径", "数据口径与 <span class=\"highlight\">来源</span>"],
+      "content-overview": ["Content Layer / 总览", "内容营销 <span class=\"highlight\">决策工具</span>"],
+      "content-market": ["Content Layer / 市场平台", "内容视角的 <span class=\"highlight\">市场平台</span>"],
+      "content-seller": ["Content Layer / 卖家类型", "内容受众 <span class=\"highlight\">画像</span>"],
+      timeline: ["Content Layer / 时间节点", "时间节点 <span class=\"highlight\">节点库</span>"],
+      trend: ["Content Layer / 选品趋势", "选品趋势 <span class=\"highlight\">方向</span>"],
+      topic: ["Content Layer / 选题库", "内容选题 <span class=\"highlight\">工作台</span>"],
+      calendar: ["Content Layer / 营销日历", "出海营销 <span class=\"highlight\">日历生成器</span>"],
+      "content-source": ["Content Layer / 数据来源", "内容数据 <span class=\"highlight\">来源</span>"],
+      "update-status": ["Content Layer / 更新状态", "数据更新 <span class=\"highlight\">状态</span>"]
+    };
+
+    const drawerCopy = {
+      "第一梯队市场": ["第一梯队市场", "美国、东南亚、印度、日本、巴西。适合优先投入平台研究和内容规划。", "可进入市场平台页查看具体平台组合。"],
+      "第二梯队市场": ["第二梯队市场", "墨西哥、英国、德国、法国、韩国。购买力和市场规模较好，但进入方式差异较大。", "建议按平台和品类拆分内容。"],
+      "第三梯队市场": ["第三梯队市场", "加拿大、澳大利亚、土耳其、波兰、中东/GCC。适合有资源后扩展。", "建议先看成本、合规和履约。"],
+      "特殊市场": ["特殊市场", "俄罗斯市场有平台流量，但支付、物流、合规和资金回流风险高。", "默认标记为需要人工复核。"],
+      "美国": ["美国", "成熟市场，平台和广告体系完善，但广告、退货、仓储成本较高。", "适合 Prime Day、黑五网一、客服和退货高峰相关内容。"],
+      "东南亚": ["东南亚", "Shopee 和 TikTok Shop 是内容机会核心，客单价偏低但大促和内容电商节点密集。", "适合双数大促、直播短视频、低价走量选题。"],
+      "日本": ["日本", "Amazon Japan 和 Rakuten 都重要，用户重视品质、本地化和评价。", "适合本地化、评价管理、品质型选品内容。"],
+      "俄罗斯": ["俄罗斯", "Ozon、Wildberries、Yandex Market 有流量，但支付、合规和物流风险较高。", "节点可以保留，营销表达建议人工复核。"],
+      "Amazon": ["Amazon", "全球成熟市场的关键平台，适合平台教育、旺季备货、客服管理和广告投放内容。", "关联美国、日本、英国、德国、加拿大和澳大利亚。"],
+      "Shopee": ["Shopee", "东南亚基础盘平台，适合围绕大促、低价走量、跨境物流和内容电商做选题。", "可以和 TikTok Shop、Lazada 做组合内容。"],
+      "TikTok Shop": ["TikTok Shop", "增长快，规则和流量结构也变化快。适合短视频、直播、达人和内容转化话题。", "建议频繁复核平台活动和地区开放情况。"],
+      "Mercado Libre": ["Mercado Libre", "拉美核心平台，适合本地仓、清关、物流、回款和市场增长类内容。", "可与巴西、墨西哥市场内容联动。"],
+      "Coupang": ["Coupang", "韩国本地强平台，履约、页面本地化和售后体验要求高。", "适合做韩国市场本地化运营内容。"],
+      "俄罗斯 6 月节点": ["俄罗斯 6 月节点", "用于生成俄罗斯相关的节日、赛事、峰会和购物节点月历。", "建议输出朋友圈、LinkedIn 和海外社媒内容角度。"],
+      "俄罗斯 6 月社媒月历": ["俄罗斯 6 月社媒月历", "以俄罗斯和东欧为重点地区，筛选 6 月节日、赛事、峰会和购物节点。", "可生成月历、每日社媒选题和海报主题清单。"],
+      "高客单高成本": ["高客单 / 高成本", "美国、德国、英国、日本、加拿大、澳大利亚和中东/GCC 往往购买力强，但广告、退货、合规和履约成本也高。", "适合品牌货、高客单和长期经营内容。"],
+      "中客单可扩张": ["中客单 / 可扩张", "拉美、波兰等市场客单中等，增长不错，但物流和平台规则需要控制。", "适合本地仓、清关和平台增长内容。"],
+      "低客单走量": ["低客单 / 走量", "东南亚、印度、土耳其更依赖供应链效率、轻小件和内容电商。", "适合低价泛品、快上新和大促内容。"],
+      "高风险利润": ["高风险 / 需谨慎", "利润空间会被支付、汇率、制裁、物流和合规风险侵蚀。", "仅适合已有本地服务商或合规路径的团队。"]
+    };
+
+    function switchView(viewId) {
+      document.querySelectorAll(".view").forEach(view => view.classList.remove("active"));
+      const target = document.getElementById(viewId);
+      if (!target) return;
+      target.classList.add("active");
+      document.querySelectorAll("[data-view]").forEach(btn => btn.classList.toggle("active", btn.dataset.view === viewId));
+      const meta = pageMeta[viewId] || pageMeta.home;
+      document.getElementById("page-eyebrow").textContent = meta[0];
+      document.getElementById("page-title").innerHTML = meta[1];
+    }
+
+    document.querySelectorAll("[data-view]").forEach(btn => {
+      btn.addEventListener("click", () => switchView(btn.dataset.view));
+    });
+
+    document.querySelectorAll("[data-jump]").forEach(el => {
+      el.addEventListener("click", () => switchView(el.dataset.jump));
+    });
+
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+      document.body.classList.toggle("dark-theme");
+    });
+
+    const drawer = document.getElementById("drawer");
+    const overlay = document.getElementById("drawer-overlay");
+
+    function openDrawer(name) {
+      const copy = drawerCopy[name] || [name, "这是预览交互，后续可接真实数据、来源链接和复核状态。", "可加入选题库或发送到营销日历。"];
+      document.getElementById("drawer-title").textContent = copy[0];
+      document.getElementById("drawer-desc").textContent = copy[1];
+      document.getElementById("drawer-action").textContent = copy[2];
+      drawer.classList.add("open");
+      overlay.classList.add("active");
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove("open");
+      overlay.classList.remove("active");
+    }
+
+    document.querySelectorAll("[data-drawer]").forEach(el => {
+      el.addEventListener("click", () => openDrawer(el.dataset.drawer));
+    });
+
+    document.getElementById("drawer-close").addEventListener("click", closeDrawer);
+    overlay.addEventListener("click", closeDrawer);
+
+    document.querySelectorAll(".chip").forEach(chip => {
+      chip.addEventListener("click", () => chip.classList.toggle("selected"));
+    });
+
+    function buildCalendar() {
+      const grid = document.getElementById("calendar-grid");
+      if (!grid) return;
+      const weekdays = ["一", "二", "三", "四", "五", "六", "日"];
+      const events = {
+        1: [{ cls: "festival", text: "[俄罗斯] 儿童节", drawer: "俄罗斯 6 月节点" }],
+        5: [{ cls: "social", text: "[全球] 环境日", drawer: "俄罗斯 6 月节点" }],
+        10: [{ cls: "summit", text: "[欧洲] 峰会", drawer: "俄罗斯 6 月节点" }],
+        12: [{ cls: "festival", text: "[俄罗斯] 俄罗斯日", drawer: "俄罗斯 6 月节点" }, { cls: "shop", text: "[全球] 大促预热", drawer: "俄罗斯 6 月社媒月历" }],
+        14: [{ cls: "sports", text: "[全球] 体育节点", drawer: "俄罗斯 6 月节点" }],
+        18: [{ cls: "platform", text: "[平台] 内容周", drawer: "俄罗斯 6 月社媒月历" }],
+        21: [{ cls: "social", text: "[全球] 夏季选品", drawer: "俄罗斯 6 月社媒月历" }],
+        24: [{ cls: "summit", text: "[跨境] 线上论坛", drawer: "俄罗斯 6 月社媒月历" }],
+        28: [{ cls: "shop", text: "[全球] 月末促销", drawer: "俄罗斯 6 月社媒月历" }]
+      };
+
+      grid.innerHTML = "";
+      weekdays.forEach(day => {
+        const el = document.createElement("div");
+        el.className = "weekday";
+        el.textContent = day;
+        grid.appendChild(el);
+      });
+
+      for (let i = 1; i <= 31; i++) {
+        const day = document.createElement("div");
+        day.className = "day";
+        day.innerHTML = `<div class="day-head"><span>${i}</span><span>6月</span></div>`;
+        (events[i] || []).forEach(event => {
+          const pill = document.createElement("button");
+          pill.className = `event ${event.cls}`;
+          pill.type = "button";
+          pill.textContent = event.text;
+          pill.addEventListener("click", () => openDrawer(event.drawer));
+          day.appendChild(pill);
+        });
+        grid.appendChild(day);
+      }
+    }
+
+    buildCalendar();
+    document.getElementById("generate-calendar").addEventListener("click", buildCalendar);
+  </script>
+</body>
+</html>

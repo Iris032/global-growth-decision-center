@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>跨境电商平台地区优先级看板</title>
+  <script src="./data/market-data.js"></script>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --ink: #17202c;
+      --muted: #657286;
+      --line: #dde4ee;
+      --blue: #246bfe;
+      --green: #138a5b;
+      --amber: #b26a00;
+      --red: #bb3d3d;
+      --teal: #0f7f8f;
+      --shadow: 0 12px 32px rgba(23, 32, 44, 0.08);
+      font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    .page {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 24px 0 18px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 900px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .status-box {
+      min-width: 260px;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .status-box strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    .status-box span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin: 12px 0 18px;
+    }
+
+    .metric {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .metric .label {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .metric .value {
+      margin-top: 8px;
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .metric .hint {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .controls {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, minmax(160px, 0.5fr));
+      gap: 12px;
+      margin: 18px 0;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+
+    .control {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .control label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    input,
+    select {
+      width: 100%;
+      height: 42px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--ink);
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(36, 107, 254, 0.12);
+    }
+
+    section {
+      margin: 22px 0;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.25;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .panel-pad {
+      padding: 16px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      min-width: 930px;
+      border-collapse: collapse;
+      background: var(--panel);
+    }
+
+    th,
+    td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: #f1f5fa;
+      color: #354255;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    tbody tr:hover {
+      background: #f8fbff;
+    }
+
+    .rank {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 28px;
+      border-radius: 6px;
+      background: #edf3ff;
+      color: var(--blue);
+      font-weight: 800;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      margin: 2px 4px 2px 0;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #eef2f7;
+      color: #3c4858;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .chip.blue {
+      background: #eaf1ff;
+      color: var(--blue);
+    }
+
+    .chip.green {
+      background: #e7f6ef;
+      color: var(--green);
+    }
+
+    .chip.amber {
+      background: #fff3db;
+      color: var(--amber);
+    }
+
+    .chip.red {
+      background: #ffeded;
+      color: var(--red);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .market-card {
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .market-card h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .card-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .platform-list {
+      display: grid;
+      gap: 7px;
+      font-size: 13px;
+    }
+
+    .platform-item {
+      padding: 8px;
+      border-radius: 6px;
+      background: #f6f8fb;
+    }
+
+    .small-label {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .brief {
+      color: #3c4858;
+      font-size: 13px;
+    }
+
+    .bars {
+      display: grid;
+      gap: 11px;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 96px 1fr 58px;
+      gap: 10px;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .bar-label {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-weight: 700;
+    }
+
+    .bar-track {
+      height: 12px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #edf1f6;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--blue), var(--teal));
+    }
+
+    .bar-value {
+      color: var(--muted);
+      text-align: right;
+      font-size: 12px;
+    }
+
+    .two-cols {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .list li {
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfe;
+      color: #364355;
+      font-size: 14px;
+    }
+
+    .tier-block {
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .tier-block h3 {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .tier-block p {
+      margin: 0;
+      color: #3e4a5b;
+      font-size: 14px;
+    }
+
+    .seller-card {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .seller-card h3 {
+      margin: 0 0 10px;
+      font-size: 17px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .empty {
+      padding: 28px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .footnote {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: #465466;
+      font-size: 13px;
+    }
+
+    @media (max-width: 1120px) {
+      .metrics,
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid,
+      .two-cols {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        padding: 16px;
+      }
+
+      .topbar {
+        flex-direction: column;
+      }
+
+      .status-box {
+        width: 100%;
+      }
+
+      .controls,
+      .metrics,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      .section-title {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div>
+        <h1 id="title">跨境电商平台地区优先级看板</h1>
+        <p id="subtitle" class="subtitle"></p>
+      </div>
+      <aside class="status-box">
+        <strong>数据状态</strong>
+        <span id="dataDate"></span>
+        <span id="updateMode"></span>
+      </aside>
+    </header>
+
+    <section class="metrics" id="metrics"></section>
+
+    <div class="controls" aria-label="筛选器">
+      <div class="control">
+        <label for="searchInput">搜索地区、平台、风险或打法</label>
+        <input id="searchInput" type="search" placeholder="例如 Amazon、东南亚、合规、品牌货">
+      </div>
+      <div class="control">
+        <label for="tierFilter">市场分层</label>
+        <select id="tierFilter"></select>
+      </div>
+      <div class="control">
+        <label for="profitFilter">利润潜力</label>
+        <select id="profitFilter"></select>
+      </div>
+      <div class="control">
+        <label for="sortSelect">排序方式</label>
+        <select id="sortSelect">
+          <option value="priority">按优先级</option>
+          <option value="aov-desc">按客单价从高到低</option>
+          <option value="aov-asc">按客单价从低到高</option>
+        </select>
+      </div>
+    </div>
+
+    <section>
+      <div class="section-title">
+        <div>
+          <h2>市场优先级总览</h2>
+          <p>用于快速判断地区进入顺序、主平台和备选平台。</p>
+        </div>
+        <p id="resultCount"></p>
+      </div>
+      <div class="cards" id="marketCards"></div>
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>优先级</th>
+                <th>地区/国家</th>
+                <th>分层</th>
+                <th>首选平台</th>
+                <th>第二选择</th>
+                <th>第三选择</th>
+                <th>利润潜力</th>
+              </tr>
+            </thead>
+            <tbody id="priorityRows"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel panel-pad">
+        <div class="section-title">
+          <h2>客单价排行</h2>
+          <p>按估算区间中位数。</p>
+        </div>
+        <div class="bars" id="aovBars"></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>地区/国家</th>
+              <th>估算客单价 USD</th>
+              <th>约人民币</th>
+              <th>利润潜力</th>
+              <th>主要成本/风险</th>
+              <th>更适合的打法</th>
+            </tr>
+          </thead>
+          <tbody id="aovRows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="two-cols">
+      <div>
+        <div class="section-title">
+          <h2>分层建议</h2>
+          <p>看资源投入顺序。</p>
+        </div>
+        <div class="list" id="tierBlocks"></div>
+      </div>
+      <div>
+        <div class="section-title">
+          <h2>实操优先级</h2>
+          <p>资源有限时优先执行。</p>
+        </div>
+        <ol class="list" id="actionList"></ol>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>按卖家类型的平台组合</h2>
+        <p>区分低价走量和品牌高客单。</p>
+      </div>
+      <div class="two-cols" id="sellerTypes"></div>
+    </section>
+
+    <section class="two-cols">
+      <div class="panel panel-pad">
+        <div class="section-title">
+          <h2>客单价解读</h2>
+        </div>
+        <ul class="list" id="aovNotes"></ul>
+      </div>
+      <div class="panel panel-pad">
+        <div class="section-title">
+          <h2>后续拆分方向</h2>
+          <p>正式选品或招商方案建议按品类拆版本。</p>
+        </div>
+        <div id="categoryTargets"></div>
+      </div>
+    </section>
+
+    <section class="footnote">
+      <strong>口径说明</strong>
+      <ul id="methodology"></ul>
+      <strong>主要参考来源方向</strong>
+      <ul id="sources"></ul>
+    </section>
+  </main>
+
+  <script>
+    const data = window.MARKET_DASHBOARD_DATA;
+    const state = {
+      query: "",
+      tier: "全部",
+      profit: "全部",
+      sort: "priority"
+    };
+
+    const els = {
+      title: document.getElementById("title"),
+      subtitle: document.getElementById("subtitle"),
+      dataDate: document.getElementById("dataDate"),
+      updateMode: document.getElementById("updateMode"),
+      metrics: document.getElementById("metrics"),
+      searchInput: document.getElementById("searchInput"),
+      tierFilter: document.getElementById("tierFilter"),
+      profitFilter: document.getElementById("profitFilter"),
+      sortSelect: document.getElementById("sortSelect"),
+      resultCount: document.getElementById("resultCount"),
+      marketCards: document.getElementById("marketCards"),
+      priorityRows: document.getElementById("priorityRows"),
+      aovRows: document.getElementById("aovRows"),
+      aovBars: document.getElementById("aovBars"),
+      tierBlocks: document.getElementById("tierBlocks"),
+      actionList: document.getElementById("actionList"),
+      sellerTypes: document.getElementById("sellerTypes"),
+      aovNotes: document.getElementById("aovNotes"),
+      categoryTargets: document.getElementById("categoryTargets"),
+      methodology: document.getElementById("methodology"),
+      sources: document.getElementById("sources")
+    };
+
+    function normalize(value) {
+      return String(value || "").toLowerCase();
+    }
+
+    function marketText(market) {
+      return [
+        market.market,
+        market.tier,
+        market.first,
+        market.second,
+        market.third,
+        market.profit,
+        market.risk,
+        market.playbook,
+        market.brief,
+        market.platforms.join(" ")
+      ].join(" ");
+    }
+
+    function tierClass(tier) {
+      if (tier === "第一梯队") return "green";
+      if (tier === "第二梯队") return "blue";
+      if (tier === "特殊市场") return "red";
+      return "amber";
+    }
+
+    function profitClass(profit) {
+      if (profit.includes("风险")) return "red";
+      if (profit.includes("高")) return "green";
+      if (profit.includes("中")) return "amber";
+      return "blue";
+    }
+
+    function unique(values) {
+      return [...new Set(values)];
+    }
+
+    function setupHeader() {
+      els.title.textContent = data.meta.title;
+      els.subtitle.textContent = `${data.meta.scope} ${data.meta.currencyNote}`;
+      els.dataDate.textContent = `整理日期：${data.meta.整理日期}`;
+      els.updateMode.textContent = data.meta.updateMode;
+    }
+
+    function setupFilters() {
+      const tiers = ["全部", ...unique(data.markets.map((item) => item.tier))];
+      const profits = ["全部", ...unique(data.markets.map((item) => item.profit))];
+      els.tierFilter.innerHTML = tiers.map((tier) => `<option value="${tier}">${tier}</option>`).join("");
+      els.profitFilter.innerHTML = profits.map((profit) => `<option value="${profit}">${profit}</option>`).join("");
+
+      els.searchInput.addEventListener("input", (event) => {
+        state.query = event.target.value.trim();
+        renderDynamic();
+      });
+      els.tierFilter.addEventListener("change", (event) => {
+        state.tier = event.target.value;
+        renderDynamic();
+      });
+      els.profitFilter.addEventListener("change", (event) => {
+        state.profit = event.target.value;
+        renderDynamic();
+      });
+      els.sortSelect.addEventListener("change", (event) => {
+        state.sort = event.target.value;
+        renderDynamic();
+      });
+    }
+
+    function getFilteredMarkets() {
+      const query = normalize(state.query);
+      return data.markets
+        .filter((market) => state.tier === "全部" || market.tier === state.tier)
+        .filter((market) => state.profit === "全部" || market.profit === state.profit)
+        .filter((market) => !query || normalize(marketText(market)).includes(query))
+        .sort((left, right) => {
+          if (state.sort === "aov-desc") return right.aovUsdMid - left.aovUsdMid;
+          if (state.sort === "aov-asc") return left.aovUsdMid - right.aovUsdMid;
+          return left.priority - right.priority;
+        });
+    }
+
+    function renderMetrics(markets) {
+      const topTierCount = data.markets.filter((item) => item.tier === "第一梯队").length;
+      const highProfitCount = data.markets.filter((item) => item.profit.includes("高") && !item.profit.includes("风险")).length;
+      const maxAov = data.markets.reduce((current, item) => item.aovUsdMid > current.aovUsdMid ? item : current, data.markets[0]);
+      const platformSet = new Set(data.markets.flatMap((item) => item.platforms));
+      const metrics = [
+        { label: "覆盖市场", value: data.markets.length, hint: "含国家、区域与特殊市场" },
+        { label: "第一梯队", value: topTierCount, hint: "建议优先评估" },
+        { label: "高利润潜力", value: highProfitCount, hint: "需同时评估成本和合规" },
+        { label: "最高客单中位", value: `${maxAov.market}`, hint: `${maxAov.aovUsd}，${maxAov.rmb}` }
+      ];
+      els.metrics.innerHTML = metrics.map((item) => `
+        <article class="metric">
+          <div class="label">${item.label}</div>
+          <div class="value">${item.value}</div>
+          <div class="hint">${item.hint}</div>
+        </article>
+      `).join("");
+      els.resultCount.textContent = `当前显示 ${markets.length} 个市场；平台样本 ${platformSet.size} 个`;
+    }
+
+    function renderCards(markets) {
+      if (!markets.length) {
+        els.marketCards.innerHTML = `<div class="empty">没有匹配结果，试试减少筛选条件。</div>`;
+        return;
+      }
+      els.marketCards.innerHTML = markets.map((market) => `
+        <article class="market-card">
+          <div class="card-head">
+            <div>
+              <span class="rank">${market.priority}</span>
+              <h3>${market.market}</h3>
+            </div>
+            <span class="chip ${tierClass(market.tier)}">${market.tier}</span>
+          </div>
+          <div class="platform-list">
+            <div class="platform-item"><span class="small-label">首选平台</span>${market.first}</div>
+            <div class="platform-item"><span class="small-label">第二选择</span>${market.second}</div>
+            <div class="platform-item"><span class="small-label">第三选择</span>${market.third}</div>
+          </div>
+          <div>
+            <span class="chip ${profitClass(market.profit)}">${market.profit}</span>
+            <span class="chip">${market.aovUsd}</span>
+          </div>
+          <div class="brief">${market.playbook}</div>
+          <div class="brief muted">${market.brief}</div>
+        </article>
+      `).join("");
+    }
+
+    function renderTables(markets) {
+      els.priorityRows.innerHTML = markets.map((market) => `
+        <tr>
+          <td><span class="rank">${market.priority}</span></td>
+          <td><strong>${market.market}</strong></td>
+          <td><span class="chip ${tierClass(market.tier)}">${market.tier}</span></td>
+          <td>${market.first}</td>
+          <td>${market.second}</td>
+          <td>${market.third}</td>
+          <td><span class="chip ${profitClass(market.profit)}">${market.profit}</span></td>
+        </tr>
+      `).join("");
+
+      els.aovRows.innerHTML = markets.map((market) => `
+        <tr>
+          <td><strong>${market.market}</strong></td>
+          <td>${market.aovUsd}</td>
+          <td>${market.rmb}</td>
+          <td><span class="chip ${profitClass(market.profit)}">${market.profit}</span></td>
+          <td>${market.risk}</td>
+          <td>${market.playbook}</td>
+        </tr>
+      `).join("");
+    }
+
+    function renderBars(markets) {
+      const top = [...markets].sort((left, right) => right.aovUsdMid - left.aovUsdMid).slice(0, 10);
+      const max = Math.max(...top.map((item) => item.aovUsdMid), 1);
+      els.aovBars.innerHTML = top.map((market) => `
+        <div class="bar-row">
+          <div class="bar-label" title="${market.market}">${market.market}</div>
+          <div class="bar-track"><div class="bar-fill" style="width:${Math.round(market.aovUsdMid / max * 100)}%"></div></div>
+          <div class="bar-value">$${market.aovUsdMid}</div>
+        </div>
+      `).join("");
+    }
+
+    function renderStaticSections() {
+      els.tierBlocks.innerHTML = data.tiers.map((tier) => `
+        <article class="tier-block">
+          <h3>${tier.name}</h3>
+          <div>${tier.markets.map((market) => `<span class="chip ${tierClass(tier.name)}">${market}</span>`).join("")}</div>
+          <p>${tier.summary}</p>
+        </article>
+      `).join("");
+
+      els.actionList.innerHTML = data.actionPriorities.map((item) => `<li>${item}</li>`).join("");
+
+      els.sellerTypes.innerHTML = data.sellerTypes.map((type) => `
+        <article class="seller-card">
+          <h3>${type.name}</h3>
+          <div>${type.platforms.map((platform) => `<span class="chip blue">${platform}</span>`).join("")}</div>
+          <ul class="list">${type.traits.map((trait) => `<li>${trait}</li>`).join("")}</ul>
+        </article>
+      `).join("");
+
+      els.aovNotes.innerHTML = data.aovNotes.map((note) => `<li>${note}</li>`).join("");
+
+      els.categoryTargets.innerHTML = data.categoryUpdateTargets.map((item) => `<span class="chip green">${item}</span>`).join("");
+
+      els.methodology.innerHTML = data.meta.methodology.map((item) => `<li>${item}</li>`).join("");
+      els.sources.innerHTML = data.meta.sourceDirections.map((item) => `<li>${item}</li>`).join("");
+    }
+
+    function renderDynamic() {
+      const markets = getFilteredMarkets();
+      renderMetrics(markets);
+      renderCards(markets);
+      renderTables(markets);
+      renderBars(markets);
+    }
+
+    setupHeader();
+    setupFilters();
+    renderStaticSections();
+    renderDynamic();
+  </script>
+</body>
+</html>
