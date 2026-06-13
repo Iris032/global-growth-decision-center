@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-12T10:31:20.965Z",
+  "generatedAt": "2026-06-13T04:55:19.513Z",
   "targetYear": 2026,
   "targetMonth": 6,
   "dataMode": "public-online-refresh",
@@ -1312,51 +1312,6 @@
         "reviewRequired": false
       },
       {
-        "id": "seed-2026-06-21-sea-夏季选品",
-        "date": "2026-06-21",
-        "day": 21,
-        "cls": "social",
-        "code": "SEA",
-        "region": "东南亚",
-        "title": "夏季选品",
-        "type": "选品趋势",
-        "description": "区域型消费趋势节点，适合东南亚轻小件、内容电商和季节性商品。",
-        "suggestion": "可安排 Shopee/TikTok Shop 夏季轻小件选品和短视频卖点脚本。",
-        "contentAngle": "可安排 Shopee/TikTok Shop 夏季轻小件选品和短视频卖点脚本。",
-        "recommendedFormats": [
-          "朋友圈内容",
-          "LinkedIn 观点帖",
-          "海报"
-        ],
-        "associatedPlatforms": [
-          "Shopee",
-          "TikTok Shop",
-          "Lazada"
-        ],
-        "associatedAudiences": [
-          "Shopee / TikTok Shop 内容电商卖家",
-          "泛品 / 白牌 / 低价货卖家"
-        ],
-        "impactCategories": [
-          "品牌价值",
-          "社媒热点",
-          "可持续内容"
-        ],
-        "contentGoals": [
-          "brand-awareness",
-          "industry-insight"
-        ],
-        "channels": [
-          "wechat-moments",
-          "linkedin",
-          "instagram"
-        ],
-        "sourceIds": [
-          "src-seed-public-events"
-        ],
-        "reviewRequired": false
-      },
-      {
         "id": "holiday-ca-2026-06-21-national-aboriginal-day",
         "date": "2026-06-21",
         "day": 21,
@@ -1400,48 +1355,49 @@
         "reviewRequired": false
       },
       {
-        "id": "seed-2026-06-24-xbd-跨境线上论坛",
-        "date": "2026-06-24",
-        "day": 24,
-        "cls": "summit",
-        "code": "XBD",
-        "region": "跨境泛话题",
-        "title": "跨境线上论坛",
-        "type": "行业内容",
-        "description": "适合承载行业观察、客户教育和销售线索培育。",
-        "suggestion": "可安排线上论坛预热、嘉宾观点拆条、会后公众号复盘和销售跟进素材。",
-        "contentAngle": "可安排线上论坛预热、嘉宾观点拆条、会后公众号复盘和销售跟进素材。",
+        "id": "seed-2026-06-21-sea-夏季选品",
+        "date": "2026-06-21",
+        "day": 21,
+        "cls": "social",
+        "code": "SEA",
+        "region": "东南亚",
+        "title": "夏季选品",
+        "type": "选品趋势",
+        "description": "区域型消费趋势节点，适合东南亚轻小件、内容电商和季节性商品。",
+        "suggestion": "可安排 Shopee/TikTok Shop 夏季轻小件选品和短视频卖点脚本。",
+        "contentAngle": "可安排 Shopee/TikTok Shop 夏季轻小件选品和短视频卖点脚本。",
         "recommendedFormats": [
+          "朋友圈内容",
           "LinkedIn 观点帖",
-          "销售跟进内容",
-          "公众号选题"
+          "海报"
         ],
         "associatedPlatforms": [
-          "多平台"
+          "Shopee",
+          "TikTok Shop",
+          "Lazada"
         ],
         "associatedAudiences": [
-          "平台服务商 / 代运营",
-          "销售团队",
-          "增长 / 市场 / 销售团队"
+          "Shopee / TikTok Shop 内容电商卖家",
+          "泛品 / 白牌 / 低价货卖家"
         ],
         "impactCategories": [
-          "B2B 服务",
-          "行业洞察",
-          "销售线索"
+          "品牌价值",
+          "社媒热点",
+          "可持续内容"
         ],
         "contentGoals": [
-          "industry-insight",
-          "sales-nurture"
+          "brand-awareness",
+          "industry-insight"
         ],
         "channels": [
+          "wechat-moments",
           "linkedin",
-          "blog-seo",
-          "email"
+          "instagram"
         ],
         "sourceIds": [
           "src-seed-public-events"
         ],
-        "reviewRequired": true
+        "reviewRequired": false
       },
       {
         "id": "holiday-ca-2026-06-24-discovery-day",
@@ -1528,6 +1484,50 @@
           "src-nager-holidays"
         ],
         "reviewRequired": false
+      },
+      {
+        "id": "seed-2026-06-24-xbd-跨境线上论坛",
+        "date": "2026-06-24",
+        "day": 24,
+        "cls": "summit",
+        "code": "XBD",
+        "region": "跨境泛话题",
+        "title": "跨境线上论坛",
+        "type": "行业内容",
+        "description": "适合承载行业观察、客户教育和销售线索培育。",
+        "suggestion": "可安排线上论坛预热、嘉宾观点拆条、会后公众号复盘和销售跟进素材。",
+        "contentAngle": "可安排线上论坛预热、嘉宾观点拆条、会后公众号复盘和销售跟进素材。",
+        "recommendedFormats": [
+          "LinkedIn 观点帖",
+          "销售跟进内容",
+          "公众号选题"
+        ],
+        "associatedPlatforms": [
+          "多平台"
+        ],
+        "associatedAudiences": [
+          "平台服务商 / 代运营",
+          "销售团队",
+          "增长 / 市场 / 销售团队"
+        ],
+        "impactCategories": [
+          "B2B 服务",
+          "行业洞察",
+          "销售线索"
+        ],
+        "contentGoals": [
+          "industry-insight",
+          "sales-nurture"
+        ],
+        "channels": [
+          "linkedin",
+          "blog-seo",
+          "email"
+        ],
+        "sourceIds": [
+          "src-seed-public-events"
+        ],
+        "reviewRequired": true
       },
       {
         "id": "seed-2026-06-28-de-月末促销",
@@ -2140,7 +2140,7 @@
       "updateFrequency": "weekly",
       "status": "ready",
       "note": "第一版用于公开节假日自动更新；可在后续补充 Google Calendar 公开日历。",
-      "lastCheckedAt": "2026-06-12T10:31:20.965Z"
+      "lastCheckedAt": "2026-06-13T04:55:19.513Z"
     },
     {
       "id": "src-world-bank",
@@ -2153,7 +2153,7 @@
       "updateFrequency": "monthly",
       "status": "ready",
       "note": "用于人口、GDP、互联网使用率等公开宏观信号。",
-      "lastCheckedAt": "2026-06-12T10:31:20.965Z"
+      "lastCheckedAt": "2026-06-13T04:55:19.513Z"
     },
     {
       "id": "src-seed-public-events",
@@ -2166,11 +2166,11 @@
       "updateFrequency": "manual-review",
       "status": "review-needed",
       "note": "第一版先保留公开节点种子，后续逐个替换为平台官网、会议官网或体育赛程来源。",
-      "lastCheckedAt": "2026-06-12T10:31:20.965Z"
+      "lastCheckedAt": "2026-06-13T04:55:19.513Z"
     }
   ],
   "updateStatus": {
-    "lastUpdatedAt": "2026-06-12T10:31:20.965Z",
+    "lastUpdatedAt": "2026-06-13T04:55:19.513Z",
     "nextUpdateHint": "GitHub Actions 每天运行一次",
     "counts": {
       "sources": 3,
