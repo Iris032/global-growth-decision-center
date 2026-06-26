@@ -1,6 +1,6 @@
 window.GROWTH_DECISION_DATA = {
   "version": 1,
-  "generatedAt": "2026-06-25T04:37:37.978Z",
+  "generatedAt": "2026-06-26T04:45:16.639Z",
   "targetYear": 2026,
   "targetMonth": 6,
   "dataMode": "public-online-refresh",
@@ -2140,7 +2140,7 @@ window.GROWTH_DECISION_DATA = {
       "updateFrequency": "weekly",
       "status": "ready",
       "note": "第一版用于公开节假日自动更新；可在后续补充 Google Calendar 公开日历。",
-      "lastCheckedAt": "2026-06-25T04:37:37.978Z"
+      "lastCheckedAt": "2026-06-26T04:45:16.639Z"
     },
     {
       "id": "src-world-bank",
@@ -2153,7 +2153,7 @@ window.GROWTH_DECISION_DATA = {
       "updateFrequency": "monthly",
       "status": "ready",
       "note": "用于人口、GDP、互联网使用率等公开宏观信号。",
-      "lastCheckedAt": "2026-06-25T04:37:37.978Z"
+      "lastCheckedAt": "2026-06-26T04:45:16.639Z"
     },
     {
       "id": "src-seed-public-events",
@@ -2166,11 +2166,11 @@ window.GROWTH_DECISION_DATA = {
       "updateFrequency": "manual-review",
       "status": "review-needed",
       "note": "第一版先保留公开节点种子，后续逐个替换为平台官网、会议官网或体育赛程来源。",
-      "lastCheckedAt": "2026-06-25T04:37:37.978Z"
+      "lastCheckedAt": "2026-06-26T04:45:16.639Z"
     }
   ],
   "updateStatus": {
-    "lastUpdatedAt": "2026-06-25T04:37:37.978Z",
+    "lastUpdatedAt": "2026-06-26T04:45:16.639Z",
     "nextUpdateHint": "GitHub Actions 每天运行一次",
     "counts": {
       "sources": 3,
