@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-30T04:38:19.461Z",
+  "generatedAt": "2026-07-01T04:57:39.633Z",
   "targetYear": 2026,
-  "targetMonth": 6,
+  "targetMonth": 7,
   "dataMode": "public-online-refresh",
   "configOptions": {
     "audiences": [
@@ -657,19 +657,19 @@
   ],
   "calendar": {
     "year": 2026,
-    "month": 6,
-    "label": "June 2026 Calendar",
+    "month": 7,
+    "label": "July 2026 Calendar",
     "events": [
       {
-        "id": "holiday-au-2026-06-01-reconciliation-day",
-        "date": "2026-06-01",
+        "id": "holiday-ca-2026-07-01-canada-day",
+        "date": "2026-07-01",
         "day": 1,
         "cls": "festival",
-        "code": "AU",
-        "region": "澳大利亚",
-        "title": "Reconciliation Day",
+        "code": "CA",
+        "region": "加拿大",
+        "title": "Canada Day",
         "type": "公开节假日",
-        "description": "澳大利亚公开节假日：Reconciliation Day。",
+        "description": "加拿大公开节假日：Canada Day。",
         "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
         "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
         "recommendedFormats": [
@@ -704,580 +704,15 @@
         "reviewRequired": false
       },
       {
-        "id": "holiday-au-2026-06-01-western-australia-day",
-        "date": "2026-06-01",
-        "day": 1,
-        "cls": "festival",
-        "code": "AU",
-        "region": "澳大利亚",
-        "title": "Western Australia Day",
-        "type": "公开节假日",
-        "description": "澳大利亚公开节假日：Western Australia Day。",
-        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
-        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
-        "recommendedFormats": [
-          "朋友圈内容",
-          "海报",
-          "社媒帖"
-        ],
-        "associatedPlatforms": [
-          "多平台"
-        ],
-        "associatedAudiences": [
-          "全球增长团队",
-          "品牌出海团队"
-        ],
-        "impactCategories": [
-          "礼品",
-          "亲子",
-          "本地化内容"
-        ],
-        "contentGoals": [
-          "holiday-moment",
-          "brand-awareness"
-        ],
-        "channels": [
-          "wechat-moments",
-          "instagram",
-          "facebook"
-        ],
-        "sourceIds": [
-          "src-nager-holidays"
-        ],
-        "reviewRequired": false
-      },
-      {
-        "id": "holiday-kr-2026-06-03-local-election-day",
-        "date": "2026-06-03",
+        "id": "holiday-us-2026-07-03-independence-day",
+        "date": "2026-07-03",
         "day": 3,
-        "cls": "festival",
-        "code": "KR",
-        "region": "韩国",
-        "title": "지방 선거일",
-        "type": "公开节假日",
-        "description": "韩国公开节假日：Local Election Day。",
-        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
-        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
-        "recommendedFormats": [
-          "朋友圈内容",
-          "海报",
-          "社媒帖"
-        ],
-        "associatedPlatforms": [
-          "Coupang",
-          "Naver"
-        ],
-        "associatedAudiences": [
-          "全球增长团队",
-          "品牌出海团队"
-        ],
-        "impactCategories": [
-          "礼品",
-          "亲子",
-          "本地化内容"
-        ],
-        "contentGoals": [
-          "holiday-moment",
-          "brand-awareness"
-        ],
-        "channels": [
-          "wechat-moments",
-          "instagram",
-          "facebook"
-        ],
-        "sourceIds": [
-          "src-nager-holidays"
-        ],
-        "reviewRequired": false
-      },
-      {
-        "id": "holiday-pl-2026-06-04-corpus-christi",
-        "date": "2026-06-04",
-        "day": 4,
-        "cls": "festival",
-        "code": "PL",
-        "region": "波兰",
-        "title": "Boże Ciało",
-        "type": "公开节假日",
-        "description": "波兰公开节假日：Corpus Christi。",
-        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
-        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
-        "recommendedFormats": [
-          "朋友圈内容",
-          "海报",
-          "社媒帖"
-        ],
-        "associatedPlatforms": [
-          "多平台"
-        ],
-        "associatedAudiences": [
-          "全球增长团队",
-          "品牌出海团队"
-        ],
-        "impactCategories": [
-          "礼品",
-          "亲子",
-          "本地化内容"
-        ],
-        "contentGoals": [
-          "holiday-moment",
-          "brand-awareness"
-        ],
-        "channels": [
-          "wechat-moments",
-          "instagram",
-          "facebook"
-        ],
-        "sourceIds": [
-          "src-nager-holidays"
-        ],
-        "reviewRequired": false
-      },
-      {
-        "id": "holiday-br-2026-06-04-corpus-christi",
-        "date": "2026-06-04",
-        "day": 4,
-        "cls": "festival",
-        "code": "BR",
-        "region": "巴西",
-        "title": "Corpus Christi",
-        "type": "公开节假日",
-        "description": "巴西公开节假日：Corpus Christi。",
-        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
-        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
-        "recommendedFormats": [
-          "朋友圈内容",
-          "海报",
-          "社媒帖"
-        ],
-        "associatedPlatforms": [
-          "多平台"
-        ],
-        "associatedAudiences": [
-          "全球增长团队",
-          "品牌出海团队"
-        ],
-        "impactCategories": [
-          "礼品",
-          "亲子",
-          "本地化内容"
-        ],
-        "contentGoals": [
-          "holiday-moment",
-          "brand-awareness"
-        ],
-        "channels": [
-          "wechat-moments",
-          "instagram",
-          "facebook"
-        ],
-        "sourceIds": [
-          "src-nager-holidays"
-        ],
-        "reviewRequired": false
-      },
-      {
-        "id": "holiday-de-2026-06-04-corpus-christi",
-        "date": "2026-06-04",
-        "day": 4,
-        "cls": "festival",
-        "code": "DE",
-        "region": "德国",
-        "title": "Fronleichnam",
-        "type": "公开节假日",
-        "description": "德国公开节假日：Corpus Christi。",
-        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
-        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
-        "recommendedFormats": [
-          "朋友圈内容",
-          "海报",
-          "社媒帖"
-        ],
-        "associatedPlatforms": [
-          "Amazon Germany",
-          "OTTO",
-          "eBay"
-        ],
-        "associatedAudiences": [
-          "品牌货 / 精品 / 高客单卖家",
-          "平台服务商 / 代运营"
-        ],
-        "impactCategories": [
-          "礼品",
-          "亲子",
-          "本地化内容"
-        ],
-        "contentGoals": [
-          "holiday-moment",
-          "brand-awareness"
-        ],
-        "channels": [
-          "wechat-moments",
-          "instagram",
-          "facebook"
-        ],
-        "sourceIds": [
-          "src-nager-holidays"
-        ],
-        "reviewRequired": false
-      },
-      {
-        "id": "seed-2026-06-05-global-世界环境日",
-        "date": "2026-06-05",
-        "day": 5,
-        "cls": "social",
-        "code": "GLOBAL",
-        "region": "全球",
-        "title": "世界环境日",
-        "type": "社媒热点",
-        "description": "全球型社媒热点，适合做可持续包装、环保选品和品牌价值内容。",
-        "suggestion": "可安排环保包装趋势、绿色物流、可持续选品清单和 LinkedIn 品牌观点帖。",
-        "contentAngle": "可安排环保包装趋势、绿色物流、可持续选品清单和 LinkedIn 品牌观点帖。",
-        "recommendedFormats": [
-          "朋友圈内容",
-          "LinkedIn 观点帖",
-          "海报"
-        ],
-        "associatedPlatforms": [
-          "多平台"
-        ],
-        "associatedAudiences": [
-          "全球增长团队",
-          "品牌出海团队"
-        ],
-        "impactCategories": [
-          "品牌价值",
-          "社媒热点",
-          "可持续内容"
-        ],
-        "contentGoals": [
-          "brand-awareness",
-          "industry-insight"
-        ],
-        "channels": [
-          "wechat-moments",
-          "linkedin",
-          "instagram"
-        ],
-        "sourceIds": [
-          "src-seed-public-events"
-        ],
-        "reviewRequired": false
-      },
-      {
-        "id": "holiday-kr-2026-06-06-memorial-day",
-        "date": "2026-06-06",
-        "day": 6,
-        "cls": "festival",
-        "code": "KR",
-        "region": "韩国",
-        "title": "현충일",
-        "type": "公开节假日",
-        "description": "韩国公开节假日：Memorial Day。",
-        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
-        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
-        "recommendedFormats": [
-          "朋友圈内容",
-          "海报",
-          "社媒帖"
-        ],
-        "associatedPlatforms": [
-          "Coupang",
-          "Naver"
-        ],
-        "associatedAudiences": [
-          "全球增长团队",
-          "品牌出海团队"
-        ],
-        "impactCategories": [
-          "礼品",
-          "亲子",
-          "本地化内容"
-        ],
-        "contentGoals": [
-          "holiday-moment",
-          "brand-awareness"
-        ],
-        "channels": [
-          "wechat-moments",
-          "instagram",
-          "facebook"
-        ],
-        "sourceIds": [
-          "src-nager-holidays"
-        ],
-        "reviewRequired": false
-      },
-      {
-        "id": "holiday-au-2026-06-08-king-s-birthday",
-        "date": "2026-06-08",
-        "day": 8,
-        "cls": "festival",
-        "code": "AU",
-        "region": "澳大利亚",
-        "title": "King's Birthday",
-        "type": "公开节假日",
-        "description": "澳大利亚公开节假日：King's Birthday。",
-        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
-        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
-        "recommendedFormats": [
-          "朋友圈内容",
-          "海报",
-          "社媒帖"
-        ],
-        "associatedPlatforms": [
-          "多平台"
-        ],
-        "associatedAudiences": [
-          "全球增长团队",
-          "品牌出海团队"
-        ],
-        "impactCategories": [
-          "礼品",
-          "亲子",
-          "本地化内容"
-        ],
-        "contentGoals": [
-          "holiday-moment",
-          "brand-awareness"
-        ],
-        "channels": [
-          "wechat-moments",
-          "instagram",
-          "facebook"
-        ],
-        "sourceIds": [
-          "src-nager-holidays"
-        ],
-        "reviewRequired": false
-      },
-      {
-        "id": "seed-2026-06-08-amz-Prime-Day-准备窗口",
-        "date": "2026-06-08",
-        "day": 8,
-        "cls": "shop",
-        "code": "AMZ",
-        "region": "Amazon",
-        "title": "Prime Day 准备窗口",
-        "type": "平台大促",
-        "description": "平台型准备节点，用于提前安排库存、客服、广告素材和促销页面检查。",
-        "suggestion": "正式发布前应复核 Amazon 当年 Prime Day 公告日期。",
-        "contentAngle": "正式发布前应复核 Amazon 当年 Prime Day 公告日期。",
-        "recommendedFormats": [
-          "清单 / Checklist",
-          "公众号选题",
-          "邮件主题"
-        ],
-        "associatedPlatforms": [
-          "Amazon"
-        ],
-        "associatedAudiences": [
-          "Amazon 卖家",
-          "平台服务商 / 代运营"
-        ],
-        "impactCategories": [
-          "大促备货",
-          "客服",
-          "广告投放"
-        ],
-        "contentGoals": [
-          "campaign-warmup",
-          "lead-conversion"
-        ],
-        "channels": [
-          "wechat-article",
-          "email",
-          "linkedin"
-        ],
-        "sourceIds": [
-          "src-seed-public-events"
-        ],
-        "reviewRequired": true
-      },
-      {
-        "id": "seed-2026-06-10-eu-行业峰会窗口",
-        "date": "2026-06-10",
-        "day": 10,
-        "cls": "summit",
-        "code": "EU",
-        "region": "欧洲",
-        "title": "行业峰会窗口",
-        "type": "行业峰会",
-        "description": "区域型 B2B 内容窗口，适合承载欧洲市场趋势观察和会前线索培育。",
-        "suggestion": "后续接入具体峰会官网日程后替换为真实会议名称。",
-        "contentAngle": "后续接入具体峰会官网日程后替换为真实会议名称。",
-        "recommendedFormats": [
-          "LinkedIn 观点帖",
-          "销售跟进内容",
-          "公众号选题"
-        ],
-        "associatedPlatforms": [
-          "Amazon",
-          "eBay",
-          "OTTO"
-        ],
-        "associatedAudiences": [
-          "品牌货 / 精品 / 高客单卖家",
-          "平台服务商 / 代运营"
-        ],
-        "impactCategories": [
-          "B2B 服务",
-          "行业洞察",
-          "销售线索"
-        ],
-        "contentGoals": [
-          "industry-insight",
-          "sales-nurture"
-        ],
-        "channels": [
-          "linkedin",
-          "blog-seo",
-          "email"
-        ],
-        "sourceIds": [
-          "src-seed-public-events"
-        ],
-        "reviewRequired": true
-      },
-      {
-        "id": "seed-2026-06-14-global-体育赛事节点",
-        "date": "2026-06-14",
-        "day": 14,
-        "cls": "sports",
-        "code": "GLOBAL",
-        "region": "全球",
-        "title": "体育赛事节点",
-        "type": "体育赛事",
-        "description": "体育热点内容节点，适合运动户外、观赛场景、家居和派对消费主题。",
-        "suggestion": "正式发布前需复核赛事名称、赛程和版权表达边界。",
-        "contentAngle": "正式发布前需复核赛事名称、赛程和版权表达边界。",
-        "recommendedFormats": [
-          "社媒帖",
-          "海报主题清单",
-          "短视频脚本方向"
-        ],
-        "associatedPlatforms": [
-          "多平台"
-        ],
-        "associatedAudiences": [
-          "全球增长团队",
-          "品牌出海团队"
-        ],
-        "impactCategories": [
-          "运动户外",
-          "观赛场景",
-          "服饰"
-        ],
-        "contentGoals": [
-          "brand-awareness",
-          "holiday-moment"
-        ],
-        "channels": [
-          "wechat-moments",
-          "instagram",
-          "tiktok"
-        ],
-        "sourceIds": [
-          "src-seed-public-events"
-        ],
-        "reviewRequired": true
-      },
-      {
-        "id": "holiday-gb-2026-06-15-world-cup-bank-holiday",
-        "date": "2026-06-15",
-        "day": 15,
-        "cls": "festival",
-        "code": "GB",
-        "region": "英国",
-        "title": "World Cup Bank Holiday",
-        "type": "公开节假日",
-        "description": "英国公开节假日：World Cup Bank Holiday。",
-        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
-        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
-        "recommendedFormats": [
-          "朋友圈内容",
-          "海报",
-          "社媒帖"
-        ],
-        "associatedPlatforms": [
-          "多平台"
-        ],
-        "associatedAudiences": [
-          "全球增长团队",
-          "品牌出海团队"
-        ],
-        "impactCategories": [
-          "礼品",
-          "亲子",
-          "本地化内容"
-        ],
-        "contentGoals": [
-          "holiday-moment",
-          "brand-awareness"
-        ],
-        "channels": [
-          "wechat-moments",
-          "instagram",
-          "facebook"
-        ],
-        "sourceIds": [
-          "src-nager-holidays"
-        ],
-        "reviewRequired": false
-      },
-      {
-        "id": "seed-2026-06-18-plat-平台内容周",
-        "date": "2026-06-18",
-        "day": 18,
-        "cls": "platform",
-        "code": "PLAT",
-        "region": "平台通用",
-        "title": "平台内容周",
-        "type": "平台内容",
-        "description": "平台规则、店铺运营和卖家教育内容档期。",
-        "suggestion": "可安排平台规则解读、店铺运营 checklist、卖家案例和短视频脚本。",
-        "contentAngle": "可安排平台规则解读、店铺运营 checklist、卖家案例和短视频脚本。",
-        "recommendedFormats": [
-          "平台教育帖",
-          "Checklist",
-          "短视频脚本方向"
-        ],
-        "associatedPlatforms": [
-          "多平台"
-        ],
-        "associatedAudiences": [
-          "全球增长团队",
-          "品牌出海团队"
-        ],
-        "impactCategories": [
-          "平台规则",
-          "运营能力",
-          "卖家教育"
-        ],
-        "contentGoals": [
-          "platform-education",
-          "lead-conversion"
-        ],
-        "channels": [
-          "wechat-article",
-          "linkedin",
-          "tiktok"
-        ],
-        "sourceIds": [
-          "src-seed-public-events"
-        ],
-        "reviewRequired": false
-      },
-      {
-        "id": "holiday-us-2026-06-19-juneteenth-national-independence-day",
-        "date": "2026-06-19",
-        "day": 19,
         "cls": "festival",
         "code": "US",
         "region": "美国",
-        "title": "Juneteenth National Independence Day",
+        "title": "Independence Day",
         "type": "公开节假日",
-        "description": "美国公开节假日：Juneteenth National Independence Day。",
+        "description": "美国公开节假日：Independence Day。",
         "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
         "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
         "recommendedFormats": [
@@ -1312,15 +747,58 @@
         "reviewRequired": false
       },
       {
-        "id": "holiday-ca-2026-06-21-national-aboriginal-day",
-        "date": "2026-06-21",
-        "day": 21,
+        "id": "holiday-br-2026-07-09-constitutionalist-revolution-of-1932",
+        "date": "2026-07-09",
+        "day": 9,
+        "cls": "festival",
+        "code": "BR",
+        "region": "巴西",
+        "title": "Revolução Constitucionalista de 1932",
+        "type": "公开节假日",
+        "description": "巴西公开节假日：Constitutionalist Revolution of 1932。",
+        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
+        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
+        "recommendedFormats": [
+          "朋友圈内容",
+          "海报",
+          "社媒帖"
+        ],
+        "associatedPlatforms": [
+          "多平台"
+        ],
+        "associatedAudiences": [
+          "全球增长团队",
+          "品牌出海团队"
+        ],
+        "impactCategories": [
+          "礼品",
+          "亲子",
+          "本地化内容"
+        ],
+        "contentGoals": [
+          "holiday-moment",
+          "brand-awareness"
+        ],
+        "channels": [
+          "wechat-moments",
+          "instagram",
+          "facebook"
+        ],
+        "sourceIds": [
+          "src-nager-holidays"
+        ],
+        "reviewRequired": false
+      },
+      {
+        "id": "holiday-ca-2026-07-12-orangemen-s-day",
+        "date": "2026-07-12",
+        "day": 12,
         "cls": "festival",
         "code": "CA",
         "region": "加拿大",
-        "title": "National Aboriginal Day",
+        "title": "Orangemen's Day",
         "type": "公开节假日",
-        "description": "加拿大公开节假日：National Aboriginal Day。",
+        "description": "加拿大公开节假日：Orangemen's Day。",
         "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
         "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
         "recommendedFormats": [
@@ -1355,60 +833,15 @@
         "reviewRequired": false
       },
       {
-        "id": "seed-2026-06-21-sea-夏季选品",
-        "date": "2026-06-21",
-        "day": 21,
-        "cls": "social",
-        "code": "SEA",
-        "region": "东南亚",
-        "title": "夏季选品",
-        "type": "选品趋势",
-        "description": "区域型消费趋势节点，适合东南亚轻小件、内容电商和季节性商品。",
-        "suggestion": "可安排 Shopee/TikTok Shop 夏季轻小件选品和短视频卖点脚本。",
-        "contentAngle": "可安排 Shopee/TikTok Shop 夏季轻小件选品和短视频卖点脚本。",
-        "recommendedFormats": [
-          "朋友圈内容",
-          "LinkedIn 观点帖",
-          "海报"
-        ],
-        "associatedPlatforms": [
-          "Shopee",
-          "TikTok Shop",
-          "Lazada"
-        ],
-        "associatedAudiences": [
-          "Shopee / TikTok Shop 内容电商卖家",
-          "泛品 / 白牌 / 低价货卖家"
-        ],
-        "impactCategories": [
-          "品牌价值",
-          "社媒热点",
-          "可持续内容"
-        ],
-        "contentGoals": [
-          "brand-awareness",
-          "industry-insight"
-        ],
-        "channels": [
-          "wechat-moments",
-          "linkedin",
-          "instagram"
-        ],
-        "sourceIds": [
-          "src-seed-public-events"
-        ],
-        "reviewRequired": false
-      },
-      {
-        "id": "holiday-ca-2026-06-24-discovery-day",
-        "date": "2026-06-24",
-        "day": 24,
+        "id": "holiday-gb-2026-07-13-battle-of-the-boyne",
+        "date": "2026-07-13",
+        "day": 13,
         "cls": "festival",
-        "code": "CA",
-        "region": "加拿大",
-        "title": "Discovery Day",
+        "code": "GB",
+        "region": "英国",
+        "title": "Battle of the Boyne",
         "type": "公开节假日",
-        "description": "加拿大公开节假日：Discovery Day。",
+        "description": "英国公开节假日：Battle of the Boyne。",
         "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
         "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
         "recommendedFormats": [
@@ -1443,15 +876,15 @@
         "reviewRequired": false
       },
       {
-        "id": "holiday-ca-2026-06-24-national-holiday",
-        "date": "2026-06-24",
-        "day": 24,
+        "id": "holiday-fr-2026-07-14-bastille-day",
+        "date": "2026-07-14",
+        "day": 14,
         "cls": "festival",
-        "code": "CA",
-        "region": "加拿大",
-        "title": "Fête nationale du Québec",
+        "code": "FR",
+        "region": "法国",
+        "title": "Fête nationale",
         "type": "公开节假日",
-        "description": "加拿大公开节假日：National Holiday。",
+        "description": "法国公开节假日：Bastille Day。",
         "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
         "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
         "recommendedFormats": [
@@ -1486,91 +919,90 @@
         "reviewRequired": false
       },
       {
-        "id": "seed-2026-06-24-xbd-跨境线上论坛",
-        "date": "2026-06-24",
-        "day": 24,
-        "cls": "summit",
-        "code": "XBD",
-        "region": "跨境泛话题",
-        "title": "跨境线上论坛",
-        "type": "行业内容",
-        "description": "适合承载行业观察、客户教育和销售线索培育。",
-        "suggestion": "可安排线上论坛预热、嘉宾观点拆条、会后公众号复盘和销售跟进素材。",
-        "contentAngle": "可安排线上论坛预热、嘉宾观点拆条、会后公众号复盘和销售跟进素材。",
+        "id": "holiday-kr-2026-07-17-constitution-day",
+        "date": "2026-07-17",
+        "day": 17,
+        "cls": "festival",
+        "code": "KR",
+        "region": "韩国",
+        "title": "제헌절",
+        "type": "公开节假日",
+        "description": "韩国公开节假日：Constitution Day。",
+        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
+        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
         "recommendedFormats": [
-          "LinkedIn 观点帖",
-          "销售跟进内容",
-          "公众号选题"
+          "朋友圈内容",
+          "海报",
+          "社媒帖"
         ],
         "associatedPlatforms": [
-          "多平台"
+          "Coupang",
+          "Naver"
         ],
         "associatedAudiences": [
-          "平台服务商 / 代运营",
-          "销售团队",
-          "增长 / 市场 / 销售团队"
+          "全球增长团队",
+          "品牌出海团队"
         ],
         "impactCategories": [
-          "B2B 服务",
-          "行业洞察",
-          "销售线索"
+          "礼品",
+          "亲子",
+          "本地化内容"
         ],
         "contentGoals": [
-          "industry-insight",
-          "sales-nurture"
+          "holiday-moment",
+          "brand-awareness"
         ],
         "channels": [
-          "linkedin",
-          "blog-seo",
-          "email"
+          "wechat-moments",
+          "instagram",
+          "facebook"
         ],
         "sourceIds": [
-          "src-seed-public-events"
+          "src-nager-holidays"
         ],
-        "reviewRequired": true
+        "reviewRequired": false
       },
       {
-        "id": "seed-2026-06-28-de-月末促销",
-        "date": "2026-06-28",
-        "day": 28,
-        "cls": "shop",
-        "code": "DE",
-        "region": "德国",
-        "title": "月末促销",
-        "type": "国家/地区促销",
-        "description": "德国单一市场节点示范，适合连接高客单、高合规和欧洲本地化主题。",
-        "suggestion": "可安排德国市场促销提醒、VAT/EPR 合规清单和高客单商品内容角度。",
-        "contentAngle": "可安排德国市场促销提醒、VAT/EPR 合规清单和高客单商品内容角度。",
+        "id": "holiday-jp-2026-07-20-marine-day",
+        "date": "2026-07-20",
+        "day": 20,
+        "cls": "festival",
+        "code": "JP",
+        "region": "日本",
+        "title": "海の日",
+        "type": "公开节假日",
+        "description": "日本公开节假日：Marine Day。",
+        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
+        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
         "recommendedFormats": [
-          "清单 / Checklist",
-          "公众号选题",
-          "邮件主题"
+          "朋友圈内容",
+          "海报",
+          "社媒帖"
         ],
         "associatedPlatforms": [
-          "Amazon Germany",
-          "OTTO",
-          "eBay"
+          "Amazon Japan",
+          "Rakuten"
         ],
         "associatedAudiences": [
-          "品牌货 / 精品 / 高客单卖家",
-          "平台服务商 / 代运营"
+          "全球增长团队",
+          "品牌出海团队"
         ],
         "impactCategories": [
-          "大促备货",
-          "客服",
-          "广告投放"
+          "礼品",
+          "亲子",
+          "本地化内容"
         ],
         "contentGoals": [
-          "campaign-warmup",
-          "lead-conversion"
+          "holiday-moment",
+          "brand-awareness"
         ],
         "channels": [
-          "wechat-article",
-          "email",
-          "linkedin"
+          "wechat-moments",
+          "instagram",
+          "facebook"
         ],
         "sourceIds": [
-          "src-seed-public-events"
+          "src-nager-holidays"
         ],
         "reviewRequired": false
       }
@@ -1846,7 +1278,7 @@
     {
       "id": "topic-prime-day-readiness",
       "title": "Prime Day 前客服和退货预案清单",
-      "month": "2026-06",
+      "month": "2026-07",
       "region": "AMZ",
       "platform": "Amazon",
       "audience": "Amazon 卖家",
@@ -1865,7 +1297,7 @@
     {
       "id": "topic-sea-short-video",
       "title": "东南亚夏季轻小件短视频卖点脚本",
-      "month": "2026-06",
+      "month": "2026-07",
       "region": "SEA",
       "platform": "Shopee / TikTok Shop",
       "audience": "Shopee / TikTok Shop 内容电商卖家",
@@ -1884,7 +1316,7 @@
     {
       "id": "topic-eu-compliance",
       "title": "德国月末促销前 VAT/EPR 合规提醒",
-      "month": "2026-06",
+      "month": "2026-07",
       "region": "DE",
       "platform": "Amazon Germany / OTTO",
       "audience": "品牌出海团队",
@@ -1903,7 +1335,7 @@
     {
       "id": "topic-jp-localization",
       "title": "日本品质型商品评价管理内容包",
-      "month": "2026-06",
+      "month": "2026-07",
       "region": "JP",
       "platform": "Amazon Japan / Rakuten",
       "audience": "品牌出海团队",
@@ -1922,7 +1354,7 @@
     {
       "id": "topic-br-logistics",
       "title": "巴西 Mercado Livre 本地仓和清关内容",
-      "month": "2026-06",
+      "month": "2026-07",
       "region": "BR",
       "platform": "Mercado Livre",
       "audience": "物流 / 海外仓 / 支付服务商",
@@ -1941,7 +1373,7 @@
     {
       "id": "topic-gcc-premium",
       "title": "中东/GCC 高客单消费品本地化表达",
-      "month": "2026-06",
+      "month": "2026-07",
       "region": "GCC",
       "platform": "Amazon.ae / Noon",
       "audience": "品牌货 / 精品 / 高客单卖家",
@@ -1960,7 +1392,7 @@
     {
       "id": "topic-platform-service",
       "title": "平台服务商多平台运营能力案例",
-      "month": "2026-06",
+      "month": "2026-07",
       "region": "GLOBAL",
       "platform": "多平台",
       "audience": "平台服务商 / 代运营",
@@ -1979,7 +1411,7 @@
     {
       "id": "topic-fashion-summer",
       "title": "全球夏季服装趋势社媒内容矩阵",
-      "month": "2026-06",
+      "month": "2026-07",
       "region": "GLOBAL",
       "platform": "Instagram / TikTok",
       "audience": "服装卖家",
@@ -2008,7 +1440,7 @@
       "updateFrequency": "weekly",
       "status": "ready",
       "note": "第一版用于公开节假日自动更新；可在后续补充 Google Calendar 公开日历。",
-      "lastCheckedAt": "2026-06-30T04:38:19.461Z"
+      "lastCheckedAt": "2026-07-01T04:57:39.633Z"
     },
     {
       "id": "src-world-bank",
@@ -2021,7 +1453,7 @@
       "updateFrequency": "monthly",
       "status": "warning",
       "note": "用于人口、GDP、互联网使用率等公开宏观信号。",
-      "lastCheckedAt": "2026-06-30T04:38:19.461Z"
+      "lastCheckedAt": "2026-07-01T04:57:39.633Z"
     },
     {
       "id": "src-seed-public-events",
@@ -2034,22 +1466,32 @@
       "updateFrequency": "manual-review",
       "status": "review-needed",
       "note": "第一版先保留公开节点种子，后续逐个替换为平台官网、会议官网或体育赛程来源。",
-      "lastCheckedAt": "2026-06-30T04:38:19.461Z"
+      "lastCheckedAt": "2026-07-01T04:57:39.633Z"
     }
   ],
   "updateStatus": {
-    "lastUpdatedAt": "2026-06-30T04:38:19.461Z",
+    "lastUpdatedAt": "2026-07-01T04:57:39.633Z",
     "nextUpdateHint": "GitHub Actions 每天运行一次",
     "counts": {
       "sources": 3,
-      "events": 21,
-      "reviewRequired": 4,
-      "failures": 1
+      "events": 8,
+      "reviewRequired": 0,
+      "failures": 3
     },
     "failures": [
       {
         "sourceId": "src-world-bank",
         "target": "SP.POP.TOTL",
+        "message": "This operation was aborted"
+      },
+      {
+        "sourceId": "src-world-bank",
+        "target": "NY.GDP.MKTP.CD",
+        "message": "This operation was aborted"
+      },
+      {
+        "sourceId": "src-world-bank",
+        "target": "IT.NET.USER.ZS",
         "message": "This operation was aborted"
       }
     ]
