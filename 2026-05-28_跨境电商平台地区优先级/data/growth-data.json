@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-01T04:57:39.633Z",
+  "generatedAt": "2026-07-02T04:34:06.196Z",
   "targetYear": 2026,
   "targetMonth": 7,
   "dataMode": "public-online-refresh",
@@ -1010,12 +1010,144 @@
   },
   "marketSignals": [
     {
+      "id": "wb-SP.POP.TOTL-AUS",
+      "country": "澳大利亚",
+      "code": "AU",
+      "indicator": "人口",
+      "value": 27614411,
+      "year": "2025",
+      "sourceIds": [
+        "src-world-bank"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "wb-SP.POP.TOTL-BRA",
+      "country": "巴西",
+      "code": "BR",
+      "indicator": "人口",
+      "value": 212812405,
+      "year": "2025",
+      "sourceIds": [
+        "src-world-bank"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "wb-SP.POP.TOTL-CAN",
+      "country": "加拿大",
+      "code": "CA",
+      "indicator": "人口",
+      "value": 41651653,
+      "year": "2025",
+      "sourceIds": [
+        "src-world-bank"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "wb-SP.POP.TOTL-DEU",
+      "country": "德国",
+      "code": "DE",
+      "indicator": "人口",
+      "value": 83491249,
+      "year": "2025",
+      "sourceIds": [
+        "src-world-bank"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "wb-SP.POP.TOTL-FRA",
+      "country": "法国",
+      "code": "FR",
+      "indicator": "人口",
+      "value": 68720337,
+      "year": "2025",
+      "sourceIds": [
+        "src-world-bank"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "wb-SP.POP.TOTL-GBR",
+      "country": "英国",
+      "code": "GB",
+      "indicator": "人口",
+      "value": 69487000,
+      "year": "2025",
+      "sourceIds": [
+        "src-world-bank"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "wb-SP.POP.TOTL-JPN",
+      "country": "日本",
+      "code": "JP",
+      "indicator": "人口",
+      "value": 123366734,
+      "year": "2025",
+      "sourceIds": [
+        "src-world-bank"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "wb-SP.POP.TOTL-KOR",
+      "country": "韩国",
+      "code": "KR",
+      "indicator": "人口",
+      "value": 51684564,
+      "year": "2025",
+      "sourceIds": [
+        "src-world-bank"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "wb-SP.POP.TOTL-MEX",
+      "country": "墨西哥",
+      "code": "MX",
+      "indicator": "人口",
+      "value": 131946900,
+      "year": "2025",
+      "sourceIds": [
+        "src-world-bank"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "wb-SP.POP.TOTL-POL",
+      "country": "波兰",
+      "code": "PL",
+      "indicator": "人口",
+      "value": 36435861,
+      "year": "2025",
+      "sourceIds": [
+        "src-world-bank"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "wb-SP.POP.TOTL-USA",
+      "country": "美国",
+      "code": "US",
+      "indicator": "人口",
+      "value": 341784857,
+      "year": "2025",
+      "sourceIds": [
+        "src-world-bank"
+      ],
+      "reviewRequired": false
+    },
+    {
       "id": "wb-NY.GDP.MKTP.CD-AUS",
       "country": "澳大利亚",
       "code": "AU",
       "indicator": "GDP current US$",
-      "value": 1757022451652.83,
-      "year": "2024",
+      "value": 1798518933689.21,
+      "year": "2025",
       "sourceIds": [
         "src-world-bank"
       ],
@@ -1026,8 +1158,8 @@
       "country": "巴西",
       "code": "BR",
       "indicator": "GDP current US$",
-      "value": 2185821648943.86,
-      "year": "2024",
+      "value": 2279920092492.13,
+      "year": "2025",
       "sourceIds": [
         "src-world-bank"
       ],
@@ -1038,8 +1170,8 @@
       "country": "加拿大",
       "code": "CA",
       "indicator": "GDP current US$",
-      "value": 2243636826633.76,
-      "year": "2024",
+      "value": 2319899772425.92,
+      "year": "2025",
       "sourceIds": [
         "src-world-bank"
       ],
@@ -1050,8 +1182,8 @@
       "country": "德国",
       "code": "DE",
       "indicator": "GDP current US$",
-      "value": 4685592577804.69,
-      "year": "2024",
+      "value": 5050922925047.05,
+      "year": "2025",
       "sourceIds": [
         "src-world-bank"
       ],
@@ -1062,8 +1194,8 @@
       "country": "法国",
       "code": "FR",
       "indicator": "GDP current US$",
-      "value": 3160442622465.08,
-      "year": "2024",
+      "value": 3366315927447.33,
+      "year": "2025",
       "sourceIds": [
         "src-world-bank"
       ],
@@ -1074,8 +1206,8 @@
       "country": "英国",
       "code": "GB",
       "indicator": "GDP current US$",
-      "value": 3686033044482.13,
-      "year": "2024",
+      "value": 4002587541846.01,
+      "year": "2025",
       "sourceIds": [
         "src-world-bank"
       ],
@@ -1086,8 +1218,8 @@
       "country": "日本",
       "code": "JP",
       "indicator": "GDP current US$",
-      "value": 4027597523550.58,
-      "year": "2024",
+      "value": 4435162999976.94,
+      "year": "2025",
       "sourceIds": [
         "src-world-bank"
       ],
@@ -1098,8 +1230,8 @@
       "country": "韩国",
       "code": "KR",
       "indicator": "GDP current US$",
-      "value": 1875388209406.8,
-      "year": "2024",
+      "value": 1872374961553.15,
+      "year": "2025",
       "sourceIds": [
         "src-world-bank"
       ],
@@ -1110,8 +1242,8 @@
       "country": "墨西哥",
       "code": "MX",
       "indicator": "GDP current US$",
-      "value": 1856365616165.94,
-      "year": "2024",
+      "value": 1832641364775.52,
+      "year": "2025",
       "sourceIds": [
         "src-world-bank"
       ],
@@ -1122,8 +1254,8 @@
       "country": "波兰",
       "code": "PL",
       "indicator": "GDP current US$",
-      "value": 917767106146.761,
-      "year": "2024",
+      "value": 1035491784197.44,
+      "year": "2025",
       "sourceIds": [
         "src-world-bank"
       ],
@@ -1134,8 +1266,8 @@
       "country": "美国",
       "code": "US",
       "indicator": "GDP current US$",
-      "value": 28750956130731.2,
-      "year": "2024",
+      "value": 30769700000000,
+      "year": "2025",
       "sourceIds": [
         "src-world-bank"
       ],
@@ -1440,7 +1572,7 @@
       "updateFrequency": "weekly",
       "status": "ready",
       "note": "第一版用于公开节假日自动更新；可在后续补充 Google Calendar 公开日历。",
-      "lastCheckedAt": "2026-07-01T04:57:39.633Z"
+      "lastCheckedAt": "2026-07-02T04:34:06.196Z"
     },
     {
       "id": "src-world-bank",
@@ -1451,9 +1583,9 @@
       "autoUpdate": true,
       "requiresKey": false,
       "updateFrequency": "monthly",
-      "status": "warning",
+      "status": "ready",
       "note": "用于人口、GDP、互联网使用率等公开宏观信号。",
-      "lastCheckedAt": "2026-07-01T04:57:39.633Z"
+      "lastCheckedAt": "2026-07-02T04:34:06.196Z"
     },
     {
       "id": "src-seed-public-events",
@@ -1466,34 +1598,18 @@
       "updateFrequency": "manual-review",
       "status": "review-needed",
       "note": "第一版先保留公开节点种子，后续逐个替换为平台官网、会议官网或体育赛程来源。",
-      "lastCheckedAt": "2026-07-01T04:57:39.633Z"
+      "lastCheckedAt": "2026-07-02T04:34:06.196Z"
     }
   ],
   "updateStatus": {
-    "lastUpdatedAt": "2026-07-01T04:57:39.633Z",
+    "lastUpdatedAt": "2026-07-02T04:34:06.196Z",
     "nextUpdateHint": "GitHub Actions 每天运行一次",
     "counts": {
       "sources": 3,
       "events": 8,
       "reviewRequired": 0,
-      "failures": 3
+      "failures": 0
     },
-    "failures": [
-      {
-        "sourceId": "src-world-bank",
-        "target": "SP.POP.TOTL",
-        "message": "This operation was aborted"
-      },
-      {
-        "sourceId": "src-world-bank",
-        "target": "NY.GDP.MKTP.CD",
-        "message": "This operation was aborted"
-      },
-      {
-        "sourceId": "src-world-bank",
-        "target": "IT.NET.USER.ZS",
-        "message": "This operation was aborted"
-      }
-    ]
+    "failures": []
   }
 }
