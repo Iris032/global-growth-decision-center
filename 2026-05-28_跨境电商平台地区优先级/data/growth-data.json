@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-08T03:50:19.360Z",
+  "generatedAt": "2026-07-09T04:17:03.537Z",
   "targetYear": 2026,
   "targetMonth": 7,
   "dataMode": "public-online-refresh",
@@ -1272,6 +1272,138 @@
         "src-world-bank"
       ],
       "reviewRequired": false
+    },
+    {
+      "id": "wb-IT.NET.USER.ZS-AUS",
+      "country": "澳大利亚",
+      "code": "AU",
+      "indicator": "互联网使用率",
+      "value": 96.13140106,
+      "year": "2024",
+      "sourceIds": [
+        "src-world-bank"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "wb-IT.NET.USER.ZS-BRA",
+      "country": "巴西",
+      "code": "BR",
+      "indicator": "互联网使用率",
+      "value": 84.46347227,
+      "year": "2024",
+      "sourceIds": [
+        "src-world-bank"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "wb-IT.NET.USER.ZS-CAN",
+      "country": "加拿大",
+      "code": "CA",
+      "indicator": "互联网使用率",
+      "value": 94.353302,
+      "year": "2024",
+      "sourceIds": [
+        "src-world-bank"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "wb-IT.NET.USER.ZS-DEU",
+      "country": "德国",
+      "code": "DE",
+      "indicator": "互联网使用率",
+      "value": 93.49999579,
+      "year": "2024",
+      "sourceIds": [
+        "src-world-bank"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "wb-IT.NET.USER.ZS-FRA",
+      "country": "法国",
+      "code": "FR",
+      "indicator": "互联网使用率",
+      "value": 88.65381638,
+      "year": "2024",
+      "sourceIds": [
+        "src-world-bank"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "wb-IT.NET.USER.ZS-GBR",
+      "country": "英国",
+      "code": "GB",
+      "indicator": "互联网使用率",
+      "value": 95.4720993,
+      "year": "2024",
+      "sourceIds": [
+        "src-world-bank"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "wb-IT.NET.USER.ZS-JPN",
+      "country": "日本",
+      "code": "JP",
+      "indicator": "互联网使用率",
+      "value": 85.54153081,
+      "year": "2024",
+      "sourceIds": [
+        "src-world-bank"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "wb-IT.NET.USER.ZS-KOR",
+      "country": "韩国",
+      "code": "KR",
+      "indicator": "互联网使用率",
+      "value": 97.89563777,
+      "year": "2024",
+      "sourceIds": [
+        "src-world-bank"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "wb-IT.NET.USER.ZS-MEX",
+      "country": "墨西哥",
+      "code": "MX",
+      "indicator": "互联网使用率",
+      "value": 83.12233799,
+      "year": "2024",
+      "sourceIds": [
+        "src-world-bank"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "wb-IT.NET.USER.ZS-POL",
+      "country": "波兰",
+      "code": "PL",
+      "indicator": "互联网使用率",
+      "value": 88.58496367,
+      "year": "2024",
+      "sourceIds": [
+        "src-world-bank"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "wb-IT.NET.USER.ZS-USA",
+      "country": "美国",
+      "code": "US",
+      "indicator": "互联网使用率",
+      "value": 94.69380188,
+      "year": "2024",
+      "sourceIds": [
+        "src-world-bank"
+      ],
+      "reviewRequired": false
     }
   ],
   "topics": [
@@ -1440,7 +1572,7 @@
       "updateFrequency": "weekly",
       "status": "ready",
       "note": "第一版用于公开节假日自动更新；可在后续补充 Google Calendar 公开日历。",
-      "lastCheckedAt": "2026-07-08T03:50:19.360Z"
+      "lastCheckedAt": "2026-07-09T04:17:03.537Z"
     },
     {
       "id": "src-world-bank",
@@ -1451,9 +1583,9 @@
       "autoUpdate": true,
       "requiresKey": false,
       "updateFrequency": "monthly",
-      "status": "warning",
+      "status": "ready",
       "note": "用于人口、GDP、互联网使用率等公开宏观信号。",
-      "lastCheckedAt": "2026-07-08T03:50:19.360Z"
+      "lastCheckedAt": "2026-07-09T04:17:03.537Z"
     },
     {
       "id": "src-seed-public-events",
@@ -1466,24 +1598,18 @@
       "updateFrequency": "manual-review",
       "status": "review-needed",
       "note": "第一版先保留公开节点种子，后续逐个替换为平台官网、会议官网或体育赛程来源。",
-      "lastCheckedAt": "2026-07-08T03:50:19.360Z"
+      "lastCheckedAt": "2026-07-09T04:17:03.537Z"
     }
   ],
   "updateStatus": {
-    "lastUpdatedAt": "2026-07-08T03:50:19.360Z",
+    "lastUpdatedAt": "2026-07-09T04:17:03.537Z",
     "nextUpdateHint": "GitHub Actions 每天运行一次",
     "counts": {
       "sources": 3,
       "events": 8,
       "reviewRequired": 0,
-      "failures": 1
+      "failures": 0
     },
-    "failures": [
-      {
-        "sourceId": "src-world-bank",
-        "target": "IT.NET.USER.ZS",
-        "message": "This operation was aborted"
-      }
-    ]
+    "failures": []
   }
 }
