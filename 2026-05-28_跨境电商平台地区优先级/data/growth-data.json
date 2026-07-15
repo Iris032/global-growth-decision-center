@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-14T03:40:24.655Z",
+  "generatedAt": "2026-07-15T03:40:35.159Z",
   "targetYear": 2026,
   "targetMonth": 7,
   "dataMode": "public-online-refresh",
@@ -1140,270 +1140,6 @@
         "src-world-bank"
       ],
       "reviewRequired": false
-    },
-    {
-      "id": "wb-NY.GDP.MKTP.CD-AUS",
-      "country": "澳大利亚",
-      "code": "AU",
-      "indicator": "GDP current US$",
-      "value": 1798518933689.21,
-      "year": "2025",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-NY.GDP.MKTP.CD-BRA",
-      "country": "巴西",
-      "code": "BR",
-      "indicator": "GDP current US$",
-      "value": 2279920092492.13,
-      "year": "2025",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-NY.GDP.MKTP.CD-CAN",
-      "country": "加拿大",
-      "code": "CA",
-      "indicator": "GDP current US$",
-      "value": 2319899772425.92,
-      "year": "2025",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-NY.GDP.MKTP.CD-DEU",
-      "country": "德国",
-      "code": "DE",
-      "indicator": "GDP current US$",
-      "value": 5050922925047.05,
-      "year": "2025",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-NY.GDP.MKTP.CD-FRA",
-      "country": "法国",
-      "code": "FR",
-      "indicator": "GDP current US$",
-      "value": 3366315927447.33,
-      "year": "2025",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-NY.GDP.MKTP.CD-GBR",
-      "country": "英国",
-      "code": "GB",
-      "indicator": "GDP current US$",
-      "value": 4002587541846.01,
-      "year": "2025",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-NY.GDP.MKTP.CD-JPN",
-      "country": "日本",
-      "code": "JP",
-      "indicator": "GDP current US$",
-      "value": 4435162999976.94,
-      "year": "2025",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-NY.GDP.MKTP.CD-KOR",
-      "country": "韩国",
-      "code": "KR",
-      "indicator": "GDP current US$",
-      "value": 1872374961553.15,
-      "year": "2025",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-NY.GDP.MKTP.CD-MEX",
-      "country": "墨西哥",
-      "code": "MX",
-      "indicator": "GDP current US$",
-      "value": 1832641364775.52,
-      "year": "2025",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-NY.GDP.MKTP.CD-POL",
-      "country": "波兰",
-      "code": "PL",
-      "indicator": "GDP current US$",
-      "value": 1035491784197.44,
-      "year": "2025",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-NY.GDP.MKTP.CD-USA",
-      "country": "美国",
-      "code": "US",
-      "indicator": "GDP current US$",
-      "value": 30769700000000,
-      "year": "2025",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-IT.NET.USER.ZS-AUS",
-      "country": "澳大利亚",
-      "code": "AU",
-      "indicator": "互联网使用率",
-      "value": 96.13140106,
-      "year": "2024",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-IT.NET.USER.ZS-BRA",
-      "country": "巴西",
-      "code": "BR",
-      "indicator": "互联网使用率",
-      "value": 84.46347227,
-      "year": "2024",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-IT.NET.USER.ZS-CAN",
-      "country": "加拿大",
-      "code": "CA",
-      "indicator": "互联网使用率",
-      "value": 94.353302,
-      "year": "2024",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-IT.NET.USER.ZS-DEU",
-      "country": "德国",
-      "code": "DE",
-      "indicator": "互联网使用率",
-      "value": 93.49999579,
-      "year": "2024",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-IT.NET.USER.ZS-FRA",
-      "country": "法国",
-      "code": "FR",
-      "indicator": "互联网使用率",
-      "value": 88.65381638,
-      "year": "2024",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-IT.NET.USER.ZS-GBR",
-      "country": "英国",
-      "code": "GB",
-      "indicator": "互联网使用率",
-      "value": 95.4720993,
-      "year": "2024",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-IT.NET.USER.ZS-JPN",
-      "country": "日本",
-      "code": "JP",
-      "indicator": "互联网使用率",
-      "value": 85.54153081,
-      "year": "2024",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-IT.NET.USER.ZS-KOR",
-      "country": "韩国",
-      "code": "KR",
-      "indicator": "互联网使用率",
-      "value": 97.89563777,
-      "year": "2024",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-IT.NET.USER.ZS-MEX",
-      "country": "墨西哥",
-      "code": "MX",
-      "indicator": "互联网使用率",
-      "value": 83.12233799,
-      "year": "2024",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-IT.NET.USER.ZS-POL",
-      "country": "波兰",
-      "code": "PL",
-      "indicator": "互联网使用率",
-      "value": 88.58496367,
-      "year": "2024",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-IT.NET.USER.ZS-USA",
-      "country": "美国",
-      "code": "US",
-      "indicator": "互联网使用率",
-      "value": 94.69380188,
-      "year": "2024",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
     }
   ],
   "topics": [
@@ -1572,7 +1308,7 @@
       "updateFrequency": "weekly",
       "status": "ready",
       "note": "第一版用于公开节假日自动更新；可在后续补充 Google Calendar 公开日历。",
-      "lastCheckedAt": "2026-07-14T03:40:24.655Z"
+      "lastCheckedAt": "2026-07-15T03:40:35.159Z"
     },
     {
       "id": "src-world-bank",
@@ -1583,9 +1319,9 @@
       "autoUpdate": true,
       "requiresKey": false,
       "updateFrequency": "monthly",
-      "status": "ready",
+      "status": "warning",
       "note": "用于人口、GDP、互联网使用率等公开宏观信号。",
-      "lastCheckedAt": "2026-07-14T03:40:24.655Z"
+      "lastCheckedAt": "2026-07-15T03:40:35.159Z"
     },
     {
       "id": "src-seed-public-events",
@@ -1598,18 +1334,29 @@
       "updateFrequency": "manual-review",
       "status": "review-needed",
       "note": "第一版先保留公开节点种子，后续逐个替换为平台官网、会议官网或体育赛程来源。",
-      "lastCheckedAt": "2026-07-14T03:40:24.655Z"
+      "lastCheckedAt": "2026-07-15T03:40:35.159Z"
     }
   ],
   "updateStatus": {
-    "lastUpdatedAt": "2026-07-14T03:40:24.655Z",
+    "lastUpdatedAt": "2026-07-15T03:40:35.159Z",
     "nextUpdateHint": "GitHub Actions 每天运行一次",
     "counts": {
       "sources": 3,
       "events": 8,
       "reviewRequired": 0,
-      "failures": 0
+      "failures": 2
     },
-    "failures": []
+    "failures": [
+      {
+        "sourceId": "src-world-bank",
+        "target": "NY.GDP.MKTP.CD",
+        "message": "This operation was aborted"
+      },
+      {
+        "sourceId": "src-world-bank",
+        "target": "IT.NET.USER.ZS",
+        "message": "This operation was aborted"
+      }
+    ]
   }
 }
