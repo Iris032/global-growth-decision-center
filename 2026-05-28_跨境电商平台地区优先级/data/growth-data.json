@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-31T03:55:43.438Z",
+  "generatedAt": "2026-08-01T03:56:25.623Z",
   "targetYear": 2026,
-  "targetMonth": 7,
+  "targetMonth": 8,
   "dataMode": "public-online-refresh",
   "configOptions": {
     "audiences": [
@@ -657,62 +657,19 @@
   ],
   "calendar": {
     "year": 2026,
-    "month": 7,
-    "label": "July 2026 Calendar",
+    "month": 8,
+    "label": "August 2026 Calendar",
     "events": [
       {
-        "id": "holiday-ca-2026-07-01-canada-day",
-        "date": "2026-07-01",
-        "day": 1,
-        "cls": "festival",
-        "code": "CA",
-        "region": "加拿大",
-        "title": "Canada Day",
-        "type": "公开节假日",
-        "description": "加拿大公开节假日：Canada Day。",
-        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
-        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
-        "recommendedFormats": [
-          "朋友圈内容",
-          "海报",
-          "社媒帖"
-        ],
-        "associatedPlatforms": [
-          "多平台"
-        ],
-        "associatedAudiences": [
-          "全球增长团队",
-          "品牌出海团队"
-        ],
-        "impactCategories": [
-          "礼品",
-          "亲子",
-          "本地化内容"
-        ],
-        "contentGoals": [
-          "holiday-moment",
-          "brand-awareness"
-        ],
-        "channels": [
-          "wechat-moments",
-          "instagram",
-          "facebook"
-        ],
-        "sourceIds": [
-          "src-nager-holidays"
-        ],
-        "reviewRequired": false
-      },
-      {
-        "id": "holiday-us-2026-07-03-independence-day",
-        "date": "2026-07-03",
+        "id": "holiday-ca-2026-08-03-british-columbia-day",
+        "date": "2026-08-03",
         "day": 3,
         "cls": "festival",
-        "code": "US",
-        "region": "美国",
-        "title": "Independence Day",
+        "code": "CA",
+        "region": "加拿大",
+        "title": "British Columbia Day",
         "type": "公开节假日",
-        "description": "美国公开节假日：Independence Day。",
+        "description": "加拿大公开节假日：British Columbia Day。",
         "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
         "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
         "recommendedFormats": [
@@ -747,58 +704,15 @@
         "reviewRequired": false
       },
       {
-        "id": "holiday-br-2026-07-09-constitutionalist-revolution-of-1932",
-        "date": "2026-07-09",
-        "day": 9,
-        "cls": "festival",
-        "code": "BR",
-        "region": "巴西",
-        "title": "Revolução Constitucionalista de 1932",
-        "type": "公开节假日",
-        "description": "巴西公开节假日：Constitutionalist Revolution of 1932。",
-        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
-        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
-        "recommendedFormats": [
-          "朋友圈内容",
-          "海报",
-          "社媒帖"
-        ],
-        "associatedPlatforms": [
-          "多平台"
-        ],
-        "associatedAudiences": [
-          "全球增长团队",
-          "品牌出海团队"
-        ],
-        "impactCategories": [
-          "礼品",
-          "亲子",
-          "本地化内容"
-        ],
-        "contentGoals": [
-          "holiday-moment",
-          "brand-awareness"
-        ],
-        "channels": [
-          "wechat-moments",
-          "instagram",
-          "facebook"
-        ],
-        "sourceIds": [
-          "src-nager-holidays"
-        ],
-        "reviewRequired": false
-      },
-      {
-        "id": "holiday-ca-2026-07-12-orangemen-s-day",
-        "date": "2026-07-12",
-        "day": 12,
+        "id": "holiday-ca-2026-08-03-civic-holiday",
+        "date": "2026-08-03",
+        "day": 3,
         "cls": "festival",
         "code": "CA",
         "region": "加拿大",
-        "title": "Orangemen's Day",
+        "title": "Civic Holiday",
         "type": "公开节假日",
-        "description": "加拿大公开节假日：Orangemen's Day。",
+        "description": "加拿大公开节假日：Civic Holiday。",
         "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
         "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
         "recommendedFormats": [
@@ -833,15 +747,230 @@
         "reviewRequired": false
       },
       {
-        "id": "holiday-gb-2026-07-13-battle-of-the-boyne",
-        "date": "2026-07-13",
-        "day": 13,
+        "id": "holiday-ca-2026-08-03-heritage-day",
+        "date": "2026-08-03",
+        "day": 3,
+        "cls": "festival",
+        "code": "CA",
+        "region": "加拿大",
+        "title": "Heritage Day",
+        "type": "公开节假日",
+        "description": "加拿大公开节假日：Heritage Day。",
+        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
+        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
+        "recommendedFormats": [
+          "朋友圈内容",
+          "海报",
+          "社媒帖"
+        ],
+        "associatedPlatforms": [
+          "多平台"
+        ],
+        "associatedAudiences": [
+          "全球增长团队",
+          "品牌出海团队"
+        ],
+        "impactCategories": [
+          "礼品",
+          "亲子",
+          "本地化内容"
+        ],
+        "contentGoals": [
+          "holiday-moment",
+          "brand-awareness"
+        ],
+        "channels": [
+          "wechat-moments",
+          "instagram",
+          "facebook"
+        ],
+        "sourceIds": [
+          "src-nager-holidays"
+        ],
+        "reviewRequired": false
+      },
+      {
+        "id": "holiday-ca-2026-08-03-natal-day",
+        "date": "2026-08-03",
+        "day": 3,
+        "cls": "festival",
+        "code": "CA",
+        "region": "加拿大",
+        "title": "Natal Day",
+        "type": "公开节假日",
+        "description": "加拿大公开节假日：Natal Day。",
+        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
+        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
+        "recommendedFormats": [
+          "朋友圈内容",
+          "海报",
+          "社媒帖"
+        ],
+        "associatedPlatforms": [
+          "多平台"
+        ],
+        "associatedAudiences": [
+          "全球增长团队",
+          "品牌出海团队"
+        ],
+        "impactCategories": [
+          "礼品",
+          "亲子",
+          "本地化内容"
+        ],
+        "contentGoals": [
+          "holiday-moment",
+          "brand-awareness"
+        ],
+        "channels": [
+          "wechat-moments",
+          "instagram",
+          "facebook"
+        ],
+        "sourceIds": [
+          "src-nager-holidays"
+        ],
+        "reviewRequired": false
+      },
+      {
+        "id": "holiday-ca-2026-08-03-new-brunswick-day",
+        "date": "2026-08-03",
+        "day": 3,
+        "cls": "festival",
+        "code": "CA",
+        "region": "加拿大",
+        "title": "New Brunswick Day",
+        "type": "公开节假日",
+        "description": "加拿大公开节假日：New Brunswick Day。",
+        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
+        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
+        "recommendedFormats": [
+          "朋友圈内容",
+          "海报",
+          "社媒帖"
+        ],
+        "associatedPlatforms": [
+          "多平台"
+        ],
+        "associatedAudiences": [
+          "全球增长团队",
+          "品牌出海团队"
+        ],
+        "impactCategories": [
+          "礼品",
+          "亲子",
+          "本地化内容"
+        ],
+        "contentGoals": [
+          "holiday-moment",
+          "brand-awareness"
+        ],
+        "channels": [
+          "wechat-moments",
+          "instagram",
+          "facebook"
+        ],
+        "sourceIds": [
+          "src-nager-holidays"
+        ],
+        "reviewRequired": false
+      },
+      {
+        "id": "holiday-au-2026-08-03-picnic-day",
+        "date": "2026-08-03",
+        "day": 3,
+        "cls": "festival",
+        "code": "AU",
+        "region": "澳大利亚",
+        "title": "Picnic Day",
+        "type": "公开节假日",
+        "description": "澳大利亚公开节假日：Picnic Day。",
+        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
+        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
+        "recommendedFormats": [
+          "朋友圈内容",
+          "海报",
+          "社媒帖"
+        ],
+        "associatedPlatforms": [
+          "多平台"
+        ],
+        "associatedAudiences": [
+          "全球增长团队",
+          "品牌出海团队"
+        ],
+        "impactCategories": [
+          "礼品",
+          "亲子",
+          "本地化内容"
+        ],
+        "contentGoals": [
+          "holiday-moment",
+          "brand-awareness"
+        ],
+        "channels": [
+          "wechat-moments",
+          "instagram",
+          "facebook"
+        ],
+        "sourceIds": [
+          "src-nager-holidays"
+        ],
+        "reviewRequired": false
+      },
+      {
+        "id": "holiday-ca-2026-08-03-saskatchewan-day",
+        "date": "2026-08-03",
+        "day": 3,
+        "cls": "festival",
+        "code": "CA",
+        "region": "加拿大",
+        "title": "Saskatchewan Day",
+        "type": "公开节假日",
+        "description": "加拿大公开节假日：Saskatchewan Day。",
+        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
+        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
+        "recommendedFormats": [
+          "朋友圈内容",
+          "海报",
+          "社媒帖"
+        ],
+        "associatedPlatforms": [
+          "多平台"
+        ],
+        "associatedAudiences": [
+          "全球增长团队",
+          "品牌出海团队"
+        ],
+        "impactCategories": [
+          "礼品",
+          "亲子",
+          "本地化内容"
+        ],
+        "contentGoals": [
+          "holiday-moment",
+          "brand-awareness"
+        ],
+        "channels": [
+          "wechat-moments",
+          "instagram",
+          "facebook"
+        ],
+        "sourceIds": [
+          "src-nager-holidays"
+        ],
+        "reviewRequired": false
+      },
+      {
+        "id": "holiday-gb-2026-08-03-summer-bank-holiday",
+        "date": "2026-08-03",
+        "day": 3,
         "cls": "festival",
         "code": "GB",
         "region": "英国",
-        "title": "Battle of the Boyne",
+        "title": "Summer Bank Holiday",
         "type": "公开节假日",
-        "description": "英国公开节假日：Battle of the Boyne。",
+        "description": "英国公开节假日：Summer Bank Holiday。",
         "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
         "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
         "recommendedFormats": [
@@ -876,15 +1005,59 @@
         "reviewRequired": false
       },
       {
-        "id": "holiday-fr-2026-07-14-bastille-day",
-        "date": "2026-07-14",
-        "day": 14,
+        "id": "holiday-jp-2026-08-11-mountain-day",
+        "date": "2026-08-11",
+        "day": 11,
+        "cls": "festival",
+        "code": "JP",
+        "region": "日本",
+        "title": "山の日",
+        "type": "公开节假日",
+        "description": "日本公开节假日：Mountain Day。",
+        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
+        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
+        "recommendedFormats": [
+          "朋友圈内容",
+          "海报",
+          "社媒帖"
+        ],
+        "associatedPlatforms": [
+          "Amazon Japan",
+          "Rakuten"
+        ],
+        "associatedAudiences": [
+          "全球增长团队",
+          "品牌出海团队"
+        ],
+        "impactCategories": [
+          "礼品",
+          "亲子",
+          "本地化内容"
+        ],
+        "contentGoals": [
+          "holiday-moment",
+          "brand-awareness"
+        ],
+        "channels": [
+          "wechat-moments",
+          "instagram",
+          "facebook"
+        ],
+        "sourceIds": [
+          "src-nager-holidays"
+        ],
+        "reviewRequired": false
+      },
+      {
+        "id": "holiday-fr-2026-08-15-assumption-day",
+        "date": "2026-08-15",
+        "day": 15,
         "cls": "festival",
         "code": "FR",
         "region": "法国",
-        "title": "Fête nationale",
+        "title": "Assomption",
         "type": "公开节假日",
-        "description": "法国公开节假日：Bastille Day。",
+        "description": "法国公开节假日：Assumption Day。",
         "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
         "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
         "recommendedFormats": [
@@ -919,15 +1092,189 @@
         "reviewRequired": false
       },
       {
-        "id": "holiday-kr-2026-07-17-constitution-day",
-        "date": "2026-07-17",
+        "id": "holiday-de-2026-08-15-assumption-day",
+        "date": "2026-08-15",
+        "day": 15,
+        "cls": "festival",
+        "code": "DE",
+        "region": "德国",
+        "title": "Mariä Himmelfahrt",
+        "type": "公开节假日",
+        "description": "德国公开节假日：Assumption Day。",
+        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
+        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
+        "recommendedFormats": [
+          "朋友圈内容",
+          "海报",
+          "社媒帖"
+        ],
+        "associatedPlatforms": [
+          "Amazon Germany",
+          "OTTO",
+          "eBay"
+        ],
+        "associatedAudiences": [
+          "品牌货 / 精品 / 高客单卖家",
+          "平台服务商 / 代运营"
+        ],
+        "impactCategories": [
+          "礼品",
+          "亲子",
+          "本地化内容"
+        ],
+        "contentGoals": [
+          "holiday-moment",
+          "brand-awareness"
+        ],
+        "channels": [
+          "wechat-moments",
+          "instagram",
+          "facebook"
+        ],
+        "sourceIds": [
+          "src-nager-holidays"
+        ],
+        "reviewRequired": false
+      },
+      {
+        "id": "holiday-pl-2026-08-15-assumption-day",
+        "date": "2026-08-15",
+        "day": 15,
+        "cls": "festival",
+        "code": "PL",
+        "region": "波兰",
+        "title": "Wniebowzięcie Najświętszej Maryi Panny",
+        "type": "公开节假日",
+        "description": "波兰公开节假日：Assumption Day。",
+        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
+        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
+        "recommendedFormats": [
+          "朋友圈内容",
+          "海报",
+          "社媒帖"
+        ],
+        "associatedPlatforms": [
+          "多平台"
+        ],
+        "associatedAudiences": [
+          "全球增长团队",
+          "品牌出海团队"
+        ],
+        "impactCategories": [
+          "礼品",
+          "亲子",
+          "本地化内容"
+        ],
+        "contentGoals": [
+          "holiday-moment",
+          "brand-awareness"
+        ],
+        "channels": [
+          "wechat-moments",
+          "instagram",
+          "facebook"
+        ],
+        "sourceIds": [
+          "src-nager-holidays"
+        ],
+        "reviewRequired": false
+      },
+      {
+        "id": "holiday-ca-2026-08-17-discovery-day",
+        "date": "2026-08-17",
+        "day": 17,
+        "cls": "festival",
+        "code": "CA",
+        "region": "加拿大",
+        "title": "Discovery Day",
+        "type": "公开节假日",
+        "description": "加拿大公开节假日：Discovery Day。",
+        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
+        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
+        "recommendedFormats": [
+          "朋友圈内容",
+          "海报",
+          "社媒帖"
+        ],
+        "associatedPlatforms": [
+          "多平台"
+        ],
+        "associatedAudiences": [
+          "全球增长团队",
+          "品牌出海团队"
+        ],
+        "impactCategories": [
+          "礼品",
+          "亲子",
+          "本地化内容"
+        ],
+        "contentGoals": [
+          "holiday-moment",
+          "brand-awareness"
+        ],
+        "channels": [
+          "wechat-moments",
+          "instagram",
+          "facebook"
+        ],
+        "sourceIds": [
+          "src-nager-holidays"
+        ],
+        "reviewRequired": false
+      },
+      {
+        "id": "holiday-ca-2026-08-17-gold-cup-parade-day",
+        "date": "2026-08-17",
+        "day": 17,
+        "cls": "festival",
+        "code": "CA",
+        "region": "加拿大",
+        "title": "Gold Cup Parade Day",
+        "type": "公开节假日",
+        "description": "加拿大公开节假日：Gold Cup Parade Day。",
+        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
+        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
+        "recommendedFormats": [
+          "朋友圈内容",
+          "海报",
+          "社媒帖"
+        ],
+        "associatedPlatforms": [
+          "多平台"
+        ],
+        "associatedAudiences": [
+          "全球增长团队",
+          "品牌出海团队"
+        ],
+        "impactCategories": [
+          "礼品",
+          "亲子",
+          "本地化内容"
+        ],
+        "contentGoals": [
+          "holiday-moment",
+          "brand-awareness"
+        ],
+        "channels": [
+          "wechat-moments",
+          "instagram",
+          "facebook"
+        ],
+        "sourceIds": [
+          "src-nager-holidays"
+        ],
+        "reviewRequired": false
+      },
+      {
+        "id": "holiday-kr-2026-08-17-liberation-day",
+        "date": "2026-08-17",
         "day": 17,
         "cls": "festival",
         "code": "KR",
         "region": "韩国",
-        "title": "제헌절",
+        "title": "광복절",
         "type": "公开节假日",
-        "description": "韩国公开节假日：Constitution Day。",
+        "description": "韩国公开节假日：Liberation Day。",
         "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
         "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
         "recommendedFormats": [
@@ -963,15 +1310,15 @@
         "reviewRequired": false
       },
       {
-        "id": "holiday-jp-2026-07-20-marine-day",
-        "date": "2026-07-20",
-        "day": 20,
+        "id": "holiday-gb-2026-08-31-summer-bank-holiday",
+        "date": "2026-08-31",
+        "day": 31,
         "cls": "festival",
-        "code": "JP",
-        "region": "日本",
-        "title": "海の日",
+        "code": "GB",
+        "region": "英国",
+        "title": "Summer Bank Holiday",
         "type": "公开节假日",
-        "description": "日本公开节假日：Marine Day。",
+        "description": "英国公开节假日：Summer Bank Holiday。",
         "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
         "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
         "recommendedFormats": [
@@ -980,8 +1327,7 @@
           "社媒帖"
         ],
         "associatedPlatforms": [
-          "Amazon Japan",
-          "Rakuten"
+          "多平台"
         ],
         "associatedAudiences": [
           "全球增长团队",
@@ -1410,7 +1756,7 @@
     {
       "id": "topic-prime-day-readiness",
       "title": "Prime Day 前客服和退货预案清单",
-      "month": "2026-07",
+      "month": "2026-08",
       "region": "AMZ",
       "platform": "Amazon",
       "audience": "Amazon 卖家",
@@ -1429,7 +1775,7 @@
     {
       "id": "topic-sea-short-video",
       "title": "东南亚夏季轻小件短视频卖点脚本",
-      "month": "2026-07",
+      "month": "2026-08",
       "region": "SEA",
       "platform": "Shopee / TikTok Shop",
       "audience": "Shopee / TikTok Shop 内容电商卖家",
@@ -1448,7 +1794,7 @@
     {
       "id": "topic-eu-compliance",
       "title": "德国月末促销前 VAT/EPR 合规提醒",
-      "month": "2026-07",
+      "month": "2026-08",
       "region": "DE",
       "platform": "Amazon Germany / OTTO",
       "audience": "品牌出海团队",
@@ -1467,7 +1813,7 @@
     {
       "id": "topic-jp-localization",
       "title": "日本品质型商品评价管理内容包",
-      "month": "2026-07",
+      "month": "2026-08",
       "region": "JP",
       "platform": "Amazon Japan / Rakuten",
       "audience": "品牌出海团队",
@@ -1486,7 +1832,7 @@
     {
       "id": "topic-br-logistics",
       "title": "巴西 Mercado Livre 本地仓和清关内容",
-      "month": "2026-07",
+      "month": "2026-08",
       "region": "BR",
       "platform": "Mercado Livre",
       "audience": "物流 / 海外仓 / 支付服务商",
@@ -1505,7 +1851,7 @@
     {
       "id": "topic-gcc-premium",
       "title": "中东/GCC 高客单消费品本地化表达",
-      "month": "2026-07",
+      "month": "2026-08",
       "region": "GCC",
       "platform": "Amazon.ae / Noon",
       "audience": "品牌货 / 精品 / 高客单卖家",
@@ -1524,7 +1870,7 @@
     {
       "id": "topic-platform-service",
       "title": "平台服务商多平台运营能力案例",
-      "month": "2026-07",
+      "month": "2026-08",
       "region": "GLOBAL",
       "platform": "多平台",
       "audience": "平台服务商 / 代运营",
@@ -1543,7 +1889,7 @@
     {
       "id": "topic-fashion-summer",
       "title": "全球夏季服装趋势社媒内容矩阵",
-      "month": "2026-07",
+      "month": "2026-08",
       "region": "GLOBAL",
       "platform": "Instagram / TikTok",
       "audience": "服装卖家",
@@ -1572,7 +1918,7 @@
       "updateFrequency": "weekly",
       "status": "ready",
       "note": "第一版用于公开节假日自动更新；可在后续补充 Google Calendar 公开日历。",
-      "lastCheckedAt": "2026-07-31T03:55:43.438Z"
+      "lastCheckedAt": "2026-08-01T03:56:25.623Z"
     },
     {
       "id": "src-world-bank",
@@ -1585,7 +1931,7 @@
       "updateFrequency": "monthly",
       "status": "ready",
       "note": "用于人口、GDP、互联网使用率等公开宏观信号。",
-      "lastCheckedAt": "2026-07-31T03:55:43.438Z"
+      "lastCheckedAt": "2026-08-01T03:56:25.623Z"
     },
     {
       "id": "src-seed-public-events",
@@ -1598,15 +1944,15 @@
       "updateFrequency": "manual-review",
       "status": "review-needed",
       "note": "第一版先保留公开节点种子，后续逐个替换为平台官网、会议官网或体育赛程来源。",
-      "lastCheckedAt": "2026-07-31T03:55:43.438Z"
+      "lastCheckedAt": "2026-08-01T03:56:25.623Z"
     }
   ],
   "updateStatus": {
-    "lastUpdatedAt": "2026-07-31T03:55:43.438Z",
+    "lastUpdatedAt": "2026-08-01T03:56:25.623Z",
     "nextUpdateHint": "GitHub Actions 每天运行一次",
     "counts": {
       "sources": 3,
-      "events": 8,
+      "events": 16,
       "reviewRequired": 0,
       "failures": 0
     },
