@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-29T05:59:42.930Z",
+  "generatedAt": "2026-10-30T06:00:44.263Z",
   "targetYear": 2026,
   "targetMonth": 10,
   "dataMode": "public-online-refresh",
@@ -767,94 +767,6 @@
         ],
         "associatedPlatforms": [
           "多平台"
-        ],
-        "associatedAudiences": [
-          "全球增长团队",
-          "品牌出海团队"
-        ],
-        "impactCategories": [
-          "礼品",
-          "亲子",
-          "本地化内容"
-        ],
-        "contentGoals": [
-          "holiday-moment",
-          "brand-awareness"
-        ],
-        "channels": [
-          "wechat-moments",
-          "instagram",
-          "facebook"
-        ],
-        "sourceIds": [
-          "src-nager-holidays"
-        ],
-        "reviewRequired": false
-      },
-      {
-        "id": "holiday-kr-2026-10-05-national-foundation-day",
-        "date": "2026-10-05",
-        "day": 5,
-        "cls": "festival",
-        "code": "KR",
-        "region": "韩国",
-        "title": "개천절",
-        "type": "公开节假日",
-        "description": "韩国公开节假日：National Foundation Day。",
-        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
-        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
-        "recommendedFormats": [
-          "朋友圈内容",
-          "海报",
-          "社媒帖"
-        ],
-        "associatedPlatforms": [
-          "Coupang",
-          "Naver"
-        ],
-        "associatedAudiences": [
-          "全球增长团队",
-          "品牌出海团队"
-        ],
-        "impactCategories": [
-          "礼品",
-          "亲子",
-          "本地化内容"
-        ],
-        "contentGoals": [
-          "holiday-moment",
-          "brand-awareness"
-        ],
-        "channels": [
-          "wechat-moments",
-          "instagram",
-          "facebook"
-        ],
-        "sourceIds": [
-          "src-nager-holidays"
-        ],
-        "reviewRequired": false
-      },
-      {
-        "id": "holiday-kr-2026-10-09-hangul-day",
-        "date": "2026-10-09",
-        "day": 9,
-        "cls": "festival",
-        "code": "KR",
-        "region": "韩国",
-        "title": "한글날",
-        "type": "公开节假日",
-        "description": "韩国公开节假日：Hangul Day。",
-        "suggestion": "可用于本地化内容、节日前预热、社媒提醒和区域营销日历。",
-        "contentAngle": "本地化内容、节日前预热、区域营销提醒。",
-        "recommendedFormats": [
-          "朋友圈内容",
-          "海报",
-          "社媒帖"
-        ],
-        "associatedPlatforms": [
-          "Coupang",
-          "Naver"
         ],
         "associatedAudiences": [
           "全球增长团队",
@@ -1704,9 +1616,9 @@
       "autoUpdate": true,
       "requiresKey": false,
       "updateFrequency": "weekly",
-      "status": "ready",
+      "status": "warning",
       "note": "第一版用于公开节假日自动更新；可在后续补充 Google Calendar 公开日历。",
-      "lastCheckedAt": "2026-10-29T05:59:42.930Z"
+      "lastCheckedAt": "2026-10-30T06:00:44.263Z"
     },
     {
       "id": "src-world-bank",
@@ -1719,7 +1631,7 @@
       "updateFrequency": "monthly",
       "status": "ready",
       "note": "用于人口、GDP、互联网使用率等公开宏观信号。",
-      "lastCheckedAt": "2026-10-29T05:59:42.930Z"
+      "lastCheckedAt": "2026-10-30T06:00:44.263Z"
     },
     {
       "id": "src-seed-public-events",
@@ -1732,18 +1644,24 @@
       "updateFrequency": "manual-review",
       "status": "review-needed",
       "note": "第一版先保留公开节点种子，后续逐个替换为平台官网、会议官网或体育赛程来源。",
-      "lastCheckedAt": "2026-10-29T05:59:42.930Z"
+      "lastCheckedAt": "2026-10-30T06:00:44.263Z"
     }
   ],
   "updateStatus": {
-    "lastUpdatedAt": "2026-10-29T05:59:42.930Z",
+    "lastUpdatedAt": "2026-10-30T06:00:44.263Z",
     "nextUpdateHint": "GitHub Actions 每天运行一次",
     "counts": {
       "sources": 3,
-      "events": 11,
+      "events": 9,
       "reviewRequired": 0,
-      "failures": 0
+      "failures": 1
     },
-    "failures": []
+    "failures": [
+      {
+        "sourceId": "src-nager-holidays",
+        "target": "KR",
+        "message": "This operation was aborted"
+      }
+    ]
   }
 }
