@@ -1,6 +1,6 @@
 window.GROWTH_DECISION_DATA = {
   "version": 1,
-  "generatedAt": "2026-11-12T07:24:29.464Z",
+  "generatedAt": "2026-11-13T06:56:43.418Z",
   "targetYear": 2026,
   "targetMonth": 11,
   "dataMode": "public-online-refresh",
@@ -2006,7 +2006,7 @@ window.GROWTH_DECISION_DATA = {
       "updateFrequency": "weekly",
       "status": "ready",
       "note": "第一版用于公开节假日自动更新；可在后续补充 Google Calendar 公开日历。",
-      "lastCheckedAt": "2026-11-12T07:24:29.464Z"
+      "lastCheckedAt": "2026-11-13T06:56:43.418Z"
     },
     {
       "id": "src-world-bank",
@@ -2017,9 +2017,9 @@ window.GROWTH_DECISION_DATA = {
       "autoUpdate": true,
       "requiresKey": false,
       "updateFrequency": "monthly",
-      "status": "ready",
+      "status": "warning",
       "note": "用于人口、GDP、互联网使用率等公开宏观信号。",
-      "lastCheckedAt": "2026-11-12T07:24:29.464Z"
+      "lastCheckedAt": "2026-11-13T06:56:43.418Z"
     },
     {
       "id": "src-seed-public-events",
@@ -2032,18 +2032,34 @@ window.GROWTH_DECISION_DATA = {
       "updateFrequency": "manual-review",
       "status": "review-needed",
       "note": "第一版先保留公开节点种子，后续逐个替换为平台官网、会议官网或体育赛程来源。",
-      "lastCheckedAt": "2026-11-12T07:24:29.464Z"
+      "lastCheckedAt": "2026-11-13T06:56:43.418Z"
     }
   ],
   "updateStatus": {
-    "lastUpdatedAt": "2026-11-12T07:24:29.464Z",
+    "lastUpdatedAt": "2026-11-13T06:56:43.418Z",
     "nextUpdateHint": "GitHub Actions 每天运行一次",
     "counts": {
       "sources": 3,
       "events": 18,
       "reviewRequired": 0,
-      "failures": 0
+      "failures": 3
     },
-    "failures": []
+    "failures": [
+      {
+        "sourceId": "src-world-bank",
+        "target": "SP.POP.TOTL",
+        "message": "This operation was aborted"
+      },
+      {
+        "sourceId": "src-world-bank",
+        "target": "NY.GDP.MKTP.CD",
+        "message": "This operation was aborted"
+      },
+      {
+        "sourceId": "src-world-bank",
+        "target": "IT.NET.USER.ZS",
+        "message": "This operation was aborted"
+      }
+    ]
   }
 };
