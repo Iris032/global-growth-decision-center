@@ -1,6 +1,6 @@
 window.GROWTH_DECISION_DATA = {
   "version": 1,
-  "generatedAt": "2026-11-14T06:43:18.355Z",
+  "generatedAt": "2026-11-15T06:48:14.867Z",
   "targetYear": 2026,
   "targetMonth": 11,
   "dataMode": "public-online-refresh",
@@ -1444,138 +1444,6 @@ window.GROWTH_DECISION_DATA = {
   },
   "marketSignals": [
     {
-      "id": "wb-SP.POP.TOTL-AUS",
-      "country": "澳大利亚",
-      "code": "AU",
-      "indicator": "人口",
-      "value": 27614411,
-      "year": "2025",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-SP.POP.TOTL-BRA",
-      "country": "巴西",
-      "code": "BR",
-      "indicator": "人口",
-      "value": 212812405,
-      "year": "2025",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-SP.POP.TOTL-CAN",
-      "country": "加拿大",
-      "code": "CA",
-      "indicator": "人口",
-      "value": 41651653,
-      "year": "2025",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-SP.POP.TOTL-DEU",
-      "country": "德国",
-      "code": "DE",
-      "indicator": "人口",
-      "value": 83491249,
-      "year": "2025",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-SP.POP.TOTL-FRA",
-      "country": "法国",
-      "code": "FR",
-      "indicator": "人口",
-      "value": 68720337,
-      "year": "2025",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-SP.POP.TOTL-GBR",
-      "country": "英国",
-      "code": "GB",
-      "indicator": "人口",
-      "value": 69487000,
-      "year": "2025",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-SP.POP.TOTL-JPN",
-      "country": "日本",
-      "code": "JP",
-      "indicator": "人口",
-      "value": 123366734,
-      "year": "2025",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-SP.POP.TOTL-KOR",
-      "country": "韩国",
-      "code": "KR",
-      "indicator": "人口",
-      "value": 51684564,
-      "year": "2025",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-SP.POP.TOTL-MEX",
-      "country": "墨西哥",
-      "code": "MX",
-      "indicator": "人口",
-      "value": 131946900,
-      "year": "2025",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-SP.POP.TOTL-POL",
-      "country": "波兰",
-      "code": "PL",
-      "indicator": "人口",
-      "value": 36435861,
-      "year": "2025",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
-      "id": "wb-SP.POP.TOTL-USA",
-      "country": "美国",
-      "code": "US",
-      "indicator": "人口",
-      "value": 341784857,
-      "year": "2025",
-      "sourceIds": [
-        "src-world-bank"
-      ],
-      "reviewRequired": false
-    },
-    {
       "id": "wb-NY.GDP.MKTP.CD-AUS",
       "country": "澳大利亚",
       "code": "AU",
@@ -2006,7 +1874,7 @@ window.GROWTH_DECISION_DATA = {
       "updateFrequency": "weekly",
       "status": "ready",
       "note": "第一版用于公开节假日自动更新；可在后续补充 Google Calendar 公开日历。",
-      "lastCheckedAt": "2026-11-14T06:43:18.355Z"
+      "lastCheckedAt": "2026-11-15T06:48:14.867Z"
     },
     {
       "id": "src-world-bank",
@@ -2017,9 +1885,9 @@ window.GROWTH_DECISION_DATA = {
       "autoUpdate": true,
       "requiresKey": false,
       "updateFrequency": "monthly",
-      "status": "ready",
+      "status": "warning",
       "note": "用于人口、GDP、互联网使用率等公开宏观信号。",
-      "lastCheckedAt": "2026-11-14T06:43:18.355Z"
+      "lastCheckedAt": "2026-11-15T06:48:14.867Z"
     },
     {
       "id": "src-seed-public-events",
@@ -2032,18 +1900,24 @@ window.GROWTH_DECISION_DATA = {
       "updateFrequency": "manual-review",
       "status": "review-needed",
       "note": "第一版先保留公开节点种子，后续逐个替换为平台官网、会议官网或体育赛程来源。",
-      "lastCheckedAt": "2026-11-14T06:43:18.355Z"
+      "lastCheckedAt": "2026-11-15T06:48:14.867Z"
     }
   ],
   "updateStatus": {
-    "lastUpdatedAt": "2026-11-14T06:43:18.355Z",
+    "lastUpdatedAt": "2026-11-15T06:48:14.867Z",
     "nextUpdateHint": "GitHub Actions 每天运行一次",
     "counts": {
       "sources": 3,
       "events": 18,
       "reviewRequired": 0,
-      "failures": 0
+      "failures": 1
     },
-    "failures": []
+    "failures": [
+      {
+        "sourceId": "src-world-bank",
+        "target": "SP.POP.TOTL",
+        "message": "This operation was aborted"
+      }
+    ]
   }
 };
